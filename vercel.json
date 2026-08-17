@@ -1,0 +1,17 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/api/users(.*)", "destination": "/api/users.js" },
+    { "source": "/api/swaps(.*)", "destination": "/api/swaps.js" },
+    { "source": "/api/sessions(.*)", "destination": "/api/sessions.js" },
+    { "source": "/api/messages(.*)", "destination": "/api/messages.js" },
+    { "source": "/api/notes(.*)", "destination": "/api/notes.js" },
+    { "source": "/api/health", "destination": "/api/misc.js" },
+    { "source": "/api/leaderboard", "destination": "/api/misc.js" },
+    { "source": "/api/reviews(.*)", "destination": "/api/misc.js" },
+    { "source": "/api/wallet(.*)", "destination": "/api/misc.js" },
+    { "source": "/api/perks(.*)", "destination": "/api/misc.js" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

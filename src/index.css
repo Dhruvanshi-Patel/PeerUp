@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #F7F4D5;
+    color: #0A3323;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    background-image: radial-gradient(#839958 0.5px, transparent 0.5px);
+    background-size: 28px 28px;
+  }
+
+  /* Smooth Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F7F4D5;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #839958;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #105666;
+  }
+}
+
+@layer utilities {
+  /* Serene Botanical Cards & Containers */
+  .botanical-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(131, 153, 88, 0.22);
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px -2px rgba(10, 51, 35, 0.04);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .botanical-card:hover {
+    box-shadow: 0 10px 25px -4px rgba(10, 51, 35, 0.08);
+    border-color: rgba(131, 153, 88, 0.35);
+  }
+
+  .botanical-card-cream {
+    background: #FAF8ED;
+    border: 1px solid rgba(131, 153, 88, 0.2);
+    border-radius: 1rem;
+  }
+
+  .botanical-card-dark {
+    background: #0A3323;
+    color: #F7F4D5;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px -5px rgba(10, 51, 35, 0.2);
+  }
+
+  /* Botanical Buttons */
+  .btn-botanical-primary {
+    background-color: #0A3323;
+    color: #F7F4D5;
+    font-weight: 600;
+    border-radius: 0.75rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn-botanical-primary:hover {
+    background-color: #105666;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 86, 102, 0.25);
+  }
+
+  .btn-botanical-secondary {
+    background-color: #105666;
+    color: #F7F4D5;
+    font-weight: 600;
+    border-radius: 0.75rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn-botanical-secondary:hover {
+    background-color: #0A3323;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(10, 51, 35, 0.25);
+  }
+
+  .btn-botanical-accent {
+    background-color: #D3968C;
+    color: #0A3323;
+    font-weight: 600;
+    border-radius: 0.75rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn-botanical-accent:hover {
+    background-color: #c48378;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(211, 150, 140, 0.35);
+  }
+
+  .btn-botanical-outline {
+    background-color: #FFFFFF;
+    color: #0A3323;
+    border: 1px solid rgba(131, 153, 88, 0.35);
+    font-weight: 600;
+    border-radius: 0.75rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn-botanical-outline:hover {
+    background-color: #FAF8ED;
+    border-color: #839958;
+  }
+
+  /* Botanical Badges */
+  .badge-moss {
+    background-color: rgba(131, 153, 88, 0.15);
+    color: #0A3323;
+    border: 1px solid rgba(131, 153, 88, 0.3);
+  }
+  .badge-teal {
+    background-color: rgba(16, 86, 102, 0.12);
+    color: #105666;
+    border: 1px solid rgba(16, 86, 102, 0.25);
+  }
+  .badge-rose {
+    background-color: rgba(211, 150, 140, 0.2);
+    color: #0A3323;
+    border: 1px solid rgba(211, 150, 140, 0.4);
+  }
+  .badge-dark {
+    background-color: #0A3323;
+    color: #F7F4D5;
+  }
+}

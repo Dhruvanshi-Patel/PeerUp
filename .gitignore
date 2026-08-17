@@ -1,0 +1,28 @@
+# --- Environment Variables & Database Secrets ---
+# NEVER commit these. They leak your Turso DB URL and Auth tokens.
+.env
+.env*.local
+*.env
+
+# --- Local Turso / SQLite Databases ---
+# If you run a local test database file, ignore it here
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# --- Vercel Deployment Junk ---
+# Generated automatically by Vercel when you link your project
+.vercel
+
+# --- Dependency Folders ---
+# In case you use node packages for Tailwind/JS later
+node_modules/
+dist/
+
+# --- Operating System & Editor Junk ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
