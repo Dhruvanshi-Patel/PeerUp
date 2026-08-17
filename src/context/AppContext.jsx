@@ -8,6 +8,7 @@ const AppContext = createContext();
 export function AppProvider({ children }) {
   // Auth gate – starts as false so LandingPage is shown first
   // Auth gate – initialized with localStorage persistence
+  // Auth gate – starts as false unless user explicitly signed in previously
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     try {
       return localStorage.getItem('skillswap_is_logged_in') === 'true';
@@ -30,9 +31,11 @@ export function AppProvider({ children }) {
 
   const [currentUserId, setCurrentUserId] = useState(() => {
     try {
-      return localStorage.getItem('skillswap_current_user_id') || "usr_priya";
+      const saved = localStorage.getItem('skillswap_current_user_id');
+      const isLoggedInSaved = localStorage.getItem('skillswap_is_logged_in') === 'true';
+      return (isLoggedInSaved && saved) ? saved : null;
     } catch {
-      return "usr_priya";
+      return null;
     }
   });
 
@@ -66,7 +69,7 @@ export function AppProvider({ children }) {
 
   // Notifications
   const [toasts, setToasts] = useState([
-    { id: 't1', title: 'Connected to Backend API ⚡', message: 'RESTful API active on port 3001 with live credit escrow.', type: 'info' }
+    { id: 't1', title: 'Connected to Backend API ⚡', message: 'RESTful API active with live credit escrow.', type: 'info' }
   ]);
 
   const addToast = (title, message, type = 'success') => {
@@ -90,7 +93,11 @@ export function AppProvider({ children }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem('skillswap_current_user_id', currentUserId);
+      if (currentUserId) {
+        localStorage.setItem('skillswap_current_user_id', currentUserId);
+      } else {
+        localStorage.removeItem('skillswap_current_user_id');
+      }
       localStorage.setItem('skillswap_is_logged_in', isLoggedIn ? 'true' : 'false');
     } catch (e) {}
   }, [currentUserId, isLoggedIn]);
@@ -111,16 +118,20 @@ export function AppProvider({ children }) {
           setUsers(() => {
             // Keep only Priya Sharma, kk, and newly registered users
             const validUsers = usersRes.data.filter(u => 
-              u.id === 'usr_priya' || u.name?.toLowerCase() === 'priya sharma' || u.name?.toLowerCase() === 'kk' || u.id === 'usr_1786965735374'
+              u.id === 'usr_priya' || u.name?.toLowerCase() === 'priya sharma' || u.name?.toLowerCase() === 'kk' || u.id === 'usr_1786965735374' || u.id?.startsWith('usr_')
             );
             return validUsers.length > 0 ? validUsers : INITIAL_PERSONAS;
           });
 
-          // Restore signed-in user if saved in localStorage
+          // Restore signed-in user ONLY if explicitly saved as logged in in localStorage
+          const savedLoggedIn = localStorage.getItem('skillswap_is_logged_in') === 'true';
           const savedUserId = localStorage.getItem('skillswap_current_user_id');
-          if (savedUserId && usersRes.data.some(u => u.id === savedUserId)) {
+          if (savedLoggedIn && savedUserId && usersRes.data.some(u => u.id === savedUserId)) {
             setCurrentUserId(savedUserId);
             setIsLoggedIn(true);
+          } else {
+            setIsLoggedIn(false);
+            setCurrentUserId(null);
           }
         }
         if (swapsRes?.data) setProposals(swapsRes.data);
@@ -331,7 +342,11 @@ export function AppProvider({ children }) {
   // Logout
   const logout = () => {
     setIsLoggedIn(false);
-    setCurrentUserId('usr_priya');
+    setCurrentUserId(null);
+    try {
+      localStorage.removeItem('skillswap_is_logged_in');
+      localStorage.removeItem('skillswap_current_user_id');
+    } catch (e) {}
     setActiveTab('explore');
     addToast('Signed out', 'You have been logged out.', 'info');
   };
