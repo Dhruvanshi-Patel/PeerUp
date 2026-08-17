@@ -1,4 +1,3 @@
-
 # 🤝 SkillSwap — Peer-to-Peer Campus Skill Exchange Network
 
 [![Deployment Status](https://img.shields.io/badge/Vercel-Deployed-success?style=flat&logo=vercel)](https://omnikon.vercel.app)
@@ -9,6 +8,34 @@
 **SkillSwap** (Omnikon) is a modern, trust-based peer-to-peer skill exchange platform designed for college and university students. Students trade knowledge 1-for-1—such as Python coding, multivariable calculus, Spanish conversation, or digital design—using a zero-tuition credit escrow wallet (**1 Hour Taught = 1 Escrow Credit**).
 
 🌐 **Live Demo:** [https://omnikon.vercel.app](https://omnikon.vercel.app)
+
+---
+
+## 🏛️ System Architecture
+
+```text
+┌──────────────────────────────────────────────────────────────────┐
+│              Frontend SPA (Vite + React 18 + Tailwind)           │
+│  Explore Mentors │ Study Notes │ 1:1 Swaps │ Wallet │ Leaderboard  │
+└────────────────────────────────┬─────────────────────────────────┘
+                                 │ HTTPS REST API
+┌────────────────────────────────▼─────────────────────────────────┐
+│              Vercel Serverless Functions Layer (/api/*)          │
+│                                                                  │
+│  /api/users    /api/swaps    /api/sessions    /api/messages      │
+│  /api/notes    /api/misc (Health, Leaderboard, Wallet, Perks)    │
+│                                                                  │
+│  ┌─────────────────┐  ┌──────────────────┐  ┌─────────────────┐ │
+│  │ Verified .edu   │  │ 1:1 Credit Escrow│  │ Karma & Badging │ │
+│  │ Domain Guard    │  │ Engine (+1 Cr)   │  │ Ranking Engine  │ │
+│  └────────┬────────┘  └────────┬─────────┘  └────────┬────────┘ │
+│           │                    │                     │           │
+│  ┌────────▼────────────────────▼─────────────────────▼────────┐ │
+│  │                 Turso Database (libSQL / SQLite)           │ │
+│  │  users │ skills │ swaps │ sessions │ reviews │ notes │ msgs │ │
+│  └────────────────────────────────────────────────────────────┘ │
+└──────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -24,9 +51,9 @@
 
 ---
 
-## 🛠️ Architecture & Tech Stack
+## 🛠️ Tech Stack
 
-### **Frontend**
+### **Frontend & User Interface**
 - **Framework**: React 18 + Vite
 - **Styling**: Tailwind CSS v3 (Custom HSL color palette, Glassmorphism, Dark/Light campus accents)
 - **Icons**: Lucide React
