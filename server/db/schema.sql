@@ -85,3 +85,16 @@ CREATE TABLE IF NOT EXISTS reviews (
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (target_user_id) REFERENCES users(id)
 );
+
+CREATE TABLE IF NOT EXISTS referrals (
+  id VARCHAR(64) PRIMARY KEY,
+  referrer_id VARCHAR(64) NOT NULL,
+  referred_user_id VARCHAR(64) NOT NULL,
+  referred_user_name VARCHAR(128),
+  credits_awarded INT DEFAULT 2,
+  karma_awarded INT DEFAULT 50,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (referrer_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (referred_user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+

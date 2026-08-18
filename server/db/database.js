@@ -338,6 +338,42 @@ class SqlDatabase {
       }
     }
 
+    // Process Referral Bonus if referrerId is supplied and valid
+    if (userData.referrerId) {
+      try {
+        const referrer = await this.getUserById(userData.referrerId);
+        if (referrer && referrer.id !== userId) {
+          await this.run(
+            `UPDATE users SET credits = credits + 2, karma = karma + 50 WHERE id = ?`,
+            [referrer.id]
+          );
+          await this.run(
+            `INSERT INTO referrals (id, referrer_id, referred_user_id, referred_user_name, credits_awarded, karma_awarded)
+             VALUES (?, ?, ?, ?, 2, 50)`,
+            ['ref_' + Date.now(), referrer.id, userId, trimmedName]
+          );
+          console.log(`🎁 Referral bonus (+2 Cr, +50 Karma) awarded to referrer ${referrer.name} (${referrer.id}) for user ${trimmedName}`);
+        }
+      } catch (err) {
+        console.error('Error processing referral bonus in SQL database:', err.message);
+      }
+    }
+
+    return await this.getUserById(userId);
+  }
+
+  async getReferralsByUserId(referrerId) {
+    try {
+      const rows = await this.all(
+        `SELECT * FROM referrals WHERE referrer_id = ? ORDER BY created_at DESC`,
+        [referrerId]
+      );
+      return rows;
+    } catch (err) {
+      return [];
+    }
+  }
+
     // Insert wanted skills into SQL table
     if (Array.isArray(userData.skillsWanted)) {
       for (const s of userData.skillsWanted) {

@@ -58,7 +58,7 @@ export const isUniversityEmail = (email) => {
 // POST /api/users/register - Register a new student profile in SQL database (with unique email & name validation)
 router.post('/register', async (req, res) => {
   try {
-    const { name, school, email, password, major, bio, avatar, skillsOffered, skillsWanted } = req.body;
+    const { name, school, email, password, major, bio, avatar, skillsOffered, skillsWanted, referrerId } = req.body;
     if (!name || !email || !password) {
       return res.status(400).json({ success: false, error: 'Name, email, and password are required.' });
     }
@@ -79,7 +79,8 @@ router.post('/register', async (req, res) => {
       bio,
       avatar,
       skillsOffered: skillsOffered || [],
-      skillsWanted: skillsWanted || []
+      skillsWanted: skillsWanted || [],
+      referrerId
     });
 
     res.status(201).json({
@@ -95,7 +96,7 @@ router.post('/register', async (req, res) => {
 // POST /api/users - Create/Register a new student profile (with unique email & name validation)
 router.post('/', async (req, res) => {
   try {
-    const { name, school, email, password, major, bio, avatar, skillsOffered, skillsWanted } = req.body;
+    const { name, school, email, password, major, bio, avatar, skillsOffered, skillsWanted, referrerId } = req.body;
     if (!name || !email) {
       return res.status(400).json({ success: false, error: 'Name and Email address are required.' });
     }
@@ -109,7 +110,8 @@ router.post('/', async (req, res) => {
       bio,
       avatar,
       skillsOffered: skillsOffered || [],
-      skillsWanted: skillsWanted || []
+      skillsWanted: skillsWanted || [],
+      referrerId
     });
 
     res.status(201).json({ success: true, message: 'Student profile saved to SQL Database!', data: newUser });
@@ -118,18 +120,32 @@ router.post('/', async (req, res) => {
   }
 });
 
-// POST /api/users/:id/share - Earn credits by sharing referral link
+// POST /api/users/:id/share - Generate referral link
 router.post('/:id/share', async (req, res) => {
   try {
-    const result = await sqlDb.recordUserShare(req.params.id);
-    if (!result) {
+    const user = await sqlDb.getUserById(req.params.id);
+    if (!user) {
       return res.status(404).json({ success: false, error: 'Student not found in SQL Database.' });
     }
 
     res.json({
       success: true,
-      message: 'Earned +2 Simple Credits & +50 Karma XP!',
-      data: result
+      message: 'Referral link ready! +2 Credits will be awarded when a friend registers.',
+      data: user
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// GET /api/users/:id/referrals - Get list of users referred by this user
+router.get('/:id/referrals', async (req, res) => {
+  try {
+    const referrals = await sqlDb.getReferralsByUserId(req.params.id);
+    res.json({
+      success: true,
+      count: referrals.length,
+      data: referrals
     });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });

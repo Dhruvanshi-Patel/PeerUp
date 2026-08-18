@@ -332,7 +332,7 @@ export default function AuthModal({ isOpen, onClose }) {
                 <span className="badge-rose px-2 py-0.2 rounded font-bold">+5 Credits & 150 Karma</span>
               </div>
               <p className="text-[11px] text-[#839958]">
-                Your account will be saved to the database. Share your referral link to earn +2 credits for every share!
+                Your account will be saved to the database. Share your unique referral link to earn +2 credits whenever a friend registers!
               </p>
             </div>
 

@@ -882,8 +882,8 @@ export default function PublicHomePage({ onGetStarted }) {
                   <div className="text-4xl font-extrabold text-white mt-1">14 <span className="text-emerald-400 text-2xl">Credits</span></div>
                   <div className="text-xs text-slate-400 mt-1">1 Hour Taught = +1 Credit • 1 Hour Learned = -1 Credit</div>
                 </div>
-                <button onClick={() => triggerFeedback("Earned +2 bonus credits via referral share demo!")} className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs px-5 py-3 rounded-xl transition-all shadow-lg">
-                  Share & Earn (+2 Cr)
+                <button onClick={() => triggerFeedback("Referral link copied! Earn +2 credits when a peer registers using your code.")} className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs px-5 py-3 rounded-xl transition-all shadow-lg">
+                  Share & Earn (+2 Cr on Join)
                 </button>
               </div>
 

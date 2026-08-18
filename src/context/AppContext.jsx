@@ -84,6 +84,19 @@ export function AppProvider({ children }) {
     setToasts(prev => prev.filter(t => t.id !== id));
   };
 
+  // Capture referral code from URL query parameter (?ref=usr_xyz)
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const ref = params.get('ref');
+      if (ref) {
+        localStorage.setItem('peerup_referrer_id', ref);
+        localStorage.setItem('omnikon_referrer_id', ref);
+        console.log('📌 Referral tracking code captured from URL:', ref);
+      }
+    } catch (e) {}
+  }, []);
+
   // Sync users & auth state to localStorage
   useEffect(() => {
     try {
@@ -388,8 +401,12 @@ export function AppProvider({ children }) {
 
   const registerWithPassword = async (userData) => {
     let newUser;
+    const referrerId = userData.referrerId || localStorage.getItem('peerup_referrer_id') || localStorage.getItem('omnikon_referrer_id');
     try {
-      const res = await api.registerUser(userData);
+      const res = await api.registerUser({
+        ...userData,
+        referrerId
+      });
       if (res?.data) {
         newUser = res.data;
       }
@@ -403,22 +420,32 @@ export function AppProvider({ children }) {
       setCurrentUserId(newUser.id);
       setIsLoggedIn(true);
       setActiveTab('welcome');
-      addToast('Account Created! ✨', `Welcome ${newUser.name}! +5 Welcome Credits saved in SQL Database.`, 'success');
+
+      // If registered with referrerId, update referrer credits in state & notify
+      if (referrerId) {
+        setUsers(prev => prev.map(u => u.id === referrerId ? {
+          ...u,
+          credits: (u.credits || 0) + 2,
+          karma: (u.karma || 0) + 50
+        } : u));
+        addToast('Referral Credit Delivered! 🎁', `Welcome ${newUser.name}! +5 Welcome Credits awarded to you, and +2 Referral Credits credited to your referrer.`, 'success');
+        try {
+          localStorage.removeItem('peerup_referrer_id');
+          localStorage.removeItem('omnikon_referrer_id');
+        } catch (e) {}
+      } else {
+        addToast('Account Created! ✨', `Welcome ${newUser.name}! +5 Welcome Credits saved in SQL Database.`, 'success');
+      }
+
       return newUser;
     }
   };
 
-  // Referral Website Sharing
+  // Referral Website Sharing: Copy/Share link (Credits awarded ONLY when recipient registers)
   const recordWebsiteShare = async () => {
     try {
-      await api.shareReferral(currentUser.id).catch(() => null);
+      await api.shareReferral(currentUser?.id).catch(() => null);
     } catch (err) {}
-
-    setUsers(prev => prev.map(u => u.id === currentUser.id ? {
-      ...u,
-      credits: (u.credits || 0) + 2,
-      karma: (u.karma || 0) + 50
-    } : u));
   };
 
   // Decline proposal
@@ -748,11 +775,13 @@ export function AppProvider({ children }) {
     };
 
     let createdUser = fallbackUser;
+    const referrerId = profileData.referrerId || localStorage.getItem('peerup_referrer_id') || localStorage.getItem('omnikon_referrer_id');
 
     try {
       const res = await api.createUser({
         ...profileData,
-        avatar: fallbackUser.avatar
+        avatar: fallbackUser.avatar,
+        referrerId
       });
       if (res?.data) {
         createdUser = res.data;
@@ -767,7 +796,21 @@ export function AppProvider({ children }) {
     setIsLoggedIn(true);
     setActiveTab('explore');
 
-    addToast('🎉 Welcome to PeerUp!', `Profile created for ${createdUser.name} saved to SQL Database with 5 free Welcome Credits!`, 'success');
+    if (referrerId) {
+      setUsers(prev => prev.map(u => u.id === referrerId ? {
+        ...u,
+        credits: (u.credits || 0) + 2,
+        karma: (u.karma || 0) + 50
+      } : u));
+      addToast('🎉 Welcome & Referral Bonus!', `Profile created for ${createdUser.name}! +5 Welcome Credits awarded, and +2 Referral Credits awarded to your referrer.`, 'success');
+      try {
+        localStorage.removeItem('peerup_referrer_id');
+        localStorage.removeItem('omnikon_referrer_id');
+      } catch (e) {}
+    } else {
+      addToast('🎉 Welcome to PeerUp!', `Profile created for ${createdUser.name} saved to SQL Database with 5 free Welcome Credits!`, 'success');
+    }
+
     return createdUser;
   };
 

@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   try {
     // ── POST /api/users/register ──────────────────────────────────────────────
     if (req.method === 'POST' && pathname === '/api/users/register') {
-      const { name, school, email, password, major, bio, avatar, skillsOffered, skillsWanted } = req.body || {};
+      const { name, school, email, password, major, bio, avatar, skillsOffered, skillsWanted, referrerId } = req.body || {};
 
       if (!name || !email || !password) {
         return res.status(400).json({ success: false, error: 'Name, email, and password are required.' });
@@ -62,11 +62,34 @@ export default async function handler(req, res) {
         }
       }
 
+      // Process Referral Bonus if referrerId is supplied and valid
+      let referralAwarded = false;
+      if (referrerId) {
+        try {
+          const refUser = await db.execute({ sql: 'SELECT id, name FROM users WHERE id = ?', args: [referrerId] });
+          if (refUser.rows.length > 0 && refUser.rows[0].id !== userId) {
+            await db.execute({
+              sql: 'UPDATE users SET credits = credits + 2, karma = karma + 50 WHERE id = ?',
+              args: [referrerId]
+            });
+            try {
+              await db.execute({
+                sql: `INSERT INTO referrals (id, referrer_id, referred_user_id, referred_user_name, credits_awarded, karma_awarded)
+                      VALUES (?, ?, ?, ?, 2, 50)`,
+                args: ['ref_' + Date.now(), referrerId, userId, name.trim()]
+              });
+            } catch (rErr) {}
+            referralAwarded = true;
+          }
+        } catch (rErr) {}
+      }
+
       const newUser = await hydrateUser(db, (await db.execute({ sql: 'SELECT * FROM users WHERE id = ?', args: [userId] })).rows[0]);
       return res.status(201).json({
         success: true,
-        message: `Account created for ${newUser.name}! +5 Welcome Credits awarded.`,
-        data: newUser
+        message: `Account created for ${newUser.name}! +5 Welcome Credits awarded.${referralAwarded ? ' Referral bonus (+2 Cr) credited to your referrer!' : ''}`,
+        data: newUser,
+        referralAwarded
       });
     }
 
@@ -163,15 +186,30 @@ export default async function handler(req, res) {
       const parts = pathname.split('/');
       const userId = parts[parts.length - 2];
 
-      await db.execute({
-        sql: 'UPDATE users SET credits = credits + 2, karma = karma + 50 WHERE id = ?',
-        args: [userId]
-      });
-
       const result = await db.execute({ sql: 'SELECT * FROM users WHERE id = ?', args: [userId] });
       if (result.rows.length === 0) return res.status(404).json({ success: false, error: 'Student not found.' });
       const updated = await hydrateUser(db, result.rows[0]);
-      return res.json({ success: true, message: 'Earned +2 Simple Credits & +50 Karma XP!', data: updated });
+      return res.json({
+        success: true,
+        message: 'Referral link generated! Credits (+2 Cr) will be awarded when a student registers using your link.',
+        data: updated
+      });
+    }
+
+    // ── GET /api/users/:id/referrals ──────────────────────────────────────────
+    if (req.method === 'GET' && pathname.includes('/referrals')) {
+      const parts = pathname.split('/');
+      const userId = parts[parts.length - 2];
+
+      try {
+        const rows = await db.execute({
+          sql: 'SELECT * FROM referrals WHERE referrer_id = ? ORDER BY created_at DESC',
+          args: [userId]
+        });
+        return res.json({ success: true, count: rows.rows.length, data: rows.rows });
+      } catch (err) {
+        return res.json({ success: true, count: 0, data: [] });
+      }
     }
 
     // ── GET /api/users ────────────────────────────────────────────────────────

@@ -51,6 +51,7 @@ export const api = {
   shareReferral: (userId) => fetchJSON(`/users/${userId}/share`, {
     method: 'POST'
   }),
+  getReferrals: (userId) => fetchJSON(`/users/${userId}/referrals`),
   addSkill: (userId, skillData) => fetchJSON(`/users/${userId}/skills`, {
     method: 'POST',
     body: JSON.stringify(skillData)
