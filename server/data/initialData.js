@@ -36,207 +36,45 @@ export const initialData = {
       reviews: [
         {
           id: "rev_1",
-          author: "Alex Chen",
-          avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
-          school: "Stanford",
-          rating: 5,
-          date: "3 days ago",
-          skill: "Python & Data Structures",
-          comment: "Priya is an incredible mentor! She helped me debug dynamic programming problems in 45 minutes that I was stuck on for a week."
-        },
-        {
-          id: "rev_2",
-          author: "Elena Rostova",
-          avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80",
-          school: "UT Austin",
-          rating: 5,
-          date: "1 week ago",
-          skill: "React & Modern Web",
-          comment: "Very patient with frontend state management concepts. Super fun session!"
-        }
-      ]
-    },
-    {
-      id: "usr_jordan",
-      name: "Jordan Miller",
-      age: 17,
-      role: "The Multi-Hyphenate",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-      school: "Oakland Tech / UC Berkeley Dual",
-      email: "jordan.m@oaklandtech.edu",
-      verified: true,
-      major: "High School Senior / Pre-Eng",
-      bio: "Varsity soccer captain & math nerd. Happy to run footwork/conditioning drills or explain Algebra II & AP Calculus in exchange for college essay feedback.",
-      rating: 4.8,
-      reviewCount: 14,
-      hoursTaught: 16,
-      hoursLearned: 12,
-      credits: 4,
-      karma: 560,
-      streak: 4,
-      badgeLevel: "Senior Peer",
-      location: "Oakland / Berkeley, CA",
-      preferredFormat: "Both",
-      skillsOffered: [
-        { id: "sk_soccer", name: "Soccer Technique & Footwork Drills", category: "Sports & Fitness", level: "Expert", endorsementCount: 12 },
-        { id: "sk_alg", name: "Algebra II & Pre-Calculus", category: "Academic & STEM", level: "Advanced", endorsementCount: 9 }
-      ],
-      skillsWanted: [
-        { id: "sk_essay", name: "College App Essay Brainstorming", category: "Writing & Test Prep", priority: "High" },
-        { id: "sk_chem", name: "AP Chemistry Problem Sets", category: "Academic & STEM", priority: "Medium" }
-      ],
-      availability: ["Weekdays 4:30 PM - 7:00 PM", "Sunday Afternoons"],
-      reviews: [
-        {
-          id: "rev_3",
-          author: "Sam Rivera",
-          avatar: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=80",
-          school: "NYU",
-          rating: 5,
-          date: "5 days ago",
-          skill: "Soccer Technique & Footwork Drills",
-          comment: "Jordan's drills helped me sharpen my ball control before intramural tryouts. Great energy!"
-        }
-      ]
-    },
-    {
-      id: "usr_alex",
-      name: "Alex Chen",
-      age: 22,
-      role: "The Mentor",
-      avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80",
-      school: "Stanford University",
-      email: "alex.chen@stanford.edu",
-      verified: true,
-      major: "Design & Product Systems (Senior)",
-      bio: "Senior passionate about mentorship and portfolio design. Building my teaching track record for grad school. Top-rated UI/UX mentor with 40+ completed student sessions.",
-      rating: 5.0,
-      reviewCount: 38,
-      hoursTaught: 54,
-      hoursLearned: 10,
-      credits: 19,
-      karma: 1420,
-      streak: 12,
-      badgeLevel: "Honorary Fellow",
-      location: "Palo Alto, CA (Virtual-friendly)",
-      preferredFormat: "Virtual",
-      skillsOffered: [
-        { id: "sk_figma", name: "Figma UI/UX & Design Systems", category: "Creative & Arts", level: "Expert", endorsementCount: 31 },
-        { id: "sk_portfolio", name: "Product Design Portfolio Review", category: "Writing & Test Prep", level: "Expert", endorsementCount: 28 },
-        { id: "sk_pm", name: "Intro to Product Management", category: "Coding & Tech", level: "Advanced", endorsementCount: 16 }
-      ],
-      skillsWanted: [
-        { id: "sk_audio", name: "Ableton Live & Audio Mixing", category: "Creative & Arts", priority: "High" },
-        { id: "sk_tennis", name: "Tennis Serve Mechanics", category: "Sports & Fitness", priority: "Low" }
-      ],
-      availability: ["Mon, Wed, Fri Evenings", "Sunday All Day"],
-      reviews: [
-        {
-          id: "rev_4",
-          author: "Priya Sharma",
+          author: "kk",
           avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
           school: "UC Berkeley",
           rating: 5,
-          date: "2 days ago",
-          skill: "Figma UI/UX & Design Systems",
-          comment: "Alex helped me revamp my developer portfolio into a recruiter-ready showcase. Best swap I've had!"
+          date: "3 days ago",
+          skill: "Python & Data Structures",
+          comment: "Priya is an incredible mentor! She helped me debug dynamic programming problems in 45 minutes."
         }
       ]
     },
     {
-      id: "usr_sam",
-      name: "Sam Rivera",
-      age: 19,
-      role: "The Explorer",
-      avatar: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&auto=format&fit=crop&q=80",
-      school: "New York University",
-      email: "sam.rivera@nyu.edu",
-      verified: true,
-      major: "Liberal Studies (Sophomore)",
-      bio: "Exploring creative arts & storytelling. Love shooting street photography and editing Reels/TikToks in Premiere. Wanting to pick up acoustic guitar and basics of investing.",
-      rating: 4.7,
-      reviewCount: 9,
-      hoursTaught: 11,
-      hoursLearned: 14,
-      credits: 3,
-      karma: 390,
-      streak: 2,
-      badgeLevel: "Active Swapper",
-      location: "New York, NY",
-      preferredFormat: "Both",
-      skillsOffered: [
-        { id: "sk_photo", name: "Street Photography & Light Composition", category: "Creative & Arts", level: "Advanced", endorsementCount: 8 },
-        { id: "sk_video", name: "Premiere Pro & Short-form Video Editing", category: "Creative & Arts", level: "Advanced", endorsementCount: 11 }
-      ],
-      skillsWanted: [
-        { id: "sk_guitar", name: "Acoustic Guitar Basics", category: "Creative & Arts", priority: "High" },
-        { id: "sk_finance", name: "Personal Budgeting & Index Funds 101", category: "Academic & STEM", priority: "Medium" }
-      ],
-      availability: ["Flexible Evenings", "Fridays all day"],
-      reviews: []
-    },
-    {
-      id: "usr_elena",
-      name: "Elena Rostova",
-      age: 20,
-      role: "Language Polyglot",
-      avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80",
-      school: "UT Austin",
-      email: "elena.rostova@utexas.edu",
-      verified: true,
-      major: "Linguistics & Data Science (Junior)",
-      bio: "Native Spanish & Russian speaker. Certified DELE Spanish coach with 15+ university conversation labs. Looking for data visualization tips in Tableau/Python.",
-      rating: 4.95,
-      reviewCount: 31,
-      hoursTaught: 42,
-      hoursLearned: 19,
-      credits: 11,
-      karma: 1180,
-      streak: 9,
-      badgeLevel: "Master Mentor",
-      location: "Austin, TX (Virtual-first)",
-      preferredFormat: "Virtual",
-      skillsOffered: [
-        { id: "sk_span_adv", name: "Conversational Spanish (All Levels)", category: "Languages", level: "Native / Expert", endorsementCount: 29 },
-        { id: "sk_rus", name: "Russian Pronunciation & Grammar", category: "Languages", level: "Native", endorsementCount: 14 }
-      ],
-      skillsWanted: [
-        { id: "sk_py_dataviz", name: "Data Visualization in Python (Seaborn/Plotly)", category: "Coding & Tech", priority: "High" },
-        { id: "sk_sql", name: "SQL Query Optimization", category: "Coding & Tech", priority: "Medium" }
-      ],
-      availability: ["Mon/Wed 10:00 AM - 1:00 PM CST", "Weekends"],
-      reviews: []
-    },
-    {
-      id: "usr_marcus",
-      name: "Marcus Vance",
+      id: "usr_1786965735374",
+      name: "kk",
       age: 21,
-      role: "STEM Specialist",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
-      school: "MIT",
-      email: "mvance@mit.edu",
+      role: "Peer Learner & Developer",
+      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+      school: "UC Berkeley",
+      email: "kk@univ.edu",
+      password: "password123",
       verified: true,
-      major: "Mechanical Engineering (Junior)",
-      bio: "Tutor for Multivariable Calc and Classical Mechanics. Fast at CAD (SolidWorks/Fusion360). Looking to learn Japanese for a robotics internship in Tokyo.",
-      rating: 4.88,
-      reviewCount: 22,
-      hoursTaught: 30,
-      hoursLearned: 15,
-      credits: 7,
-      karma: 820,
-      streak: 5,
-      badgeLevel: "Senior Peer",
-      location: "Cambridge, MA",
+      major: "Computer Science",
+      bio: "Passionate about peer learning and trading tech & science skills on campus!",
+      rating: 5.0,
+      reviewCount: 1,
+      hoursTaught: 5,
+      hoursLearned: 2,
+      credits: 5,
+      karma: 200,
+      streak: 2,
+      badgeLevel: "Verified Contributor",
+      location: "UC Berkeley Campus",
       preferredFormat: "Both",
       skillsOffered: [
-        { id: "sk_calc3", name: "Multivariable Calculus (Calc III)", category: "Academic & STEM", level: "Expert", endorsementCount: 22 },
-        { id: "sk_cad", name: "CAD Modeling (SolidWorks & Fusion 360)", category: "Academic & STEM", level: "Advanced", endorsementCount: 17 }
+        { id: "sk_kk_1", name: "Computer Science & Full-Stack Web", category: "Coding & Tech", level: "Advanced", endorsementCount: 2 }
       ],
       skillsWanted: [
-        { id: "sk_jap", name: "Conversational Japanese (JLPT N5-N4)", category: "Languages", priority: "High" },
-        { id: "sk_write", name: "Creative Non-Fiction Writing", category: "Writing & Test Prep", priority: "Low" }
+        { id: "sk_kk_w1", name: "Spanish Conversation & Public Speaking", category: "Languages", priority: "High" }
       ],
-      availability: ["Tue/Thu Nights", "Saturday Afternoon"],
+      availability: ["Weekdays 16:00"],
       reviews: []
     }
   ],

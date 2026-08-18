@@ -43,37 +43,47 @@ export default function ShareEarnModal({ isOpen, onClose }) {
   const shareUrl = `https://omnikon.vercel.app/?ref=${currentUser.id}`;
   const shareText = `Teach what you know. Earn credits. Learn anything from campus peers — for free. Join me on PeerUp: ${shareUrl}`;
 
-  const handleShareClick = async (platformName, externalUrl) => {
-    await recordWebsiteShare();
+  const fallbackCopyText = (text) => {
+    try {
+      const input = document.createElement('input');
+      input.value = text;
+      input.style.position = 'fixed';
+      input.style.opacity = '0';
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+    } catch (e) {}
+  };
 
+  const handleShareClick = (platformName, externalUrl) => {
+    if (externalUrl) {
+      window.open(externalUrl, '_blank', 'noopener,noreferrer');
+    }
+    recordWebsiteShare().catch(() => {});
     addToast(
       'Referral Link Ready 🚀',
       `Shared to ${platformName}! You will earn +2 Simple Credits & +50 Karma XP when a student registers using your link.`,
       'info'
     );
-
-    if (externalUrl) {
-      window.open(externalUrl, '_blank');
-    }
   };
 
-  const handleCopyLink = async () => {
+  const handleCopyLink = () => {
     try {
-      await navigator.clipboard.writeText(shareUrl);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareUrl).catch(() => fallbackCopyText(shareUrl));
+      } else {
+        fallbackCopyText(shareUrl);
+      }
       setCopied(true);
-      
-      await recordWebsiteShare();
-
-      confetti({
-        particleCount: 70,
-        spread: 50,
-        origin: { y: 0.6 }
-      });
-
+      recordWebsiteShare().catch(() => {});
       addToast('Referral Link Copied! 📋', 'Link copied to clipboard! You will earn +2 Simple Credits when a peer registers using this link.', 'success');
       setTimeout(() => setCopied(false), 3000);
     } catch (err) {
-      addToast('Copy Failed', err.message, 'error');
+      fallbackCopyText(shareUrl);
+      setCopied(true);
+      addToast('Referral Link Copied! 📋', 'Link copied to clipboard!', 'success');
+      setTimeout(() => setCopied(false), 3000);
     }
   };
 

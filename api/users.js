@@ -231,7 +231,9 @@ export default async function handler(req, res) {
       sql += ' ORDER BY karma DESC, hours_taught DESC';
 
       const result = await db.execute({ sql, args });
-      const users = await Promise.all(result.rows.map(row => hydrateUser(db, row)));
+      const legacyIds = new Set(['usr_jordan', 'usr_alex', 'usr_sam', 'usr_elena', 'usr_marcus', 'usr_chloe', 'usr_david', 'usr_maya']);
+      const users = (await Promise.all(result.rows.map(row => hydrateUser(db, row))))
+        .filter(u => !legacyIds.has(u.id));
       return res.json({ success: true, count: users.length, data: users });
     }
 

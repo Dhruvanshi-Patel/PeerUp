@@ -5,10 +5,9 @@ import confetti from 'canvas-confetti';
 
 const AppContext = createContext();
 
+const LEGACY_IDS = new Set(['usr_jordan', 'usr_alex', 'usr_sam', 'usr_elena', 'usr_marcus', 'usr_chloe', 'usr_david', 'usr_maya']);
+
 export function AppProvider({ children }) {
-  // Auth gate – starts as false so LandingPage is shown first
-  // Auth gate – initialized with localStorage persistence
-  // Auth gate – starts as false unless user explicitly signed in previously
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     try {
       return (localStorage.getItem('peerup_is_logged_in') || localStorage.getItem('skillswap_is_logged_in')) === 'true';
@@ -17,23 +16,26 @@ export function AppProvider({ children }) {
     }
   });
 
-  // State initialized with localStorage persistence
+  // State initialized with localStorage persistence (filtered of legacy demo personas)
   const [users, setUsers] = useState(() => {
     try {
       const saved = localStorage.getItem('peerup_users') || localStorage.getItem('skillswap_users');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const filtered = parsed.filter(u => u && !LEGACY_IDS.has(u.id));
+          if (filtered.length > 0) return filtered;
+        }
       }
     } catch {}
-    return INITIAL_PERSONAS;
+    return INITIAL_PERSONAS.filter(u => !LEGACY_IDS.has(u.id));
   });
 
   const [currentUserId, setCurrentUserId] = useState(() => {
     try {
       const saved = localStorage.getItem('peerup_current_user_id') || localStorage.getItem('skillswap_current_user_id');
       const isLoggedInSaved = (localStorage.getItem('peerup_is_logged_in') || localStorage.getItem('skillswap_is_logged_in')) === 'true';
-      return (isLoggedInSaved && saved) ? saved : null;
+      return (isLoggedInSaved && saved && !LEGACY_IDS.has(saved)) ? saved : null;
     } catch {
       return null;
     }
@@ -45,7 +47,7 @@ export function AppProvider({ children }) {
   const [conversations, setConversations] = useState(INITIAL_CONVERSATIONS);
   const [activeChatId, setActiveChatId] = useState("conv_elena");
   const [scheduledSessions, setScheduledSessions] = useState(INITIAL_SCHEDULED_SESSIONS);
-  const [leaderboardData, setLeaderboardData] = useState(LEADERBOARD);
+  const [leaderboardData, setLeaderboardData] = useState(() => LEADERBOARD.filter(l => !LEGACY_IDS.has(l.id) && l.name !== 'Jordan Miller' && l.name !== 'Alex Chen' && l.name !== 'Elena Rostova'));
 
   // Gamification Quests & Badges
   const [quests, setQuests] = useState(INITIAL_QUESTS);
@@ -100,13 +102,14 @@ export function AppProvider({ children }) {
   // Sync users & auth state to localStorage
   useEffect(() => {
     try {
-      localStorage.setItem('peerup_users', JSON.stringify(users));
+      const cleaned = users.filter(u => u && !LEGACY_IDS.has(u.id));
+      localStorage.setItem('peerup_users', JSON.stringify(cleaned));
     } catch (e) {}
   }, [users]);
 
   useEffect(() => {
     try {
-      if (currentUserId) {
+      if (currentUserId && !LEGACY_IDS.has(currentUserId)) {
         localStorage.setItem('peerup_current_user_id', currentUserId);
       } else {
         localStorage.removeItem('peerup_current_user_id');
@@ -130,11 +133,8 @@ export function AppProvider({ children }) {
 
         if (usersRes?.data && usersRes.data.length > 0) {
           setUsers(() => {
-            // Keep only Priya Sharma, kk, and newly registered users
-            const validUsers = usersRes.data.filter(u => 
-              u.id === 'usr_priya' || u.name?.toLowerCase() === 'priya sharma' || u.name?.toLowerCase() === 'kk' || u.id === 'usr_1786965735374' || u.id?.startsWith('usr_')
-            );
-            return validUsers.length > 0 ? validUsers : INITIAL_PERSONAS;
+            const validUsers = usersRes.data.filter(u => u && !LEGACY_IDS.has(u.id));
+            return validUsers.length > 0 ? validUsers : INITIAL_PERSONAS.filter(u => !LEGACY_IDS.has(u.id));
           });
 
           // Restore signed-in user ONLY if explicitly saved as logged in in localStorage

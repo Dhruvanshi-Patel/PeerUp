@@ -80,9 +80,17 @@ class SqlDatabase {
     }
   }
 
-  // Seed initial personas into SQLite tables if empty
+  // Seed initial personas into SQLite tables if empty, and purge legacy demo personas
   async seedInitialDataIfNeeded() {
     try {
+      // Purge legacy mock personas so only Priya Sharma, kk, and user-registered accounts exist
+      const legacyIds = ['usr_jordan', 'usr_alex', 'usr_sam', 'usr_elena', 'usr_marcus', 'usr_chloe', 'usr_david', 'usr_maya'];
+      for (const legacyId of legacyIds) {
+        await this.run(`DELETE FROM users WHERE id = ?`, [legacyId]);
+        await this.run(`DELETE FROM skills WHERE user_id = ?`, [legacyId]);
+        await this.run(`DELETE FROM reviews WHERE target_user_id = ?`, [legacyId]);
+      }
+
       const row = await this.get('SELECT COUNT(*) as count FROM users');
       if (row && row.count > 0) return;
 
