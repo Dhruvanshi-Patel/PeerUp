@@ -31,13 +31,13 @@ export default function SharePortfolioModal() {
 - Conducted ${portfolioTargetUser.hoursTaught}+ hours of 1-on-1 peer tutoring in ${portfolioTargetUser.skillsOffered.map(s => s.name).join(', ')}.
 - Published verified PYQ Past Exam Papers & Cheatsheets with 120+ peer downloads on campus.
 - Maintained a ${portfolioTargetUser.rating}/5.0 peer satisfaction rating across ${portfolioTargetUser.reviewCount} student endorsements.
-- Verifiable Credentials & Portfolio: https://peerup.edu/@${portfolioTargetUser.id.replace('usr_', '')}`;
+- Verifiable Credentials & Portfolio: https://omnikon.edu/@${portfolioTargetUser.id.replace('usr_', '')}`;
 
   // Formatted LinkedIn Certification Fields
   const certName = `PeerUp Senior Peer Mentor & PYQ Contributor`;
   const certOrg = `PeerUp Peer Learning Network`;
   const certId = `PEERUP-CERT-${portfolioTargetUser.id.toUpperCase()}-2025`;
-  const certUrl = `https://peerup.edu/@${portfolioTargetUser.id.replace('usr_', '')}`;
+  const certUrl = `https://omnikon.edu/@${portfolioTargetUser.id.replace('usr_', '')}`;
 
   const handleCopySnippet = () => {
     navigator.clipboard?.writeText(resumeSnippet);

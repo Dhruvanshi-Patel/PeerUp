@@ -38,7 +38,7 @@ export default async function handler(req, res) {
         message: `Unlocked "${note.title}"! 1 credit spent.`,
         data: {
           note,
-          downloadUrl: `https://peerup.vercel.app/download/${note.id}.pdf`
+          downloadUrl: `https://omnikon.vercel.app/download/${note.id}.pdf`
         }
       });
     }

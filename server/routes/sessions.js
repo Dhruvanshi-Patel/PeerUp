@@ -55,7 +55,7 @@ router.get('/:id/qr', (req, res) => {
         sessionId: session.id,
         roomCode: session.roomCode,
         location: session.locationDetail,
-        verificationUrl: `https://peerup.edu/checkin/${session.roomCode}`
+        verificationUrl: `https://omnikon.edu/checkin/${session.roomCode}`
       }
     });
   } catch (err) {

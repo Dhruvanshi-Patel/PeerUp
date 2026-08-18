@@ -49,7 +49,7 @@ export default function ProfileView({ onOpenSocialBadge }) {
 
   const handleCopyPublicLink = () => {
     setCopied(true);
-    addToast('Public Portfolio Link Copied! 📋', `https://peerup.edu/@${currentUser.id.replace('usr_', '')} copied to clipboard`, 'success');
+    addToast('Public Portfolio Link Copied! 📋', `https://omnikon.edu/@${currentUser.id.replace('usr_', '')} copied to clipboard`, 'success');
     setTimeout(() => setCopied(false), 3000);
   };
 
