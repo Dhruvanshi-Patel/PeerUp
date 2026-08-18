@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 
 export default function LeaderboardView() {
-  const { leaderboard, openSwapModalForUser, users } = useApp();
+  const { leaderboard: fallbackLeaderboard, openSwapModalForUser, users } = useApp();
 
   const getRankBadge = (rank) => {
     switch (rank) {
@@ -22,6 +22,28 @@ export default function LeaderboardView() {
       default: return <span className="text-xs font-extrabold text-slate-500">#{rank}</span>;
     }
   };
+
+  // Derive dynamic live leaderboard from active registered users sorted by Karma
+  const activeLeaderboard = React.useMemo(() => {
+    if (users && users.length > 0) {
+      const sorted = [...users].sort((a, b) => (b.karma || 0) - (a.karma || 0));
+      return sorted.map((u, idx) => ({
+        rank: idx + 1,
+        id: u.id,
+        name: u.name,
+        school: u.school,
+        avatar: u.avatar,
+        hours: u.hoursTaught || 0,
+        karma: u.karma || 150,
+        badge: u.badgeLevel || 'Master Mentor',
+        userObj: u
+      }));
+    }
+    return (fallbackLeaderboard || []).map(entry => ({
+      ...entry,
+      userObj: users?.find(u => u.name === entry.name)
+    }));
+  }, [users, fallbackLeaderboard]);
 
   return (
     <div className="space-y-6 text-slate-900 font-sans">
@@ -54,14 +76,14 @@ export default function LeaderboardView() {
         <div className="p-4 border-b border-slate-100 bg-slate-50 flex items-center justify-between">
           <h3 className="text-xs font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-2">
             <Crown className="w-4 h-4 text-emerald-600" />
-            Top 5 Campus Champions
+            Top Campus Champions
           </h3>
-          <span className="text-xs font-semibold text-slate-500">Grandmaster & Master Tiers</span>
+          <span className="text-xs font-semibold text-slate-500">Live Karma Standings</span>
         </div>
 
         <div className="divide-y divide-slate-100">
-          {leaderboard.map(entry => {
-            const matchedUser = users.find(u => u.name === entry.name);
+          {activeLeaderboard.map(entry => {
+            const matchedUser = entry.userObj;
 
             return (
               <div

@@ -80,6 +80,9 @@ export default function NotesExchangeView() {
         return u;
       }));
 
+      // Update local notes state so card reflects unlocked status immediately
+      setNotes(prev => prev.map(n => n.id === note.id ? { ...n, isUnlocked: true, unlocked: true } : n));
+
       confetti({
         particleCount: 70,
         spread: 50,

@@ -193,7 +193,7 @@ export default function MessagesHub() {
 
             {/* Chat Stream Messages */}
             <div className="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-50/50">
-              {activeConversation.messages.map((msg, idx) => {
+              {(activeConversation.messages || []).map((msg, idx) => {
                 const isMe = msg.senderId === currentUser.id || msg.sender === 'me' || msg.sender === currentUser.name;
 
                 return (

@@ -39,13 +39,24 @@ export default function MyProfileView() {
   const [isEditing, setIsEditing] = useState(false);
 
   // Form states for profile editing
-  const [name, setName] = useState(currentUser.name || '');
-  const [school, setSchool] = useState(currentUser.school || 'UC Berkeley');
-  const [major, setMajor] = useState(currentUser.major || '');
-  const [bio, setBio] = useState(currentUser.bio || '');
-  const [location, setLocation] = useState(currentUser.location || 'Campus');
-  const [avatar, setAvatar] = useState(currentUser.avatar || '');
+  const [name, setName] = useState(currentUser?.name || '');
+  const [school, setSchool] = useState(currentUser?.school || 'UC Berkeley');
+  const [major, setMajor] = useState(currentUser?.major || '');
+  const [bio, setBio] = useState(currentUser?.bio || '');
+  const [location, setLocation] = useState(currentUser?.location || 'Campus');
+  const [avatar, setAvatar] = useState(currentUser?.avatar || '');
   const [isUploading, setIsUploading] = useState(false);
+
+  React.useEffect(() => {
+    if (currentUser) {
+      setName(currentUser.name || '');
+      setSchool(currentUser.school || 'UC Berkeley');
+      setMajor(currentUser.major || '');
+      setBio(currentUser.bio || '');
+      setLocation(currentUser.location || 'Campus');
+      setAvatar(currentUser.avatar || '');
+    }
+  }, [currentUser]);
 
   // Handle Photo File Upload
   const handlePhotoUpload = (e) => {

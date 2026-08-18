@@ -55,10 +55,10 @@ export default function ExploreSkills() {
 
       // Category filter (using exact category id e.g. "Coding & Tech")
       if (selectedCategory !== 'all') {
-        const matchesOffered = peer.skillsOffered.some(s => 
+        const matchesOffered = (peer.skillsOffered || []).some(s => 
           s.category?.toLowerCase() === selectedCategory.toLowerCase()
         );
-        const matchesWanted = peer.skillsWanted.some(s => 
+        const matchesWanted = (peer.skillsWanted || []).some(s => 
           s.category?.toLowerCase() === selectedCategory.toLowerCase()
         );
         if (!matchesOffered && !matchesWanted) return false;
@@ -75,17 +75,17 @@ export default function ExploreSkills() {
       // Search Query filter
       if (searchQuery.trim()) {
         const q = searchQuery.trim().toLowerCase();
-        const nameMatch = peer.name.toLowerCase().includes(q);
-        const majorMatch = peer.major.toLowerCase().includes(q);
-        const schoolMatch = peer.school.toLowerCase().includes(q);
+        const nameMatch = peer.name ? peer.name.toLowerCase().includes(q) : false;
+        const majorMatch = peer.major ? peer.major.toLowerCase().includes(q) : false;
+        const schoolMatch = peer.school ? peer.school.toLowerCase().includes(q) : false;
         const roleMatch = peer.role ? peer.role.toLowerCase().includes(q) : false;
         const bioMatch = peer.bio ? peer.bio.toLowerCase().includes(q) : false;
         
-        const offeredMatch = peer.skillsOffered.some(s => 
-          s.name.toLowerCase().includes(q) || (s.category && s.category.toLowerCase().includes(q))
+        const offeredMatch = (peer.skillsOffered || []).some(s => 
+          (s.name && s.name.toLowerCase().includes(q)) || (s.category && s.category.toLowerCase().includes(q))
         );
-        const wantedMatch = peer.skillsWanted.some(s => 
-          s.name.toLowerCase().includes(q) || (s.category && s.category.toLowerCase().includes(q))
+        const wantedMatch = (peer.skillsWanted || []).some(s => 
+          (s.name && s.name.toLowerCase().includes(q)) || (s.category && s.category.toLowerCase().includes(q))
         );
 
         if (!nameMatch && !majorMatch && !schoolMatch && !roleMatch && !bioMatch && !offeredMatch && !wantedMatch) {

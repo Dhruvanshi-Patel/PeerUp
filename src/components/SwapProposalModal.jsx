@@ -34,8 +34,8 @@ export default function SwapProposalModal() {
 
   useEffect(() => {
     if (targetUserForSwap) {
-      const initialReqSkill = targetUserForSwap.skillsOffered[0]?.name || '';
-      const initialOffSkill = currentUser?.skillsOffered[0]?.name || '';
+      const initialReqSkill = (targetUserForSwap.skillsOffered || [])[0]?.name || 'General Tutoring';
+      const initialOffSkill = (currentUser?.skillsOffered || [])[0]?.name || 'Peer Tutoring';
       setRequestedSkill(initialReqSkill);
       setOfferedSkill(initialOffSkill);
       setMessage(
