@@ -47,7 +47,7 @@ export default async function handler(req, res) {
           sessionId: session.id,
           roomCode: session.room_code,
           location: session.location_detail,
-          verificationUrl: `https://omnikon.vercel.app/checkin/${session.room_code}`
+          verificationUrl: `https://peerup.vercel.app/checkin/${session.room_code}`
         }
       });
     }

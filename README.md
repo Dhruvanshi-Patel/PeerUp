@@ -1,13 +1,13 @@
 # 🤝 PeerUp — Peer-to-Peer Campus Skill Exchange Network
 
-[![Deployment Status](https://img.shields.io/badge/Vercel-Deployed-success?style=flat&logo=vercel)](https://omnikon.vercel.app)
+[![Deployment Status](https://img.shields.io/badge/Vercel-Deployed-success?style=flat&logo=vercel)](https://peerup.vercel.app)
 [![Database](https://img.shields.io/badge/Turso-libSQL-blue?style=flat&logo=sqlite)](https://turso.tech)
 [![Frontend](https://img.shields.io/badge/React-18-blue?style=flat&logo=react)](https://react.dev)
 [![Styling](https://img.shields.io/badge/Tailwind_CSS-v3-38bdf8?style=flat&logo=tailwindcss)](https://tailwindcss.com)
 
-**PeerUp** (Omnikon) is a modern, trust-based peer-to-peer skill exchange platform designed for college and university students. Students trade knowledge 1-for-1—such as Python coding, multivariable calculus, Spanish conversation, or digital design—using a zero-tuition simple credit wallet (**1 Hour Taught = 1 Simple Credit**).
+**PeerUp** is a modern, trust-based peer-to-peer skill exchange platform designed for college and university students. Students trade knowledge 1-for-1—such as Python coding, multivariable calculus, Spanish conversation, or digital design—using a zero-tuition simple credit wallet (**1 Hour Taught = 1 Simple Credit**).
 
-🌐 **Live Demo:** [https://omnikon.vercel.app](https://omnikon.vercel.app)
+🌐 **Live Demo:** [https://peerup.vercel.app](https://peerup.vercel.app)
 
 ---
 
@@ -69,7 +69,7 @@
 ## 📁 Repository Structure
 
 ```text
-omnikon/
+peerup/
 ├── api/                   # Vercel Serverless Functions
 │   ├── users.js           # Auth, Registration, Profiles, Skills, Referrals
 │   ├── swaps.js           # Swap proposals, Accept/Decline logic

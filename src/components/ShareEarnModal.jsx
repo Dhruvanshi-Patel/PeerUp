@@ -24,7 +24,7 @@ export default function ShareEarnModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const shareUrl = `https://omnikon.vercel.app/?ref=${currentUser.id}`;
+  const shareUrl = `https://peerup.vercel.app/?ref=${currentUser.id}`;
   const shareText = `Teach what you know. Earn credits. Learn anything from campus peers \u2014 for free. Join me on PeerUp: ${shareUrl}`;
 
   const handleShareClick = async (platformName, externalUrl) => {

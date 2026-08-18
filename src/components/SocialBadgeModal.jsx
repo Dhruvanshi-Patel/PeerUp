@@ -24,7 +24,7 @@ export default function SocialBadgeModal({ isOpen, onClose }) {
   const rating = currentUser.rating ?? 5.0;
   const badgeLevel = currentUser.badgeLevel ?? 'Peer Learner';
   const handle = currentUser.id?.replace('usr_', '') ?? 'student';
-  const profileUrl = `https://omnikon.vercel.app/?ref=${currentUser.id}`;
+  const profileUrl = `https://peerup.vercel.app/?ref=${currentUser.id}`;
 
   /* ── copy helpers ── */
   const copyText = (key, text) => {
