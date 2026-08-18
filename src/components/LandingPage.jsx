@@ -272,7 +272,7 @@ export default function LandingPage({ onBack }) {
 
           {/* Stats */}
           <div className="flex gap-6 pt-4 border-t border-white/10">
-            {[['2,400+', 'Students'], ['8 Campuses', 'Verified'], ['12K hrs', 'Exchanged']].map(([n, l]) => (
+            {[['Verified', '.EDU Guard'], ['1:1', 'Credit Economy'], ['Free', 'Forever']].map(([n, l]) => (
               <div key={l}>
                 <div className="text-white font-black text-xl">{n}</div>
                 <div className="text-white/40 text-[10px] uppercase tracking-wider">{l}</div>

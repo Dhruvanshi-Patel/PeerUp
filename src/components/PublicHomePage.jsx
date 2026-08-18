@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   ArrowLeftRight, MessageSquare, Calendar, Coins, Flame, Trophy,
   Users, Check, Clock, ShieldCheck, ArrowRight, Lock, Sparkles,
@@ -116,33 +116,6 @@ const CHAT_CONVERSATIONS = [
   }
 ];
 
-const TESTIMONIALS_COL1 = [
-  { name: 'Sarah Jenkins', campus: 'UC Berkeley \'26', quote: 'I traded 2 hours of Python tutoring for 2 hours of Organic Chemistry prep before finals. Saved $150 compared to private tutors.', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100' },
-  { name: 'David Park', campus: 'Stanford \'25', quote: 'The credit wallet concept makes so much sense. You earn by helping underclassmen and spend it learning advanced topics.', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100' },
-  { name: 'Maya Lin', campus: 'MIT \'27', quote: 'Found a senior who walked me through Linear Algebra proofs 1-on-1. The inline session booking right in chat is super smooth.', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100' },
-  { name: 'James Wilson', campus: 'Columbia \'26', quote: 'Adding my peer teaching hours to LinkedIn directly as verified credentials got me two internship interviews this term.', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100' },
-  { name: 'Chloe Dubois', campus: 'Harvard \'25', quote: 'No money changes hands, which removes all awkwardness. You just swap knowledge hour for hour.', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100' },
-  { name: 'Ethan Rodriguez', campus: 'UCLA \'26', quote: 'The 60-minute video room timer ensures both parties stay focused and get genuine value.', avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=100' }
-];
-
-const TESTIMONIALS_COL2 = [
-  { name: 'Rohan Gupta', campus: 'Cornell \'26', quote: 'Uploaded my solved PYQ papers and earned 8 credits in one week as underclassmen unlocked them.', avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100' },
-  { name: 'Zoe Kravitz', campus: 'NYU \'25', quote: 'The peer matching algorithm instantly found someone on my campus who wanted Spanish conversation and taught Figma.', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100' },
-  { name: 'Brandon Taylor', campus: 'UT Austin \'27', quote: 'Clean UI, zero fluff. Feels like a modern developer tool built for student learning.', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100' },
-  { name: 'Sophia Martinez', campus: 'Northwestern \'26', quote: 'The streak counter kept me and my calculus mentor accountable for 5 straight weeks.', avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100' },
-  { name: 'Lucas Scott', campus: 'USC \'25', quote: 'Best academic utility on campus. It turns peer collaboration into an organized system.', avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100' },
-  { name: 'Aaliyah Khan', campus: 'Georgetown \'26', quote: 'Verifying campus emails means I only connect with real, active students from my university.', avatar: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100' }
-];
-
-const TESTIMONIALS_COL3 = [
-  { name: 'Oliver Bennett', campus: 'Yale \'26', quote: 'I was struggling with Data Structures until a junior year mentor broke down BFS/DFS line by line.', avatar: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=100' },
-  { name: 'Emily Thorne', campus: 'Princeton \'25', quote: 'The real-time code scratchpad during live calls makes pair programming seamless.', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100' },
-  { name: 'Marcus Brody', campus: 'Penn \'27', quote: 'Redeemed my earned credits for dining hall passes. Teaching peers paid for my coffee all semester.', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100' },
-  { name: 'Hanna Lindqvist', campus: 'Stanford \'26', quote: 'No commercial ads, no paywalls. Just a straightforward credit wallet for college students.', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100' },
-  { name: 'Kevin Zhang', campus: 'UC Berkeley \'25', quote: 'The match percentage badge accurately predicted who would be a great study partner.', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100' },
-  { name: 'Jessica Miller', campus: 'Duke \'26', quote: 'I love that 1 hour taught equals 1 hour learned. Simple, transparent, and empowering.', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100' }
-];
-
 export default function PublicHomePage({ onGetStarted }) {
   /* ── INTERACTIVE LIVE SHOWCASE STATE ── */
   const [activeShowcaseTab, setActiveShowcaseTab] = useState('messenger'); // 'matcher' | 'messenger' | 'calendar' | 'economy' | 'gamification'
@@ -190,11 +163,9 @@ export default function PublicHomePage({ onGetStarted }) {
           </div>
 
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-            <a href="#mission" className="hover:text-slate-900 transition-colors">Mission</a>
             <a href="#features" className="hover:text-slate-900 transition-colors">Walkthrough</a>
             <a href="#live-showcase" className="hover:text-slate-900 transition-colors">Live UI Demo</a>
             <a href="#philosophy" className="hover:text-slate-900 transition-colors">Philosophy</a>
-            <a href="#testimonials" className="hover:text-slate-900 transition-colors">Social Proof</a>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -273,25 +244,7 @@ export default function PublicHomePage({ onGetStarted }) {
         </div>
       </section>
 
-      {/* ── 2. MISSION STATEMENT ── */}
-      <section id="mission" className="py-24 bg-white border-b border-slate-200/80">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-6">
-          <p className="text-xl sm:text-2xl text-slate-800 font-normal leading-relaxed">
-            Traditional online courses charge hundreds of dollars for pre-recorded videos where you study alone. We believe the highest-leverage way to master any subject is 1-on-1 interaction with a peer who just aced the class last semester. PeerUp turns your existing knowledge into currency, building a reciprocal network where teaching one hour unlocks an hour of personalized learning. Zero tuition, zero commercial fluff — just real students helping each other excel.
-          </p>
-          <div>
-            <a
-              href="#philosophy"
-              className="inline-flex items-center gap-1.5 text-sm font-bold text-emerald-600 hover:text-emerald-700 transition-colors group"
-            >
-              Read our story
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 3. FEATURE WALKTHROUGH (Alternating Rows with Product UI Chrome) ── */}
+      {/* ── 2. FEATURE WALKTHROUGH (Alternating Rows with Product UI Chrome) ── */}
       <section id="features" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
         <div className="text-center space-y-3 max-w-2xl mx-auto">
           <div className="text-xs font-bold text-emerald-600 uppercase tracking-widest">End-to-End Walkthrough</div>
@@ -551,7 +504,7 @@ export default function PublicHomePage({ onGetStarted }) {
         </div>
       </section>
 
-      {/* ── 4. LIVE UI SHOWCASE SECTION (HEAVY LIFTING FUNCTIONING MOCKUPS) ── */}
+      {/* ── 3. LIVE UI SHOWCASE SECTION (HEAVY LIFTING FUNCTIONING MOCKUPS) ── */}
       <section id="live-showcase" className="py-24 bg-slate-900 text-white border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center space-y-4 max-w-3xl mx-auto">
@@ -1003,7 +956,7 @@ export default function PublicHomePage({ onGetStarted }) {
         </div>
       </section>
 
-      {/* ── 5. PHILOSOPHY / DIFFERENTIATION BLOCK ── */}
+      {/* ── 4. PHILOSOPHY / DIFFERENTIATION BLOCK ── */}
       <section id="philosophy" className="py-24 bg-white border-y border-slate-200/80">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-6">
           <div className="text-xs font-bold text-emerald-600 uppercase tracking-widest">Core Philosophy</div>
@@ -1016,84 +969,14 @@ export default function PublicHomePage({ onGetStarted }) {
         </div>
       </section>
 
-      {/* ── 6. TESTIMONIALS (SLOW AUTO-SCROLLING MARQUEE COLUMNS) ── */}
-      <section id="testimonials" className="py-24 bg-slate-50 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <div className="text-xs font-bold text-emerald-600 uppercase tracking-widest">Real Student Feedback</div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Trusted by 2,400+ students across 8 campuses
-            </h2>
-            <p className="text-slate-600 text-sm">
-              Here is how peer skill exchange is changing student learning.
-            </p>
-          </div>
-
-          {/* 3 Auto-Scrolling Marquee Columns */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-h-[600px] overflow-hidden relative">
-            {/* Gradient fading overlays at top & bottom */}
-            <div className="absolute top-0 inset-x-0 h-16 bg-gradient-to-b from-slate-50 to-transparent z-10 pointer-events-none" />
-            <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-slate-50 to-transparent z-10 pointer-events-none" />
-
-            {/* Column 1 (Scroll Up) */}
-            <div className="space-y-4 animate-marquee-up hover:[animation-play-state:paused]">
-              {[...TESTIMONIALS_COL1, ...TESTIMONIALS_COL1].map((t, idx) => (
-                <div key={idx} className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-                  <div className="flex items-center gap-3">
-                    <img src={t.avatar} className="w-10 h-10 rounded-full object-cover" alt={t.name} />
-                    <div>
-                      <div className="font-bold text-xs text-slate-900">{t.name}</div>
-                      <div className="text-[10px] text-slate-500">{t.campus}</div>
-                    </div>
-                  </div>
-                  <p className="text-xs text-slate-700 leading-relaxed font-normal">"{t.quote}"</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Column 2 (Scroll Down) */}
-            <div className="space-y-4 animate-marquee-down hover:[animation-play-state:paused] hidden md:block">
-              {[...TESTIMONIALS_COL2, ...TESTIMONIALS_COL2].map((t, idx) => (
-                <div key={idx} className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-                  <div className="flex items-center gap-3">
-                    <img src={t.avatar} className="w-10 h-10 rounded-full object-cover" alt={t.name} />
-                    <div>
-                      <div className="font-bold text-xs text-slate-900">{t.name}</div>
-                      <div className="text-[10px] text-slate-500">{t.campus}</div>
-                    </div>
-                  </div>
-                  <p className="text-xs text-slate-700 leading-relaxed font-normal">"{t.quote}"</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Column 3 (Scroll Up) */}
-            <div className="space-y-4 animate-marquee-up hover:[animation-play-state:paused] hidden md:block">
-              {[...TESTIMONIALS_COL3, ...TESTIMONIALS_COL3].map((t, idx) => (
-                <div key={idx} className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-                  <div className="flex items-center gap-3">
-                    <img src={t.avatar} className="w-10 h-10 rounded-full object-cover" alt={t.name} />
-                    <div>
-                      <div className="font-bold text-xs text-slate-900">{t.name}</div>
-                      <div className="text-[10px] text-slate-500">{t.campus}</div>
-                    </div>
-                  </div>
-                  <p className="text-xs text-slate-700 leading-relaxed font-normal">"{t.quote}"</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 7. CLOSING CTA BANNER ── */}
+      {/* ── 5. CLOSING CTA BANNER ── */}
       <section className="py-20 bg-slate-900 text-white border-t border-slate-800 text-center relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 space-y-6">
           <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
             Ready to start learning for free with campus peers?
           </h2>
           <p className="text-slate-300 text-sm sm:text-base max-w-xl mx-auto">
-            Join thousands of university students trading skills today. Sign up takes less than 60 seconds.
+            Start trading skills with campus peers today. Sign up takes less than 60 seconds.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <button
@@ -1112,7 +995,7 @@ export default function PublicHomePage({ onGetStarted }) {
         </div>
       </section>
 
-      {/* ── 8. FOOTER (COMPLETE 4-COLUMN ARCHITECTURE) ── */}
+      {/* ── 6. FOOTER (COMPLETE 4-COLUMN ARCHITECTURE) ── */}
       <footer className="bg-white border-t border-slate-200 text-slate-600 text-xs py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Column 1: Brand & Social */}
@@ -1155,9 +1038,9 @@ export default function PublicHomePage({ onGetStarted }) {
           <div className="space-y-3">
             <div className="font-bold text-slate-900 uppercase tracking-wider text-[11px]">Resources</div>
             <ul className="space-y-2">
-              <li><a href="#mission" className="hover:text-slate-900 transition-colors">Campus Network</a></li>
+              <li><a href="#philosophy" className="hover:text-slate-900 transition-colors">Campus Network</a></li>
               <li><a href="#philosophy" className="hover:text-slate-900 transition-colors">Peer Guidelines</a></li>
-              <li><a href="#mission" className="hover:text-slate-900 transition-colors">Our Story</a></li>
+              <li><a href="#philosophy" className="hover:text-slate-900 transition-colors">Our Philosophy</a></li>
               <li><a href="#live-showcase" className="hover:text-slate-900 transition-colors">API Documentation</a></li>
               <li><span className="text-emerald-600 font-semibold">● All Systems Operational</span></li>
             </ul>
@@ -1167,11 +1050,11 @@ export default function PublicHomePage({ onGetStarted }) {
           <div className="space-y-3">
             <div className="font-bold text-slate-900 uppercase tracking-wider text-[11px]">Legal & Security</div>
             <ul className="space-y-2">
-              <li><a href="#mission" className="hover:text-slate-900 transition-colors">Terms of Service</a></li>
-              <li><a href="#mission" className="hover:text-slate-900 transition-colors">Privacy Policy</a></li>
-              <li><a href="#mission" className="hover:text-slate-900 transition-colors">.EDU Email Guard</a></li>
-              <li><a href="#mission" className="hover:text-slate-900 transition-colors">Security Audit</a></li>
-              <li><a href="#mission" className="hover:text-slate-900 transition-colors">Contact Support</a></li>
+              <li><a href="#philosophy" className="hover:text-slate-900 transition-colors">Terms of Service</a></li>
+              <li><a href="#philosophy" className="hover:text-slate-900 transition-colors">Privacy Policy</a></li>
+              <li><a href="#philosophy" className="hover:text-slate-900 transition-colors">.EDU Email Guard</a></li>
+              <li><a href="#philosophy" className="hover:text-slate-900 transition-colors">Security Audit</a></li>
+              <li><a href="#philosophy" className="hover:text-slate-900 transition-colors">Contact Support</a></li>
             </ul>
           </div>
         </div>
@@ -1184,24 +1067,6 @@ export default function PublicHomePage({ onGetStarted }) {
           </div>
         </div>
       </footer>
-
-      {/* ── CSS KEYFRAME ANIMATIONS FOR MARQUEE COLUMNS ── */}
-      <style>{`
-        @keyframes marqueeUp {
-          0% { transform: translateY(0%); }
-          100% { transform: translateY(-50%); }
-        }
-        @keyframes marqueeDown {
-          0% { transform: translateY(-50%); }
-          100% { transform: translateY(0%); }
-        }
-        .animate-marquee-up {
-          animation: marqueeUp 28s linear infinite;
-        }
-        .animate-marquee-down {
-          animation: marqueeDown 32s linear infinite;
-        }
-      `}</style>
     </div>
   );
 }
