@@ -27,17 +27,17 @@ export default function SharePortfolioModal() {
   const [copiedCertDetails, setCopiedCertDetails] = useState(false);
 
   // Formatted LinkedIn Experience Bullet Points
-  const resumeSnippet = `Senior Peer Mentor & Academic Contributor | SkillSwap Peer Network (${portfolioTargetUser.school})
+  const resumeSnippet = `Senior Peer Mentor & Academic Contributor | PeerUp Peer Network (${portfolioTargetUser.school})
 - Conducted ${portfolioTargetUser.hoursTaught}+ hours of 1-on-1 peer tutoring in ${portfolioTargetUser.skillsOffered.map(s => s.name).join(', ')}.
 - Published verified PYQ Past Exam Papers & Cheatsheets with 120+ peer downloads on campus.
 - Maintained a ${portfolioTargetUser.rating}/5.0 peer satisfaction rating across ${portfolioTargetUser.reviewCount} student endorsements.
-- Verifiable Credentials & Portfolio: https://skillswap.edu/@${portfolioTargetUser.id.replace('usr_', '')}`;
+- Verifiable Credentials & Portfolio: https://peerup.edu/@${portfolioTargetUser.id.replace('usr_', '')}`;
 
   // Formatted LinkedIn Certification Fields
-  const certName = `SkillSwap Senior Peer Mentor & PYQ Contributor`;
-  const certOrg = `SkillSwap Peer Learning Network`;
-  const certId = `SKILLSWAP-CERT-${portfolioTargetUser.id.toUpperCase()}-2025`;
-  const certUrl = `https://skillswap.edu/@${portfolioTargetUser.id.replace('usr_', '')}`;
+  const certName = `PeerUp Senior Peer Mentor & PYQ Contributor`;
+  const certOrg = `PeerUp Peer Learning Network`;
+  const certId = `PEERUP-CERT-${portfolioTargetUser.id.toUpperCase()}-2025`;
+  const certUrl = `https://peerup.edu/@${portfolioTargetUser.id.replace('usr_', '')}`;
 
   const handleCopySnippet = () => {
     navigator.clipboard?.writeText(resumeSnippet);
@@ -57,7 +57,7 @@ export default function SharePortfolioModal() {
   const handleAddToLinkedIn = () => {
     const linkedInAddUrl = `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${encodeURIComponent(certName)}&organizationName=${encodeURIComponent(certOrg)}&issueYear=2025&issueMonth=8&certId=${encodeURIComponent(certId)}&certUrl=${encodeURIComponent(certUrl)}`;
     window.open(linkedInAddUrl, '_blank');
-    addToast('Opening LinkedIn Certification Add Page 🚀', 'Redirecting to add SkillSwap Senior Contributor License to LinkedIn.', 'info');
+    addToast('Opening LinkedIn Certification Add Page 🚀', 'Redirecting to add PeerUp Senior Contributor License to LinkedIn.', 'info');
   };
 
   return (
@@ -200,7 +200,7 @@ export default function SharePortfolioModal() {
         <div className="flex items-center justify-between gap-3 pt-3 border-t border-[#839958]/20 text-xs">
           <div className="text-[#839958] flex items-center gap-1.5 font-medium">
             <ShieldCheck className="w-4 h-4 text-[#105666]" />
-            <span>Cryptographically signed by SkillSwap Protocol</span>
+            <span>Cryptographically signed by PeerUp Protocol</span>
           </div>
 
           <button onClick={() => setIsPortfolioModalOpen(false)} className="btn-botanical-outline px-4 py-1.5 text-xs font-semibold">

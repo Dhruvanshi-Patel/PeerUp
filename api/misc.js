@@ -55,7 +55,7 @@ export default async function handler(req, res) {
       return res.json({
         status: 'healthy',
         timestamp: new Date().toISOString(),
-        service: 'SkillSwap Peer-to-Peer Backend Engine',
+        service: 'PeerUp Peer-to-Peer Backend Engine',
         version: '2.0.0',
         db: 'Turso (libSQL)',
         endpoints: {

@@ -154,7 +154,7 @@ export default async function handler(req, res) {
       const result = await db.execute({ sql: 'SELECT * FROM users WHERE id = ?', args: [userId] });
       if (result.rows.length === 0) return res.status(404).json({ success: false, error: 'Student not found.' });
       const updated = await hydrateUser(db, result.rows[0]);
-      return res.json({ success: true, message: 'Earned +2 Escrow Credits & +50 Karma XP!', data: updated });
+      return res.json({ success: true, message: 'Earned +2 Simple Credits & +50 Karma XP!', data: updated });
     }
 
     // ── GET /api/users ────────────────────────────────────────────────────────

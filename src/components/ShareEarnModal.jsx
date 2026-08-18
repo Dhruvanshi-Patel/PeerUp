@@ -25,7 +25,7 @@ export default function ShareEarnModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   const shareUrl = `https://omnikon.vercel.app/?ref=${currentUser.id}`;
-  const shareText = `Teach what you know. Earn credits. Learn anything from campus peers \u2014 for free. Join me on SkillSwap: ${shareUrl}`;
+  const shareText = `Teach what you know. Earn credits. Learn anything from campus peers \u2014 for free. Join me on PeerUp: ${shareUrl}`;
 
   const handleShareClick = async (platformName, externalUrl) => {
     // Award credits & karma in DB & state
@@ -39,7 +39,7 @@ export default function ShareEarnModal({ isOpen, onClose }) {
 
     addToast(
       'Referral Credits Earned! 🎁',
-      `Shared on ${platformName}! Earned +2 Escrow Credits & +50 Karma XP.`,
+      `Shared on ${platformName}! Earned +2 Simple Credits & +50 Karma XP.`,
       'success'
     );
 
@@ -62,7 +62,7 @@ export default function ShareEarnModal({ isOpen, onClose }) {
         origin: { y: 0.6 }
       });
 
-      addToast('Referral Link Copied! 📋', 'Link copied to clipboard! Earned +2 Escrow Credits & +50 Karma XP.', 'success');
+      addToast('Referral Link Copied! 📋', 'Link copied to clipboard! Earned +2 Simple Credits & +50 Karma XP.', 'success');
       setTimeout(() => setCopied(false), 3000);
     } catch (err) {
       addToast('Copy Failed', err.message, 'error');
@@ -156,7 +156,7 @@ export default function ShareEarnModal({ isOpen, onClose }) {
             </button>
 
             <button
-              onClick={() => handleShareClick('Email', `mailto:?subject=Join%20SkillSwap%20Peer%20Tutoring&body=${encodeURIComponent(shareText)}`)}
+              onClick={() => handleShareClick('Email', `mailto:?subject=Join%20PeerUp%20Peer%20Tutoring&body=${encodeURIComponent(shareText)}`)}
               className="p-3 bg-[#FAF8ED] hover:bg-white border border-[#839958]/20 rounded-2xl flex flex-col items-center justify-center gap-1.5 transition-all text-[#0A3323] font-semibold"
             >
               <Mail className="w-5 h-5 text-[#D3968C]" />

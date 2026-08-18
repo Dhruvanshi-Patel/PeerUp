@@ -155,7 +155,7 @@ function AppContent() {
             <div className="w-5 h-5 rounded-lg bg-[#0A3323] flex items-center justify-center">
               <ArrowLeftRight className="w-3 h-3 text-[#F7F4D5]" />
             </div>
-            <span className="font-bold text-[#0A3323] text-xs">SkillSwap</span>
+            <span className="font-bold text-[#0A3323] text-xs">PeerUp</span>
             <span className="text-[#839958]/60">· Peer Skill Exchange Network</span>
           </div>
           <div className="flex items-center gap-3 text-[11px]">

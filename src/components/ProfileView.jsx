@@ -49,7 +49,7 @@ export default function ProfileView({ onOpenSocialBadge }) {
 
   const handleCopyPublicLink = () => {
     setCopied(true);
-    addToast('Public Portfolio Link Copied! 📋', `https://skillswap.edu/@${currentUser.id.replace('usr_', '')} copied to clipboard`, 'success');
+    addToast('Public Portfolio Link Copied! 📋', `https://peerup.edu/@${currentUser.id.replace('usr_', '')} copied to clipboard`, 'success');
     setTimeout(() => setCopied(false), 3000);
   };
 
@@ -161,7 +161,7 @@ export default function ProfileView({ onOpenSocialBadge }) {
               142 Junior Students Helped via PYQ Papers & Cheatsheets
             </h3>
             <p className="text-xs text-[#839958] font-medium">
-              Every time a junior unlocks your notes, you earn +1 Escrow Credit & +25 Impact Karma!
+              Every time a junior unlocks your notes, you earn +1 Simple Credit & +25 Impact Karma!
             </p>
           </div>
         </div>

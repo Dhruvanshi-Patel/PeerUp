@@ -160,7 +160,7 @@ router.post('/:id/unlock', (req, res) => {
       message: `Unlocked "${note.title}"! 1 credit spent.`,
       data: {
         note,
-        downloadUrl: `https://skillswap.edu/download/${note.id}.pdf`
+        downloadUrl: `https://peerup.edu/download/${note.id}.pdf`
       }
     });
   } catch (err) {

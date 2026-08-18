@@ -39,7 +39,7 @@ app.get('/api/health', (req, res) => {
   res.json({
     status: 'healthy',
     timestamp: new Date().toISOString(),
-    service: 'SkillSwap Peer-to-Peer Backend Engine',
+    service: 'PeerUp Peer-to-Peer Backend Engine',
     version: '1.0.0',
     endpoints: {
       users: '/api/users',
@@ -66,7 +66,7 @@ app.use(express.static(distPath));
 // Root API index
 app.get('/api', (req, res) => {
   res.json({
-    message: 'SkillSwap API Server is active.',
+    message: 'PeerUp API Server is active.',
     docs: '/api/health'
   });
 });
@@ -91,6 +91,6 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 SkillSwap Backend API running on http://localhost:${PORT}`);
+  console.log(`🚀 PeerUp Backend API running on http://localhost:${PORT}`);
   console.log(`📋 Health & Endpoint Catalog: http://localhost:${PORT}/api/health`);
 });

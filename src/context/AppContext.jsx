@@ -11,7 +11,7 @@ export function AppProvider({ children }) {
   // Auth gate – starts as false unless user explicitly signed in previously
   const [isLoggedIn, setIsLoggedIn] = useState(() => {
     try {
-      return localStorage.getItem('skillswap_is_logged_in') === 'true';
+      return (localStorage.getItem('peerup_is_logged_in') || localStorage.getItem('skillswap_is_logged_in')) === 'true';
     } catch {
       return false;
     }
@@ -20,7 +20,7 @@ export function AppProvider({ children }) {
   // State initialized with localStorage persistence
   const [users, setUsers] = useState(() => {
     try {
-      const saved = localStorage.getItem('skillswap_users');
+      const saved = localStorage.getItem('peerup_users') || localStorage.getItem('skillswap_users');
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) return parsed;
@@ -31,8 +31,8 @@ export function AppProvider({ children }) {
 
   const [currentUserId, setCurrentUserId] = useState(() => {
     try {
-      const saved = localStorage.getItem('skillswap_current_user_id');
-      const isLoggedInSaved = localStorage.getItem('skillswap_is_logged_in') === 'true';
+      const saved = localStorage.getItem('peerup_current_user_id') || localStorage.getItem('skillswap_current_user_id');
+      const isLoggedInSaved = (localStorage.getItem('peerup_is_logged_in') || localStorage.getItem('skillswap_is_logged_in')) === 'true';
       return (isLoggedInSaved && saved) ? saved : null;
     } catch {
       return null;
@@ -69,7 +69,7 @@ export function AppProvider({ children }) {
 
   // Notifications
   const [toasts, setToasts] = useState([
-    { id: 't1', title: 'Connected to Backend API ⚡', message: 'RESTful API active with live credit escrow.', type: 'info' }
+    { id: 't1', title: 'Connected to Backend API ⚡', message: 'RESTful API active with live simple credits.', type: 'info' }
   ]);
 
   const addToast = (title, message, type = 'success') => {
@@ -87,18 +87,19 @@ export function AppProvider({ children }) {
   // Sync users & auth state to localStorage
   useEffect(() => {
     try {
-      localStorage.setItem('skillswap_users', JSON.stringify(users));
+      localStorage.setItem('peerup_users', JSON.stringify(users));
     } catch (e) {}
   }, [users]);
 
   useEffect(() => {
     try {
       if (currentUserId) {
-        localStorage.setItem('skillswap_current_user_id', currentUserId);
+        localStorage.setItem('peerup_current_user_id', currentUserId);
       } else {
+        localStorage.removeItem('peerup_current_user_id');
         localStorage.removeItem('skillswap_current_user_id');
       }
-      localStorage.setItem('skillswap_is_logged_in', isLoggedIn ? 'true' : 'false');
+      localStorage.setItem('peerup_is_logged_in', isLoggedIn ? 'true' : 'false');
     } catch (e) {}
   }, [currentUserId, isLoggedIn]);
 
@@ -124,8 +125,8 @@ export function AppProvider({ children }) {
           });
 
           // Restore signed-in user ONLY if explicitly saved as logged in in localStorage
-          const savedLoggedIn = localStorage.getItem('skillswap_is_logged_in') === 'true';
-          const savedUserId = localStorage.getItem('skillswap_current_user_id');
+          const savedLoggedIn = (localStorage.getItem('peerup_is_logged_in') || localStorage.getItem('skillswap_is_logged_in')) === 'true';
+          const savedUserId = localStorage.getItem('peerup_current_user_id') || localStorage.getItem('skillswap_current_user_id');
           if (savedLoggedIn && savedUserId && usersRes.data.some(u => u.id === savedUserId)) {
             setCurrentUserId(savedUserId);
             setIsLoggedIn(true);
@@ -344,7 +345,9 @@ export function AppProvider({ children }) {
     setIsLoggedIn(false);
     setCurrentUserId(null);
     try {
+      localStorage.removeItem('peerup_is_logged_in');
       localStorage.removeItem('skillswap_is_logged_in');
+      localStorage.removeItem('peerup_current_user_id');
       localStorage.removeItem('skillswap_current_user_id');
     } catch (e) {}
     setActiveTab('explore');
@@ -506,7 +509,7 @@ export function AppProvider({ children }) {
       const minutesRemaining = 60 - minutesCompleted;
       addToast(
         'Minimum 60-Min Requirement ⏳', 
-        `Sessions must run for 60 minutes before escrow credits are released. (${minutesCompleted}/60 mins completed, ${minutesRemaining} mins remaining). Use Dev Fast-Forward to test.`,
+        `Sessions must run for 60 minutes before simple credits are released. (${minutesCompleted}/60 mins completed, ${minutesRemaining} mins remaining). Use Dev Fast-Forward to test.`,
         'error'
       );
       return false;
@@ -562,7 +565,7 @@ export function AppProvider({ children }) {
 
       addToast(
         '1-Hour Session Completed & Verified! 🎓', 
-        `60 minutes completed! 1 Escrow Credit released. ${streakMessage}`, 
+        `60 minutes completed! 1 Simple Credit released. ${streakMessage}`, 
         'success'
       );
 
@@ -732,7 +735,7 @@ export function AppProvider({ children }) {
     setIsLoggedIn(true);
     setActiveTab('explore');
 
-    addToast('🎉 Welcome to SkillSwap!', `Profile created for ${createdUser.name} saved to SQL Database with 5 free Welcome Credits!`, 'success');
+    addToast('🎉 Welcome to PeerUp!', `Profile created for ${createdUser.name} saved to SQL Database with 5 free Welcome Credits!`, 'success');
     return createdUser;
   };
 

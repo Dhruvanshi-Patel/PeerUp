@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
   }
 });
 
-// POST /api/sessions/:id/complete - Complete session, release escrow, award +50 karma
+// POST /api/sessions/:id/complete - Complete session, release simple credit, award +50 karma
 router.post('/:id/complete', (req, res) => {
   try {
     const { completedByUserId } = req.body;
@@ -55,7 +55,7 @@ router.get('/:id/qr', (req, res) => {
         sessionId: session.id,
         roomCode: session.roomCode,
         location: session.locationDetail,
-        verificationUrl: `https://skillswap.edu/checkin/${session.roomCode}`
+        verificationUrl: `https://peerup.edu/checkin/${session.roomCode}`
       }
     });
   } catch (err) {

@@ -128,7 +128,7 @@ router.post('/:id/share', async (req, res) => {
 
     res.json({
       success: true,
-      message: 'Earned +2 Escrow Credits & +50 Karma XP!',
+      message: 'Earned +2 Simple Credits & +50 Karma XP!',
       data: result
     });
   } catch (err) {

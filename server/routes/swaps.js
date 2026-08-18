@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
   }
 });
 
-// POST /api/swaps - Create swap proposal (Direct 1:1 or Credit Exchange with Escrow hold)
+// POST /api/swaps - Create swap proposal (Direct 1:1 or Credit Exchange with Simple Credit hold)
 router.post('/', (req, res) => {
   try {
     const { senderId, receiverId, type, offeredSkill, requestedSkill, format, proposedSlot, message } = req.body;
@@ -61,13 +61,13 @@ router.patch('/:id/accept', (req, res) => {
   }
 });
 
-// PATCH /api/swaps/:id/decline - Decline swap & refund escrow credit
+// PATCH /api/swaps/:id/decline - Decline swap & refund credit
 router.patch('/:id/decline', (req, res) => {
   try {
     const declined = store.declineSwap(req.params.id);
     res.json({ 
       success: true, 
-      message: 'Swap declined and escrow refunded if applicable', 
+      message: 'Swap declined and credit refunded if applicable', 
       data: declined 
     });
   } catch (err) {

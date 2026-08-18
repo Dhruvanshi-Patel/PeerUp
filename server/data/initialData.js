@@ -1,4 +1,4 @@
-// Initial database seed for SkillSwap backend
+// Initial database seed for PeerUp backend
 export const initialData = {
   users: [
     {

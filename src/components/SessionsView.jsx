@@ -129,11 +129,11 @@ export default function SessionsView() {
                       <div className="flex items-center justify-between font-medium">
                         <div className="flex items-center gap-2">
                           <ShieldCheck className="w-4 h-4 text-[#105666]" />
-                          <span>1 Credit held in Escrow wallet</span>
+                          <span>1 Credit held in simple credit wallet</span>
                         </div>
                         <span className="badge-moss px-2 py-0.2 text-[10px] font-bold">60 Mins Required</span>
                       </div>
-                      <p className="text-[11px] text-[#839958]">Location: {session.location || 'SkillSwap In-App WebRTC Room'}</p>
+                      <p className="text-[11px] text-[#839958]">Location: {session.location || 'PeerUp In-App WebRTC Room'}</p>
                     </div>
                   </div>
 

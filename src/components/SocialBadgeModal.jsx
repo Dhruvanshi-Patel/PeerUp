@@ -34,7 +34,7 @@ export default function SocialBadgeModal({ isOpen, onClose }) {
   };
 
   /* ── LinkedIn share ── */
-  const linkedInPost = `🎓 Just hit Level ${level} on SkillSwap — the peer-to-peer skill exchange platform for campus students!
+  const linkedInPost = `🎓 Just hit Level ${level} on PeerUp — the peer-to-peer skill exchange platform for campus students!
 
 📊 My stats:
 • ${credits} Teaching Credits earned
@@ -43,25 +43,25 @@ export default function SocialBadgeModal({ isOpen, onClose }) {
 • ${rating}/5.0 student satisfaction rating
 • Badge: ${badgeLevel}
 
-On SkillSwap, every hour I teach earns a credit I can spend learning something new — zero tuition, 100% peer-powered.
+On PeerUp, every hour I teach earns a credit I can spend learning something new — zero tuition, 100% peer-powered.
 
 Check it out: ${profileUrl}
 
-#SkillSwap #PeerLearning #StudentLife #EdTech #CampusLife`;
+#PeerUp #PeerLearning #StudentLife #EdTech #CampusLife`;
 
-  const linkedInCertUrl = `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${encodeURIComponent(`SkillSwap ${badgeLevel} — ${credits} Credits Earned`)}&organizationName=${encodeURIComponent('SkillSwap Peer Learning Network')}&issueYear=2025&issueMonth=8&certId=${encodeURIComponent(`SKILLSWAP-${currentUser.id.toUpperCase()}-L${level}`)}&certUrl=${encodeURIComponent(profileUrl)}`;
+  const linkedInCertUrl = `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${encodeURIComponent(`PeerUp ${badgeLevel} — ${credits} Credits Earned`)}&organizationName=${encodeURIComponent('PeerUp Peer Learning Network')}&issueYear=2025&issueMonth=8&certId=${encodeURIComponent(`PEERUP-${currentUser.id.toUpperCase()}-L${level}`)}&certUrl=${encodeURIComponent(profileUrl)}`;
 
   const linkedInPostUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(profileUrl)}&text=${encodeURIComponent(linkedInPost)}`;
 
   /* ── GitHub README markdown ── */
-  const creditBadgeUrl = shieldsUrl('SkillSwap Credits', `${credits} Credits`, '0A3323');
-  const karmaBadgeUrl = shieldsUrl('SkillSwap Karma', `${karma} XP`, '839958');
-  const levelBadgeUrl = shieldsUrl('SkillSwap Level', `Level ${level}`, '105666');
+  const creditBadgeUrl = shieldsUrl('PeerUp Credits', `${credits} Credits`, '0A3323');
+  const karmaBadgeUrl = shieldsUrl('PeerUp Karma', `${karma} XP`, '839958');
+  const levelBadgeUrl = shieldsUrl('PeerUp Level', `Level ${level}`, '105666');
 
-  const githubMarkdown = `<!-- SkillSwap Badges -->
-[![SkillSwap Level](${levelBadgeUrl})](${profileUrl})
-[![SkillSwap Credits](${creditBadgeUrl})](${profileUrl})
-[![SkillSwap Karma](${karmaBadgeUrl})](${profileUrl})`;
+  const githubMarkdown = `<!-- PeerUp Badges -->
+[![PeerUp Level](${levelBadgeUrl})](${profileUrl})
+[![PeerUp Credits](${creditBadgeUrl})](${profileUrl})
+[![PeerUp Karma](${karmaBadgeUrl})](${profileUrl})`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm overflow-y-auto">
@@ -90,7 +90,7 @@ Check it out: ${profileUrl}
           <div className="bg-[#0A3323] rounded-2xl p-5 text-[#F7F4D5]">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <div className="text-[11px] text-[#839958] uppercase tracking-widest font-bold mb-0.5">SkillSwap Achievement</div>
+                <div className="text-[11px] text-[#839958] uppercase tracking-widest font-bold mb-0.5">PeerUp Achievement</div>
                 <div className="font-black text-lg">{currentUser.name}</div>
                 <div className="text-[11px] text-[#F7F4D5]/50">{currentUser.school} · {currentUser.major}</div>
               </div>
@@ -158,8 +158,8 @@ Check it out: ${profileUrl}
             <div className="space-y-2">
               <div className="text-xs font-bold text-[#0A3323]">🏆 Add as LinkedIn Certification</div>
               <div className="bg-[#FAF8ED] border border-[#839958]/20 rounded-xl p-3 text-[11px] text-[#0A3323]/70 space-y-1">
-                <div><span className="font-bold text-[#0A3323]">Name:</span> SkillSwap {badgeLevel} — {credits} Credits Earned</div>
-                <div><span className="font-bold text-[#0A3323]">Org:</span> SkillSwap Peer Learning Network</div>
+                <div><span className="font-bold text-[#0A3323]">Name:</span> PeerUp {badgeLevel} — {credits} Credits Earned</div>
+                <div><span className="font-bold text-[#0A3323]">Org:</span> PeerUp Peer Learning Network</div>
                 <div><span className="font-bold text-[#0A3323]">Issue:</span> August 2025 · Does Not Expire</div>
               </div>
               <a

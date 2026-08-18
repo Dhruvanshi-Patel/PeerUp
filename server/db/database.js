@@ -7,7 +7,9 @@ import { initialData } from '../data/initialData.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DB_DIR = __dirname;
-const DB_FILE = path.join(DB_DIR, 'skillswap.db');
+const DB_FILE = fs.existsSync(path.join(DB_DIR, 'peerup.db')) || !fs.existsSync(path.join(DB_DIR, 'skillswap.db'))
+  ? path.join(DB_DIR, 'peerup.db')
+  : path.join(DB_DIR, 'skillswap.db');
 const SCHEMA_FILE = path.join(DB_DIR, 'schema.sql');
 
 // Enable verbose SQLite trace logging in development

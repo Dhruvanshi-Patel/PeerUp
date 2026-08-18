@@ -188,7 +188,7 @@ export default function ExploreSkills() {
             </span>
           </h2>
           <p className="text-xs text-[#839958] font-medium mt-0.5">
-            Connect 1-on-1 to trade skills using credit escrow or reciprocal tutoring
+            Connect 1-on-1 to trade skills using simple credits or reciprocal tutoring
           </p>
         </div>
 

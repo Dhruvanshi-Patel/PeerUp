@@ -1,4 +1,4 @@
-// Automated API verification script for SkillSwap Backend
+// Automated API verification script for PeerUp Backend
 import http from 'http';
 
 function request(options, data = null) {
@@ -25,7 +25,7 @@ function request(options, data = null) {
 }
 
 async function runTests() {
-  console.log('🧪 Starting SkillSwap REST API Automated Test Suite...\n');
+  console.log('🧪 Starting PeerUp REST API Automated Test Suite...\n');
 
   try {
     // 1. Health Check
@@ -79,7 +79,7 @@ async function runTests() {
       console.log('   Status:', accepted.status, 'Scheduled Session ID:', accepted.data?.data?.session?.id, '\n');
     }
 
-    // 5. Submit Peer Review & Award Escrow Karma
+    // 5. Submit Peer Review & Award Credit Karma
     console.log('5. Testing POST /api/reviews ...');
     const review = await request({
       hostname: 'localhost',

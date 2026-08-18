@@ -1,4 +1,4 @@
-// Comprehensive Database State for SkillSwap
+// Comprehensive Database State for PeerUp
 export const INITIAL_PERSONAS = [
   {
     id: "usr_priya",

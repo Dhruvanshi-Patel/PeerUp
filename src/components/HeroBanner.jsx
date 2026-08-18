@@ -27,7 +27,7 @@ export default function HeroBanner() {
           <div className="flex flex-wrap items-center gap-2">
             <span className="badge-rose px-3 py-1 text-xs font-bold rounded-full uppercase tracking-wider flex items-center gap-1.5">
               <Leaf className="w-3.5 h-3.5 text-[#0A3323]" />
-              SkillSwap Network
+              PeerUp Network
             </span>
             <span className="badge-moss px-3 py-1 text-xs font-semibold rounded-full flex items-center gap-1.5">
               <GraduationCap className="w-3.5 h-3.5 text-[#0A3323]" />
@@ -41,7 +41,7 @@ export default function HeroBanner() {
           </h1>
 
           <p className="text-base sm:text-lg text-[#0A3323]/80 leading-relaxed max-w-2xl font-normal">
-            Connect 1-for-1 with verified campus mentors. Trade Coding, Calculus, Spanish & Design in a trusted escrow wallet—1 hour taught earned equals 1 hour learned.
+            Connect 1-for-1 with verified campus mentors. Trade Coding, Calculus, Spanish & Design in a simple credit wallet—1 hour taught earned equals 1 hour learned.
           </p>
 
           {/* 3 Botanical Value Pillars */}
@@ -62,7 +62,7 @@ export default function HeroBanner() {
               </div>
               <div>
                 <div className="text-xs font-bold text-[#0A3323]">1 Hr = 1 Credit</div>
-                <div className="text-[11px] text-[#839958] font-medium">Peer Wallet Escrow</div>
+                <div className="text-[11px] text-[#839958] font-medium">Simple Credit Wallet</div>
               </div>
             </div>
 
@@ -96,7 +96,7 @@ export default function HeroBanner() {
                 Ready to trade skills on campus?
               </h3>
               <p className="text-xs text-[#0A3323]/70 mt-1 leading-relaxed">
-                List what you can teach to earn your first escrow credit, or explore peer mentors currently offering tutoring.
+                List what you can teach to earn your first simple credit, or explore peer mentors currently offering tutoring.
               </p>
             </div>
 

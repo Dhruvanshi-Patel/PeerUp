@@ -71,7 +71,7 @@ export default function Navbar() {
               PEER LEARNING NETWORK
             </span>
             <span className="hidden sm:inline text-xs text-[#FAF8ED]/80 font-medium">
-              1 Hour Taught = 1 Escrow Credit • Zero Tuition Peer Exchange
+              1 Hour Taught = 1 Simple Credit • Zero Tuition Peer Exchange
             </span>
           </div>
 
@@ -120,7 +120,7 @@ export default function Navbar() {
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="font-bold text-lg text-[#0A3323] tracking-tight">
-                  SkillSwap
+                  PeerUp
                 </span>
                 <span className="px-2 py-0.5 rounded-full bg-[#839958]/20 text-[#0A3323] text-[10px] font-bold">
                   CAMPUS

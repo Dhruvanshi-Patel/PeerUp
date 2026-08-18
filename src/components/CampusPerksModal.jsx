@@ -83,7 +83,7 @@ export default function CampusPerksModal({ isOpen, onClose }) {
               Redeem Credits for Campus Food & Perks
             </h2>
             <p className="text-xs text-[#0A3323]/80 mt-1 max-w-lg leading-relaxed">
-              University dining halls and student cafés partner with SkillSwap to reward active peer mentors with meals and coffee!
+              University dining halls and student cafés partner with PeerUp to reward active peer mentors with meals and coffee!
             </p>
           </div>
 

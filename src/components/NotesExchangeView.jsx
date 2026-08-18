@@ -132,7 +132,7 @@ export default function NotesExchangeView() {
 
       addToast(
         'Resource Published! 🎓', 
-        `Earned +1 Escrow Credit & +50 Impact Karma for contributing ${newType} to ${newCourse}! Add to LinkedIn!`, 
+        `Earned +1 Simple Credit & +50 Impact Karma for contributing ${newType} to ${newCourse}! Add to LinkedIn!`, 
         'success'
       );
       
@@ -163,7 +163,7 @@ export default function NotesExchangeView() {
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-[#0A3323]">Previous Year Questions (PYQs) & Senior Notes</h2>
             <p className="text-xs text-[#0A3323]/80 mt-1 max-w-xl leading-relaxed">
-              Senior students share verified past exam PYQs, solved step-by-step papers, and lecture cheatsheets. Earn 1 Escrow Credit & Impact Karma every time a junior unlocks your uploaded study guide!
+              Senior students share verified past exam PYQs, solved step-by-step papers, and lecture cheatsheets. Earn 1 Simple Credit & Impact Karma every time a junior unlocks your uploaded study guide!
             </p>
           </div>
 
@@ -458,7 +458,7 @@ export default function NotesExchangeView() {
                   <span className="badge-rose px-2 py-0.2 rounded font-bold">+1 Cr / Download</span>
                 </div>
                 <p className="text-[11px] text-[#839958]">
-                  Earn 1 Escrow Credit & +25 Impact Karma every time a junior peer unlocks your paper! Add to your LinkedIn profile.
+                  Earn 1 Simple Credit & +25 Impact Karma every time a junior peer unlocks your paper! Add to your LinkedIn profile.
                 </p>
               </div>
 

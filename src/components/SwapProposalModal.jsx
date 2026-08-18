@@ -143,7 +143,7 @@ export default function SwapProposalModal() {
                   {swapType === 'Credit Exchange' && <Check className="w-4 h-4 text-[#105666]" />}
                 </div>
                 <p className="text-[11px] text-[#839958]">
-                  Spend 1 Escrow Credit (Balance: {currentUser.credits} Cr).
+                  Spend 1 Simple Credit (Balance: {currentUser.credits} Cr).
                 </p>
               </button>
             </div>
@@ -183,10 +183,10 @@ export default function SwapProposalModal() {
               </div>
             ) : (
               <div className="space-y-1">
-                <label className="font-bold text-[#0A3323]">Wallet Escrow:</label>
+                <label className="font-bold text-[#0A3323]">Simple Credit Payment:</label>
                 <div className="w-full px-3 py-2 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] font-semibold text-xs flex items-center gap-2">
                   <Coins className="w-4 h-4 text-[#D3968C]" />
-                  <span>1 Credit held in Escrow wallet</span>
+                  <span>1 Credit held in simple credit wallet</span>
                 </div>
               </div>
             )}

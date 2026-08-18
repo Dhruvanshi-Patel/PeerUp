@@ -58,7 +58,7 @@ export default function LiveSessionRoom() {
   
   // Collaborative Content
   const [sharedNotes, setSharedNotes] = useState(
-    `# 🎓 SkillSwap 1-Hour Tutoring Session\n\n**Topic:** ${activeLiveSession.skill}\n**Participants:** ${currentUser.name} & ${activeLiveSession.peerName}\n\n### Key Concepts Covered:\n- 1. Core principles & real-world intuition\n- 2. Step-by-step example problem breakdown\n- 3. Recommended practice problem sets & references\n\n### Action Items for Practice:\n- [ ] Review conversation cheatsheet\n- [ ] Implement BFS/DFS algorithm script\n`
+    `# 🎓 PeerUp 1-Hour Tutoring Session\n\n**Topic:** ${activeLiveSession.skill}\n**Participants:** ${currentUser.name} & ${activeLiveSession.peerName}\n\n### Key Concepts Covered:\n- 1. Core principles & real-world intuition\n- 2. Step-by-step example problem breakdown\n- 3. Recommended practice problem sets & references\n\n### Action Items for Practice:\n- [ ] Review conversation cheatsheet\n- [ ] Implement BFS/DFS algorithm script\n`
   );
 
   const [codeSnippet, setCodeSnippet] = useState(
@@ -167,9 +167,10 @@ export default function LiveSessionRoom() {
     completeSession(activeLiveSession, secs);
   };
 
-  // Developer mode check: Fast-Forward shortcut restricted to developers (?dev=true or localStorage.skillswap_dev_mode=true)
+  // Developer mode check: Fast-Forward shortcut restricted to developers (?dev=true or localStorage.peerup_dev_mode=true)
   const isDeveloper = typeof window !== 'undefined' && (
     window.location.search.includes('dev=true') || 
+    localStorage.getItem('peerup_dev_mode') === 'true' ||
     localStorage.getItem('skillswap_dev_mode') === 'true' ||
     currentUser?.isDeveloper === true ||
     currentUser?.email?.includes('dev')
@@ -470,13 +471,13 @@ export default function LiveSessionRoom() {
               </div>
               <div>
                 <h3 className="font-bold text-base text-[#0A3323]">1-Hour Session Minimum Required</h3>
-                <p className="text-xs text-[#839958]">SkillSwap Quality & Credit Policy</p>
+                <p className="text-xs text-[#839958]">PeerUp Quality & Credit Policy</p>
               </div>
             </div>
 
             <div className="p-4 rounded-2xl bg-[#FAF8ED] border border-[#839958]/20 space-y-2 text-xs">
               <p className="leading-relaxed">
-                To keep peer learning high quality and release 1 Escrow Credit, a session must run for at least <strong>60 minutes (1 hour)</strong>.
+                To keep peer learning high quality and release 1 Simple Credit, a session must run for at least <strong>60 minutes (1 hour)</strong>.
               </p>
 
               <div className="py-2 border-t border-b border-[#839958]/20 flex items-center justify-between font-bold">

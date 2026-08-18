@@ -186,14 +186,14 @@ class DataStore {
       if (sender.credits < 1) {
         throw new Error('Insufficient credits in wallet');
       }
-      // Hold 1 credit in escrow
+      // Hold 1 credit
       sender.credits -= 1;
       this.data.walletLedger.push({
         id: 'tx_' + Date.now(),
         userId: sender.id,
         amount: -1,
-        type: 'CREDIT_ESCROW_HELD',
-        description: `Escrow hold for swap with ${swapData.receiverName}`,
+        type: 'SIMPLE_CREDIT_HELD',
+        description: `Credit hold for swap with ${swapData.receiverName}`,
         timestamp: 'Just now'
       });
     }
@@ -256,7 +256,7 @@ class DataStore {
 
     swap.status = 'Declined';
 
-    // Refund escrow credit if credit exchange
+    // Refund credit if credit exchange
     if (swap.type === 'Credit Exchange') {
       const sender = this.getUserById(swap.senderId);
       if (sender) {
@@ -266,7 +266,7 @@ class DataStore {
           userId: sender.id,
           amount: 1,
           type: 'CREDIT_REFUND',
-          description: `Refunded escrow credit from declined swap`,
+          description: `Refunded credit from declined swap`,
           timestamp: 'Just now'
         });
       }

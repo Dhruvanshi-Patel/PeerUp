@@ -160,7 +160,7 @@ export default function LandingPage({ onBack }) {
             <div className="w-10 h-10 rounded-2xl bg-[#0A3323] flex items-center justify-center">
               <ArrowLeftRight className="w-5 h-5 text-[#F7F4D5]" />
             </div>
-            <span className="text-xl font-bold text-[#0A3323]">SkillSwap</span>
+            <span className="text-xl font-bold text-[#0A3323]">PeerUp</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-[#0A3323] tracking-tight">
             What do you want to learn today?
@@ -201,7 +201,7 @@ export default function LandingPage({ onBack }) {
         {/* Core loop reminder */}
         <div className="mt-8 flex items-center gap-2 text-[11px] text-[#0A3323]/50 font-medium">
           <Leaf className="w-3.5 h-3.5 text-[#839958]" />
-          <span>1 Hr Taught = 1 Escrow Credit · Zero Tuition Peer Exchange</span>
+          <span>1 Hr Taught = 1 Simple Credit · Zero Tuition Peer Exchange</span>
         </div>
       </div>
     );
@@ -223,7 +223,7 @@ export default function LandingPage({ onBack }) {
               <ArrowLeftRight className="w-5 h-5 text-[#D3968C]" />
             </div>
             <div>
-              <div className="text-white font-bold text-lg leading-none">SkillSwap</div>
+              <div className="text-white font-bold text-lg leading-none">PeerUp</div>
               <div className="text-[#839958] text-[11px]">Peer Learning Network</div>
             </div>
           </div>
@@ -254,7 +254,7 @@ export default function LandingPage({ onBack }) {
           <div className="space-y-3">
             {[
               { icon: ArrowLeftRight, label: '1:1 Skill Trade', sub: 'Reciprocal tutoring', color: '#D3968C' },
-              { icon: Trophy, label: '1 Hr = 1 Credit', sub: 'Peer wallet escrow', color: '#839958' },
+              { icon: Trophy, label: '1 Hr = 1 Credit', sub: 'Simple credit wallet', color: '#839958' },
               { icon: ShieldCheck, label: 'Verified .edu', sub: 'Campus network only', color: '#105666' }
             ].map((p) => (
               <div key={p.label} className="flex items-center gap-3">
@@ -298,7 +298,7 @@ export default function LandingPage({ onBack }) {
             <div className="w-9 h-9 rounded-xl bg-[#0A3323] flex items-center justify-center">
               <ArrowLeftRight className="w-4.5 h-4.5 text-[#F7F4D5]" />
             </div>
-            <span className="text-[#0A3323] font-bold text-lg">SkillSwap</span>
+            <span className="text-[#0A3323] font-bold text-lg">PeerUp</span>
           </div>
           {onBack && (
             <button
@@ -484,7 +484,7 @@ export default function LandingPage({ onBack }) {
           <div className="mt-4 bg-white/70 backdrop-blur-sm border border-[#839958]/20 rounded-2xl px-4 py-3 flex items-center gap-3">
             <Gift className="w-5 h-5 text-[#D3968C] shrink-0" />
             <div className="flex-1 text-[11px] text-[#0A3323]/60">
-              Share SkillSwap with friends → earn <span className="font-bold text-[#0A3323]">+2 Credits</span> per referral
+              Share PeerUp with friends → earn <span className="font-bold text-[#0A3323]">+2 Credits</span> per referral
             </div>
             <ChevronRight className="w-4 h-4 text-[#839958]" />
           </div>

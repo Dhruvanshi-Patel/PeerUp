@@ -58,7 +58,7 @@ const FEATURES = [
   {
     emoji: '⏱️',
     title: '1 Hour = 1 Credit',
-    desc: 'Every hour you teach earns one escrow credit. Spend credits to learn from others — no money ever changes hands.',
+    desc: 'Every hour you teach earns one simple credit. Spend credits to learn from others — no money ever changes hands.',
     color: '#0A3323',
     bg: 'rgba(10,51,35,0.07)',
   },
@@ -120,7 +120,7 @@ export default function PublicHomePage({ onGetStarted }) {
               <ArrowLeftRight className="w-4.5 h-4.5 text-[#F7F4D5]" />
             </div>
             <div>
-              <div className="font-black text-base text-[#0A3323] leading-none">SkillSwap</div>
+              <div className="font-black text-base text-[#0A3323] leading-none">PeerUp</div>
               <div className="text-[10px] text-[#839958] font-medium">Campus Peer Network</div>
             </div>
           </div>
@@ -169,7 +169,7 @@ export default function PublicHomePage({ onGetStarted }) {
           </h1>
 
           <p className="text-base sm:text-lg text-[#0A3323]/70 leading-relaxed max-w-2xl mx-auto mb-10">
-            SkillSwap is a peer-to-peer skill exchange platform for university students.
+            PeerUp is a peer-to-peer skill exchange platform for university students.
             Trade coding, calculus, languages and more — 1 hour taught = 1 credit earned.
             No money. No middlemen. Just students helping students.
           </p>
@@ -252,7 +252,7 @@ export default function PublicHomePage({ onGetStarted }) {
               <Clock className="w-3.5 h-3.5" /> Simple process
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-              How SkillSwap works
+              How PeerUp works
             </h2>
           </div>
 
@@ -321,14 +321,14 @@ export default function PublicHomePage({ onGetStarted }) {
               Add your credits & karma to LinkedIn and GitHub
             </h3>
             <p className="text-sm text-[#0A3323]/65 leading-relaxed">
-              Generate verified credential badges, export your teaching hours as LinkedIn Experience entries, and create GitHub README badges that show your SkillSwap rank — all with one click.
+              Generate verified credential badges, export your teaching hours as LinkedIn Experience entries, and create GitHub README badges that show your PeerUp rank — all with one click.
             </p>
           </div>
 
           {/* mock badge preview */}
           <div className="shrink-0 space-y-3">
             <div className="bg-[#0A3323] text-[#F7F4D5] rounded-2xl px-5 py-3 text-center shadow-lg">
-              <div className="text-[10px] text-[#839958] uppercase tracking-wider mb-1">SkillSwap Rank</div>
+              <div className="text-[10px] text-[#839958] uppercase tracking-wider mb-1">PeerUp Rank</div>
               <div className="text-2xl font-black">🏆 Level 7</div>
               <div className="flex items-center justify-center gap-3 mt-1.5 text-[11px] text-[#F7F4D5]/70">
                 <span>14 Credits</span>
@@ -386,7 +386,7 @@ export default function PublicHomePage({ onGetStarted }) {
             <div className="w-6 h-6 rounded-lg bg-[#0A3323] flex items-center justify-center">
               <ArrowLeftRight className="w-3 h-3 text-[#F7F4D5]" />
             </div>
-            <span className="font-bold text-[#0A3323]">SkillSwap</span>
+            <span className="font-bold text-[#0A3323]">PeerUp</span>
             <span>· Peer Skill Exchange · Season 1</span>
           </div>
           <div className="flex items-center gap-4">

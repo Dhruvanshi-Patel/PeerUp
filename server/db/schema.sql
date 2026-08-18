@@ -1,4 +1,4 @@
--- SkillSwap SQLite / MySQL Database Schema
+-- PeerUp SQLite / MySQL Database Schema
 -- Defines relational tables for Users, Skills, Swaps, Sessions, Reviews, and Notes
 
 CREATE TABLE IF NOT EXISTS users (

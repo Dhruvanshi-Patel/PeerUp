@@ -202,7 +202,7 @@ export default function MyProfileView() {
             <Coins className="w-4 h-4 text-[#D3968C]" />
           </div>
           <div className="text-xl font-bold text-[#0A3323]">{currentUser.credits || 5}</div>
-          <div className="text-[11px] text-[#839958] font-semibold">Escrow Credits</div>
+          <div className="text-[11px] text-[#839958] font-semibold">Simple Credits</div>
         </div>
 
         <div className="botanical-card bg-white p-4 border border-[#839958]/20 text-center space-y-1">
