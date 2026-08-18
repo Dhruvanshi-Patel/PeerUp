@@ -30,6 +30,7 @@ export default function CreateProfileModal({ isOpen, onClose }) {
   const [email, setEmail] = useState('');
   const [major, setMajor] = useState('');
   const [bio, setBio] = useState('');
+  const [referrerIdInput, setReferrerIdInput] = useState('');
   const [selectedAvatar, setSelectedAvatar] = useState(AVATAR_PRESETS[0]);
   
   const [teachSkillName, setTeachSkillName] = useState('');
@@ -92,6 +93,7 @@ export default function CreateProfileModal({ isOpen, onClose }) {
       major: major.trim() || 'Undeclared',
       bio: bio.trim() || 'Excited to trade skills and learn from peers on campus!',
       avatar: selectedAvatar,
+      referrerId: referrerIdInput.trim() || undefined,
       skillsOffered,
       skillsWanted
     };
@@ -238,16 +240,34 @@ export default function CreateProfileModal({ isOpen, onClose }) {
             </div>
           </div>
 
-          {/* Bio */}
-          <div className="space-y-1">
-            <label className="font-bold text-slate-900">Short Bio</label>
-            <textarea
-              rows={2}
-              placeholder="What subjects are you eager to trade with peers?"
-              value={bio}
-              onChange={(e) => setBio(e.target.value)}
-              className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-slate-800 resize-none"
-            />
+          {/* Bio & Referral Code */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="space-y-1">
+              <label className="font-bold text-slate-900">Short Bio</label>
+              <input
+                type="text"
+                placeholder="What subjects are you eager to trade with peers?"
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-slate-800"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label className="font-bold text-slate-900 flex items-center justify-between">
+                <span>Referral / Invite Code (Optional) 🎁</span>
+                <span className="text-[10px] text-emerald-700 font-extrabold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  +2 Cr to Referrer
+                </span>
+              </label>
+              <input
+                type="text"
+                placeholder="e.g. usr_priya"
+                value={referrerIdInput}
+                onChange={(e) => setReferrerIdInput(e.target.value)}
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-slate-800 font-mono text-xs"
+              />
+            </div>
           </div>
 
           {/* First Skill you can teach */}

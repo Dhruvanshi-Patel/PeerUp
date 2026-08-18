@@ -85,6 +85,7 @@ export default function LandingPage({ onBack }) {
   const [regSchool, setRegSchool] = useState('UC Berkeley');
   const [regMajor, setRegMajor] = useState('');
   const [regSkill, setRegSkill] = useState('');
+  const [regReferrerId, setRegReferrerId] = useState('');
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -128,6 +129,7 @@ export default function LandingPage({ onBack }) {
         school: regSchool,
         major: regMajor.trim() || 'Undeclared',
         bio: 'Excited to trade skills on campus!',
+        referrerId: regReferrerId.trim() || undefined,
         skillsOffered
       });
       // App.jsx will automatically switch to main app + WelcomeScreen
@@ -544,6 +546,18 @@ export default function LandingPage({ onBack }) {
                       value={regSkill} onChange={e => setRegSkill(e.target.value)}
                       className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-base sm:text-sm focus:outline-none focus:border-[#0A3323] transition-colors min-h-[44px]" />
                   </div>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-[#0A3323] flex items-center justify-between">
+                    <span>Referral / Invite Code (Optional) 🎁</span>
+                    <span className="text-[10px] text-[#105666] font-extrabold bg-[#839958]/15 px-2 py-0.5 rounded-full">
+                      +2 Cr to Referrer
+                    </span>
+                  </label>
+                  <input type="text" placeholder="e.g. usr_priya"
+                    value={regReferrerId} onChange={e => setRegReferrerId(e.target.value)}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-xs font-mono focus:outline-none focus:border-[#0A3323] transition-colors min-h-[44px]" />
                 </div>
 
                 {/* Reward callout */}

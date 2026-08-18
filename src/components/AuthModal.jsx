@@ -41,6 +41,7 @@ export default function AuthModal({ isOpen, onClose }) {
   const [regBio, setRegBio] = useState('');
   const [regSkillName, setRegSkillName] = useState('');
   const [regSkillCategory, setRegSkillCategory] = useState('Coding & Tech');
+  const [regReferrerId, setRegReferrerId] = useState('');
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -101,6 +102,7 @@ export default function AuthModal({ isOpen, onClose }) {
         school: regSchool,
         major: regMajor.trim() || 'Computer Science',
         bio: regBio.trim() || 'Verified student trading skills and PYQ notes on campus.',
+        referrerId: regReferrerId.trim() || undefined,
         skillsOffered
       });
 
@@ -324,6 +326,22 @@ export default function AuthModal({ isOpen, onClose }) {
                   className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] focus:outline-none focus:border-[#105666]"
                 />
               </div>
+            </div>
+
+            <div className="space-y-1">
+              <label className="font-bold text-[#0A3323] flex items-center justify-between">
+                <span>Referral / Invite Code (Optional) 🎁</span>
+                <span className="text-[10px] text-[#105666] font-extrabold bg-[#839958]/15 px-2 py-0.5 rounded-full">
+                  +2 Cr to Referrer
+                </span>
+              </label>
+              <input
+                type="text"
+                placeholder="e.g. usr_priya"
+                value={regReferrerId}
+                onChange={(e) => setRegReferrerId(e.target.value)}
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] focus:outline-none focus:border-[#105666] font-mono text-xs"
+              />
             </div>
 
             <div className="p-3 bg-[#FAF8ED] border border-[#839958]/20 rounded-2xl text-xs text-[#0A3323]/80 space-y-1">
