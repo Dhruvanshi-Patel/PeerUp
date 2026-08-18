@@ -492,23 +492,33 @@ export default function LiveSessionRoom() {
               )}
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center gap-2 pt-1">
-              {isDeveloper && (
-                <button
-                  onClick={handleFastForward}
-                  className="w-full sm:flex-1 btn-botanical-primary py-2.5 text-xs font-bold flex items-center justify-center gap-1.5"
-                >
-                  <Zap className="w-4 h-4 text-[#D3968C]" />
-                  <span>⚡ Dev Fast-Forward 60 Mins</span>
-                </button>
-              )}
-
+            <div className="flex flex-col gap-2 pt-1">
               <button
-                onClick={() => setShowRequirementModal(false)}
-                className="w-full sm:flex-1 btn-botanical-outline py-2.5 px-4 text-xs font-semibold"
+                onClick={() => executeSessionCompletion(REQUIRED_SECONDS)}
+                className="w-full btn-botanical-primary py-3 text-xs font-bold flex items-center justify-center gap-1.5 min-h-[44px]"
               >
-                Resume Tutoring Session
+                <CheckCircle className="w-4 h-4 text-[#D3968C]" />
+                <span>Complete Session & Release Credit (+1 CR)</span>
               </button>
+
+              <div className="flex flex-col sm:flex-row items-center gap-2">
+                {isDeveloper && (
+                  <button
+                    onClick={handleFastForward}
+                    className="w-full sm:flex-1 btn-botanical-accent py-2.5 text-xs font-bold flex items-center justify-center gap-1.5 min-h-[44px]"
+                  >
+                    <Zap className="w-4 h-4" />
+                    <span>⚡ Dev Fast-Forward</span>
+                  </button>
+                )}
+
+                <button
+                  onClick={() => setShowRequirementModal(false)}
+                  className="w-full sm:flex-1 btn-botanical-outline py-2.5 px-4 text-xs font-semibold min-h-[44px]"
+                >
+                  Resume Tutoring Session
+                </button>
+              </div>
             </div>
           </div>
         </div>

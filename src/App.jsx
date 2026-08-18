@@ -52,7 +52,7 @@ function AppContent() {
 
         {/* Auth form slides in as a full-screen overlay when CTA is clicked */}
         {showAuthForm && (
-          <div className="fixed inset-0 z-50">
+          <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/70 backdrop-blur-sm">
             <LandingPage onBack={() => setShowAuthForm(false)} />
           </div>
         )}

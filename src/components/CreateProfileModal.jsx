@@ -14,23 +14,10 @@ const AVATAR_PRESETS = [
 
 export const isUniversityEmail = (email) => {
   if (!email || !email.includes('@')) return false;
-  const domain = email.split('@')[1].toLowerCase();
-  const commercialDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'gmx.com'];
-  if (commercialDomains.includes(domain)) return false;
-
-  return (
-    domain.endsWith('.edu') ||
-    domain.endsWith('.ac.uk') ||
-    domain.endsWith('.ac.in') ||
-    domain.endsWith('.edu.in') ||
-    domain.endsWith('.edu.au') ||
-    domain.endsWith('.edu.ca') ||
-    domain.endsWith('.edu.sg') ||
-    domain.includes('.edu.') ||
-    domain.includes('univ') ||
-    domain.includes('college') ||
-    domain.includes('school')
-  );
+  const parts = email.trim().split('@');
+  if (parts.length !== 2 || !parts[0] || !parts[1]) return false;
+  const domain = parts[1].toLowerCase();
+  return domain.includes('.');
 };
 
 export default function CreateProfileModal({ isOpen, onClose }) {

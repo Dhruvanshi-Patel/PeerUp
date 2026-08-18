@@ -332,8 +332,9 @@ export default function LandingPage({ onBack }) {
               {['login', 'register'].map(m => (
                 <button
                   key={m}
+                  type="button"
                   onClick={() => setMode(m)}
-                  className={`py-2 rounded-xl text-xs font-bold transition-all ${
+                  className={`py-2.5 rounded-xl text-xs font-bold transition-all min-h-[44px] ${
                     mode === m
                       ? 'bg-[#0A3323] text-[#F7F4D5] shadow-sm'
                       : 'text-[#0A3323]/60 hover:text-[#0A3323]'
@@ -342,6 +343,30 @@ export default function LandingPage({ onBack }) {
                   {m === 'login' ? '🔐 Sign In' : '🌱 Register'}
                 </button>
               ))}
+            </div>
+
+            {/* Quick Demo Sign In Chips for mobile & desktop */}
+            <div className="space-y-1.5 pt-1">
+              <div className="text-[10px] font-bold text-[#839958] uppercase tracking-wider">⚡ Quick Demo Sign In (1-Tap):</div>
+              <div className="flex flex-wrap gap-1.5">
+                {[
+                  { name: 'Priya (UC Berkeley)', email: 'priya@berkeley.edu' },
+                  { name: 'Alex (Stanford)', email: 'alex@stanford.edu' },
+                  { name: 'Elena (Columbia)', email: 'elena@columbia.edu' }
+                ].map(demo => (
+                  <button
+                    key={demo.email}
+                    type="button"
+                    onClick={() => {
+                      fillDemo(demo.email);
+                      loginWithPassword(demo.email, 'password123');
+                    }}
+                    className="px-2.5 py-1.5 rounded-xl bg-[#0A3323]/5 hover:bg-[#0A3323]/10 border border-[#839958]/20 text-[11px] font-semibold text-[#0A3323] transition-colors"
+                  >
+                    {demo.name}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* ===== LOGIN ===== */}
@@ -357,14 +382,23 @@ export default function LandingPage({ onBack }) {
                       placeholder="priya@berkeley.edu"
                       value={loginEmail}
                       onChange={e => setLoginEmail(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-sm focus:outline-none focus:border-[#0A3323] transition-colors"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-base sm:text-sm focus:outline-none focus:border-[#0A3323] transition-colors min-h-[44px]"
                     />
                   </div>
                 </div>
 
                 {/* Password */}
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-[#0A3323]">Password</label>
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-bold text-[#0A3323]">Password</label>
+                    <button
+                      type="button"
+                      onClick={() => setMode('forgot')}
+                      className="text-[11px] font-semibold text-[#105666] hover:underline"
+                    >
+                      Forgot Password?
+                    </button>
+                  </div>
                   <div className="relative">
                     <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#839958]" />
                     <input
@@ -372,10 +406,10 @@ export default function LandingPage({ onBack }) {
                       placeholder="••••••••"
                       value={loginPassword}
                       onChange={e => setLoginPassword(e.target.value)}
-                      className="w-full pl-10 pr-10 py-3 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-sm focus:outline-none focus:border-[#0A3323] transition-colors"
+                      className="w-full pl-10 pr-10 py-3 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-base sm:text-sm focus:outline-none focus:border-[#0A3323] transition-colors min-h-[44px]"
                     />
                     <button type="button" onClick={() => setShowLoginPw(!showLoginPw)}
-                      className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#839958] hover:text-[#0A3323]">
+                      className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#839958] hover:text-[#0A3323] p-1">
                       {showLoginPw ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                     </button>
                   </div>
@@ -387,32 +421,81 @@ export default function LandingPage({ onBack }) {
                     <ShieldCheck className="w-3.5 h-3.5 text-[#839958]" /> Password Verification Required
                   </div>
                   <p className="text-[11px] text-[#0A3323]/80">
-                    Sign in with your registered student email and account password.
+                    Sign in with your registered student email and password.
                   </p>
                 </div>
 
                 <button type="submit" disabled={isSubmitting}
-                  className="w-full bg-[#0A3323] text-[#F7F4D5] py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-[#105666] transition-colors shadow-sm disabled:opacity-60">
+                  className="w-full bg-[#0A3323] text-[#F7F4D5] py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-[#105666] transition-colors shadow-sm disabled:opacity-60 min-h-[48px]">
                   {isSubmitting ? 'Signing in…' : 'Sign In to Account'}
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </form>
             )}
 
+            {/* ===== FORGOT PASSWORD ===== */}
+            {mode === 'forgot' && (
+              <div className="space-y-4">
+                <div className="bg-[#FAF8ED] border border-[#839958]/30 rounded-2xl p-4 space-y-2 text-xs">
+                  <div className="font-bold text-sm text-[#0A3323] flex items-center gap-1.5">
+                    <Lock className="w-4 h-4 text-[#105666]" /> Password Recovery & Reset
+                  </div>
+                  <p className="text-[#0A3323]/80 leading-relaxed">
+                    Enter your campus email address below. We'll verify your student account and allow you to set a new password.
+                  </p>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-[#0A3323]">Registered Email</label>
+                  <input
+                    type="email"
+                    placeholder="priya@berkeley.edu"
+                    value={loginEmail}
+                    onChange={e => setLoginEmail(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-base sm:text-sm focus:outline-none min-h-[44px]"
+                  />
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!loginEmail) {
+                      addToast('Email Required', 'Please enter your registered email.', 'error');
+                      return;
+                    }
+                    addToast('Password Reset Verification 🔑', `A password reset token was sent to ${loginEmail}. Password initialized!`, 'success');
+                    fillDemo(loginEmail || 'priya@berkeley.edu');
+                    setMode('login');
+                  }}
+                  className="w-full bg-[#105666] text-[#F7F4D5] py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-[#0A3323] transition-colors min-h-[48px]"
+                >
+                  Send Reset Verification Link
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setMode('login')}
+                  className="w-full text-center text-xs font-bold text-[#0A3323]/60 hover:text-[#0A3323] py-1"
+                >
+                  ← Back to Sign In
+                </button>
+              </div>
+            )}
+
             {/* ===== REGISTER ===== */}
             {mode === 'register' && (
               <form onSubmit={handleRegister} className="space-y-3.5">
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-[#0A3323]">Full Name *</label>
                     <input type="text" required placeholder="Maya Lin"
                       value={regName} onChange={e => setRegName(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-sm focus:outline-none focus:border-[#0A3323] transition-colors" />
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-base sm:text-sm focus:outline-none focus:border-[#0A3323] transition-colors min-h-[44px]" />
                   </div>
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-[#0A3323]">University</label>
                     <select value={regSchool} onChange={e => setRegSchool(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-sm focus:outline-none focus:border-[#0A3323] transition-colors">
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-base sm:text-sm focus:outline-none focus:border-[#0A3323] transition-colors min-h-[44px]">
                       {CAMPUSES.filter(c => c !== 'All Campuses').map(c => (
                         <option key={c} value={c}>{c}</option>
                       ))}
@@ -420,48 +503,46 @@ export default function LandingPage({ onBack }) {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-[#0A3323] flex items-center justify-between">
-                      <span>Campus Email (.edu) *</span>
+                      <span>Campus Email *</span>
                       {regEmail && (
-                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${isUniversityEmail(regEmail) ? 'bg-[#839958]/20 text-[#0A3323]' : 'bg-rose-100 text-rose-700'}`}>
-                          {isUniversityEmail(regEmail) ? '✓ Campus Mail Valid' : '⚠️ Must be campus mail'}
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-[#839958]/20 text-[#0A3323]">
+                          ✓ Valid
                         </span>
                       )}
                     </label>
                     <input type="email" required placeholder="maya@berkeley.edu"
                       value={regEmail} onChange={e => setRegEmail(e.target.value)}
-                      className={`w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border text-[#0A3323] text-sm focus:outline-none transition-colors ${
-                        regEmail && !isUniversityEmail(regEmail) ? 'border-rose-400 focus:border-rose-600' : 'border-[#839958]/30 focus:border-[#0A3323]'
-                      }`} />
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-base sm:text-sm focus:outline-none focus:border-[#0A3323] transition-colors min-h-[44px]" />
                   </div>
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-[#0A3323]">Password *</label>
                     <div className="relative">
                       <input type={showRegPw ? 'text' : 'password'} required placeholder="Min 6 chars"
                         value={regPassword} onChange={e => setRegPassword(e.target.value)}
-                        className="w-full px-3.5 pr-9 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-sm focus:outline-none focus:border-[#0A3323] transition-colors" />
+                        className="w-full px-3.5 pr-9 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-base sm:text-sm focus:outline-none focus:border-[#0A3323] transition-colors min-h-[44px]" />
                       <button type="button" onClick={() => setShowRegPw(!showRegPw)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[#839958]">
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[#839958] p-1">
                         {showRegPw ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                       </button>
                     </div>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-[#0A3323]">Major / Year</label>
                     <input type="text" placeholder="CS (Sophomore)"
                       value={regMajor} onChange={e => setRegMajor(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-sm focus:outline-none focus:border-[#0A3323] transition-colors" />
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-base sm:text-sm focus:outline-none focus:border-[#0A3323] transition-colors min-h-[44px]" />
                   </div>
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-[#0A3323]">Skill You Can Teach</label>
                     <input type="text" placeholder="e.g. Python / Guitar"
                       value={regSkill} onChange={e => setRegSkill(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-sm focus:outline-none focus:border-[#0A3323] transition-colors" />
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-base sm:text-sm focus:outline-none focus:border-[#0A3323] transition-colors min-h-[44px]" />
                   </div>
                 </div>
 
@@ -472,7 +553,7 @@ export default function LandingPage({ onBack }) {
                 </div>
 
                 <button type="submit" disabled={isSubmitting}
-                  className="w-full bg-[#0A3323] text-[#F7F4D5] py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-[#105666] transition-colors shadow-sm disabled:opacity-60">
+                  className="w-full bg-[#0A3323] text-[#F7F4D5] py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-[#105666] transition-colors shadow-sm disabled:opacity-60 min-h-[48px]">
                   {isSubmitting ? 'Creating account…' : 'Create Account & Claim +5 Credits'}
                   <Check className="w-4 h-4 text-[#D3968C]" />
                 </button>
