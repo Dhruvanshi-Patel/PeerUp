@@ -107,25 +107,25 @@ export default function CreateProfileModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-xl botanical-card bg-white p-6 sm:p-8 my-8 text-[#0A3323] shadow-xl rounded-3xl space-y-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm overflow-y-auto font-sans">
+      <div className="relative w-full max-w-xl bg-white p-6 sm:p-8 my-8 text-slate-900 shadow-2xl rounded-3xl space-y-4 border border-slate-200">
         {/* Header */}
-        <div className="flex items-center justify-between pb-3 border-b border-[#839958]/20">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-100">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#0A3323] text-[#F7F4D5] flex items-center justify-center shrink-0 shadow-sm">
-              <UserPlus className="w-5 h-5 text-[#FAF8ED]" />
+            <div className="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <UserPlus className="w-5 h-5 text-emerald-400" />
             </div>
             <div>
-              <span className="badge-rose px-2.5 py-0.5 text-[10px] font-bold rounded-full uppercase tracking-wider">
+              <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 text-[10px] font-extrabold rounded-full uppercase tracking-wider">
                 Student Registration • +3 Welcome Credits
               </span>
-              <h2 className="text-lg font-bold text-[#0A3323] mt-0.5">
+              <h2 className="text-lg font-extrabold text-slate-900 mt-0.5">
                 Create Student Profile
               </h2>
             </div>
           </div>
 
-          <button onClick={onClose} className="text-[#839958] hover:text-[#0A3323]">
+          <button onClick={onClose} className="text-slate-400 hover:text-slate-700">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -134,8 +134,8 @@ export default function CreateProfileModal({ isOpen, onClose }) {
           {/* Avatar Selector Presets & Custom Upload */}
           <div className="space-y-1">
             <div className="flex items-center justify-between">
-              <label className="font-bold text-[#0A3323]">Profile Photo / Avatar:</label>
-              <label className="text-[11px] font-bold text-[#105666] hover:underline cursor-pointer flex items-center gap-1">
+              <label className="font-bold text-slate-900">Profile Photo / Avatar:</label>
+              <label className="text-[11px] font-bold text-emerald-700 hover:underline cursor-pointer flex items-center gap-1">
                 <span>Upload Custom Photo</span>
                 <input 
                   type="file" 
@@ -152,7 +152,7 @@ export default function CreateProfileModal({ isOpen, onClose }) {
               </label>
             </div>
             <div className="flex items-center gap-2.5 overflow-x-auto pb-1">
-              <img src={selectedAvatar} alt="Current Preview" className="w-10 h-10 rounded-xl object-cover border-2 border-[#105666]" />
+              <img src={selectedAvatar} alt="Current Preview" className="w-10 h-10 rounded-xl object-cover border-2 border-slate-900" />
               {AVATAR_PRESETS.map((av, idx) => (
                 <button
                   key={idx}
@@ -160,14 +160,14 @@ export default function CreateProfileModal({ isOpen, onClose }) {
                   onClick={() => setSelectedAvatar(av)}
                   className={`relative shrink-0 rounded-xl overflow-hidden border transition-all ${
                     selectedAvatar === av 
-                      ? 'border-[#105666] ring-2 ring-[#105666]/30 scale-105 shadow-sm' 
-                      : 'opacity-60 hover:opacity-100 border-[#839958]/25'
+                      ? 'border-slate-900 ring-2 ring-slate-900/30 scale-105 shadow-sm' 
+                      : 'opacity-60 hover:opacity-100 border-slate-200'
                   }`}
                 >
                   <img src={av} alt="Avatar option" className="w-10 h-10 object-cover" />
                   {selectedAvatar === av && (
-                    <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-[#105666] flex items-center justify-center">
-                      <Check className="w-2.5 h-2.5 text-white" />
+                    <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-slate-900 flex items-center justify-center">
+                      <Check className="w-2.5 h-2.5 text-emerald-400" />
                     </span>
                   )}
                 </button>
@@ -178,23 +178,23 @@ export default function CreateProfileModal({ isOpen, onClose }) {
           {/* Full Name & School */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1">
-              <label className="font-bold text-[#0A3323]">Full Name *</label>
+              <label className="font-bold text-slate-900">Full Name *</label>
               <input
                 type="text"
                 required
                 placeholder="e.g. Maya Lin"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] focus:outline-none focus:border-[#105666]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-slate-800"
               />
             </div>
 
             <div className="space-y-1">
-              <label className="font-bold text-[#0A3323]">University / Campus *</label>
+              <label className="font-bold text-slate-900">University / Campus *</label>
               <select
                 value={school}
                 onChange={(e) => setSchool(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] focus:outline-none focus:border-[#105666]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-slate-800"
               >
                 {CAMPUSES.filter(c => c !== 'All Campuses').map(c => (
                   <option key={c} value={c}>{c}</option>
@@ -206,10 +206,10 @@ export default function CreateProfileModal({ isOpen, onClose }) {
           {/* Email & Major */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1">
-              <label className="font-bold text-[#0A3323] flex items-center justify-between">
+              <label className="font-bold text-slate-900 flex items-center justify-between">
                 <span>Student Email (.edu) *</span>
                 {email && (
-                  <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${isUniversityEmail(email) ? 'bg-[#839958]/20 text-[#0A3323]' : 'bg-rose-100 text-rose-700'}`}>
+                  <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${isUniversityEmail(email) ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
                     {isUniversityEmail(email) ? '✓ Campus Mail Valid' : '⚠️ Must be .edu / campus mail'}
                   </span>
                 )}
@@ -220,40 +220,40 @@ export default function CreateProfileModal({ isOpen, onClose }) {
                 placeholder="e.g. maya.lin@berkeley.edu"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className={`w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border text-[#0A3323] focus:outline-none ${
-                  email && !isUniversityEmail(email) ? 'border-rose-400 focus:border-rose-600' : 'border-[#839958]/30 focus:border-[#105666]'
+                className={`w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border text-slate-900 focus:outline-none ${
+                  email && !isUniversityEmail(email) ? 'border-rose-400 focus:border-rose-600' : 'border-slate-200 focus:border-slate-800'
                 }`}
               />
             </div>
 
             <div className="space-y-1">
-              <label className="font-bold text-[#0A3323]">Major / Field of Study</label>
+              <label className="font-bold text-slate-900">Major / Field of Study</label>
               <input
                 type="text"
                 placeholder="e.g. Cognitive Science (Sophomore)"
                 value={major}
                 onChange={(e) => setMajor(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] focus:outline-none focus:border-[#105666]"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-slate-800"
               />
             </div>
           </div>
 
           {/* Bio */}
           <div className="space-y-1">
-            <label className="font-bold text-[#0A3323]">Short Bio</label>
+            <label className="font-bold text-slate-900">Short Bio</label>
             <textarea
               rows={2}
               placeholder="What subjects are you eager to trade with peers?"
               value={bio}
               onChange={(e) => setBio(e.target.value)}
-              className="w-full p-3 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] focus:outline-none focus:border-[#105666] resize-none"
+              className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-slate-800 resize-none"
             />
           </div>
 
           {/* First Skill you can teach */}
-          <div className="p-3.5 rounded-2xl bg-[#FAF8ED] border border-[#839958]/20 space-y-2">
-            <div className="text-[10px] font-bold text-[#105666] uppercase flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-[#D3968C]" />
+          <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div className="text-[10px] font-extrabold text-slate-900 uppercase flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
               First Skill You Can Teach (Earn Credits)
             </div>
 
@@ -263,13 +263,13 @@ export default function CreateProfileModal({ isOpen, onClose }) {
                 placeholder="e.g. Python, Calculus, French"
                 value={teachSkillName}
                 onChange={(e) => setTeachSkillName(e.target.value)}
-                className="px-3 py-2 rounded-xl bg-white border border-[#839958]/30 text-[#0A3323] text-xs focus:outline-none"
+                className="px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 text-xs focus:outline-none"
               />
 
               <select
                 value={teachSkillCategory}
                 onChange={(e) => setTeachSkillCategory(e.target.value)}
-                className="px-3 py-2 rounded-xl bg-white border border-[#839958]/30 text-[#0A3323] text-xs focus:outline-none"
+                className="px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 text-xs focus:outline-none"
               >
                 {CATEGORIES.filter(c => c.id !== 'all').map(c => (
                   <option key={c.id} value={c.id}>{c.name}</option>
@@ -279,9 +279,9 @@ export default function CreateProfileModal({ isOpen, onClose }) {
           </div>
 
           {/* First Skill you want to learn */}
-          <div className="p-3.5 rounded-2xl bg-[#FAF8ED] border border-[#839958]/20 space-y-2">
-            <div className="text-[10px] font-bold text-[#839958] uppercase flex items-center gap-1.5">
-              <GraduationCap className="w-3.5 h-3.5 text-[#105666]" />
+          <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+            <div className="text-[10px] font-extrabold text-slate-900 uppercase flex items-center gap-1.5">
+              <GraduationCap className="w-3.5 h-3.5 text-emerald-600" />
               First Skill You Want to Learn (Need)
             </div>
 
@@ -291,13 +291,13 @@ export default function CreateProfileModal({ isOpen, onClose }) {
                 placeholder="e.g. Spanish, Figma UI, Organic Chem"
                 value={learnSkillName}
                 onChange={(e) => setLearnSkillName(e.target.value)}
-                className="px-3 py-2 rounded-xl bg-white border border-[#839958]/30 text-[#0A3323] text-xs focus:outline-none"
+                className="px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 text-xs focus:outline-none"
               />
 
               <select
                 value={learnSkillCategory}
                 onChange={(e) => setLearnSkillCategory(e.target.value)}
-                className="px-3 py-2 rounded-xl bg-white border border-[#839958]/30 text-[#0A3323] text-xs focus:outline-none"
+                className="px-3 py-2 rounded-xl bg-white border border-slate-200 text-slate-900 text-xs focus:outline-none"
               >
                 {CATEGORIES.filter(c => c.id !== 'all').map(c => (
                   <option key={c.id} value={c.id}>{c.name}</option>
@@ -307,11 +307,11 @@ export default function CreateProfileModal({ isOpen, onClose }) {
           </div>
 
           {/* Submit Action */}
-          <div className="pt-2 flex items-center justify-end gap-3">
+          <div className="pt-2 flex items-center justify-end gap-3 border-t border-slate-100">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-xl text-xs font-semibold text-[#839958] hover:text-[#0A3323]"
+              className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-500 hover:text-slate-800"
             >
               Cancel
             </button>
@@ -319,9 +319,9 @@ export default function CreateProfileModal({ isOpen, onClose }) {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="btn-botanical-primary px-6 py-2.5 text-xs font-bold flex items-center gap-2 shadow-sm"
+              className="bg-slate-900 hover:bg-slate-800 text-white font-extrabold px-6 py-2.5 text-xs rounded-xl flex items-center gap-2 shadow-sm transition-all"
             >
-              <Check className="w-4 h-4" />
+              <Check className="w-4 h-4 text-emerald-400" />
               <span>{isSubmitting ? 'Registering...' : 'Create Profile & Claim 3 Credits'}</span>
             </button>
           </div>

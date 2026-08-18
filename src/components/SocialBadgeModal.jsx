@@ -64,57 +64,57 @@ Check it out: ${profileUrl}
 [![PeerUp Karma](${karmaBadgeUrl})](${profileUrl})`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-[#839958]/20 my-8 overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm overflow-y-auto font-sans">
+      <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 my-8 overflow-hidden">
 
         {/* ── header ── */}
-        <div className="bg-[#0A3323] px-6 py-5 flex items-center justify-between">
+        <div className="bg-slate-900 px-6 py-5 flex items-center justify-between border-b border-slate-800">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1.5">
               <Linkedin className="w-5 h-5 text-[#0077B5]" />
               <Github className="w-5 h-5 text-white" />
             </div>
             <div>
-              <div className="text-white font-black text-base">Share Your Progress</div>
-              <div className="text-[#839958] text-[11px] font-medium">Credits & Karma on LinkedIn and GitHub</div>
+              <div className="text-white font-extrabold text-base">Share Your Progress</div>
+              <div className="text-emerald-400 text-[11px] font-semibold">Credits & Karma on LinkedIn and GitHub</div>
             </div>
           </div>
-          <button onClick={onClose} className="text-white/50 hover:text-white transition-colors">
+          <button onClick={onClose} className="text-slate-400 hover:text-white transition-colors">
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="p-6 space-y-6">
+        <div className="p-6 space-y-6 text-slate-900">
 
           {/* ── Achievement card preview ── */}
-          <div className="bg-[#0A3323] rounded-2xl p-5 text-[#F7F4D5]">
+          <div className="bg-slate-900 rounded-2xl p-5 text-white shadow-xl border border-slate-800">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <div className="text-[11px] text-[#839958] uppercase tracking-widest font-bold mb-0.5">PeerUp Achievement</div>
-                <div className="font-black text-lg">{currentUser.name}</div>
-                <div className="text-[11px] text-[#F7F4D5]/50">{currentUser.school} · {currentUser.major}</div>
+                <div className="text-[11px] text-emerald-400 uppercase tracking-widest font-extrabold mb-0.5">PeerUp Achievement</div>
+                <div className="font-extrabold text-lg">{currentUser.name}</div>
+                <div className="text-[11px] text-slate-400">{currentUser.school} · {currentUser.major}</div>
               </div>
               <div className="text-right">
-                <div className="text-3xl font-black">L{level}</div>
-                <div className="text-[10px] text-[#839958] uppercase tracking-wider">Level</div>
+                <div className="text-3xl font-extrabold text-white">L{level}</div>
+                <div className="text-[10px] text-slate-400 uppercase tracking-wider font-bold">Level</div>
               </div>
             </div>
-            <div className="grid grid-cols-4 gap-3 pt-3 border-t border-white/10">
+            <div className="grid grid-cols-4 gap-3 pt-3 border-t border-slate-800">
               {[
-                { icon: Coins, label: 'Credits', value: credits, color: '#D3968C' },
-                { icon: Flame, label: 'Karma XP', value: karma, color: '#839958' },
-                { icon: Star, label: 'Rating', value: `${rating}★`, color: '#D3968C' },
-                { icon: Trophy, label: 'Hrs Taught', value: hoursTaught, color: '#839958' },
+                { icon: Coins, label: 'Credits', value: credits, color: '#10b981' },
+                { icon: Flame, label: 'Karma XP', value: karma, color: '#f59e0b' },
+                { icon: Star, label: 'Rating', value: `${rating}★`, color: '#f59e0b' },
+                { icon: Trophy, label: 'Hrs Taught', value: hoursTaught, color: '#10b981' },
               ].map(({ icon: Icon, label, value, color }) => (
                 <div key={label} className="text-center">
                   <Icon className="w-4 h-4 mx-auto mb-1" style={{ color }} />
-                  <div className="text-base font-black">{value}</div>
-                  <div className="text-[9px] text-[#F7F4D5]/40 uppercase tracking-wider">{label}</div>
+                  <div className="text-base font-extrabold text-white">{value}</div>
+                  <div className="text-[9px] text-slate-400 uppercase tracking-wider font-bold">{label}</div>
                 </div>
               ))}
             </div>
-            <div className="mt-3 pt-3 border-t border-white/10 text-center">
-              <span className="text-[10px] bg-white/10 px-3 py-1 rounded-full text-[#F7F4D5]/70 font-semibold">
+            <div className="mt-3 pt-3 border-t border-slate-800 text-center">
+              <span className="text-[10px] bg-slate-800 border border-slate-700 px-3 py-1 rounded-full text-slate-300 font-extrabold">
                 🏅 {badgeLevel}
               </span>
             </div>
@@ -122,23 +122,23 @@ Check it out: ${profileUrl}
 
           {/* ── LinkedIn section ── */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2 pb-1 border-b border-[#839958]/15">
+            <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
               <Linkedin className="w-4.5 h-4.5 text-[#0077B5]" />
-              <span className="text-sm font-black text-[#0A3323]">LinkedIn</span>
+              <span className="text-sm font-extrabold text-slate-900">LinkedIn Integration</span>
             </div>
 
             {/* Post */}
             <div className="space-y-2">
-              <div className="text-xs font-bold text-[#0A3323]">📣 Share as a LinkedIn Post</div>
-              <div className="bg-[#FAF8ED] border border-[#839958]/20 rounded-xl p-3 text-[11px] text-[#0A3323]/70 leading-relaxed max-h-28 overflow-y-auto font-mono whitespace-pre-wrap">
+              <div className="text-xs font-bold text-slate-900">📣 Share as a LinkedIn Post</div>
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-[11px] text-slate-700 leading-relaxed max-h-28 overflow-y-auto font-mono whitespace-pre-wrap">
                 {linkedInPost}
               </div>
               <div className="flex gap-2">
                 <button
                   onClick={() => copyText('liPost', linkedInPost)}
-                  className="flex-1 flex items-center justify-center gap-1.5 bg-white border border-[#839958]/25 text-[#0A3323] text-xs font-semibold py-2.5 rounded-xl hover:bg-[#FAF8ED] transition-colors"
+                  className="flex-1 flex items-center justify-center gap-1.5 bg-white border border-slate-200 text-slate-700 text-xs font-semibold py-2.5 rounded-xl hover:bg-slate-50 transition-colors"
                 >
-                  {copied.liPost ? <Check className="w-3.5 h-3.5 text-green-600" /> : <Copy className="w-3.5 h-3.5" />}
+                  {copied.liPost ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
                   {copied.liPost ? 'Copied!' : 'Copy Post'}
                 </button>
                 <a
@@ -156,11 +156,11 @@ Check it out: ${profileUrl}
 
             {/* Certification */}
             <div className="space-y-2">
-              <div className="text-xs font-bold text-[#0A3323]">🏆 Add as LinkedIn Certification</div>
-              <div className="bg-[#FAF8ED] border border-[#839958]/20 rounded-xl p-3 text-[11px] text-[#0A3323]/70 space-y-1">
-                <div><span className="font-bold text-[#0A3323]">Name:</span> PeerUp {badgeLevel} — {credits} Credits Earned</div>
-                <div><span className="font-bold text-[#0A3323]">Org:</span> PeerUp Peer Learning Network</div>
-                <div><span className="font-bold text-[#0A3323]">Issue:</span> August 2025 · Does Not Expire</div>
+              <div className="text-xs font-bold text-slate-900">🏆 Add as LinkedIn Certification</div>
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 text-[11px] text-slate-700 space-y-1">
+                <div><span className="font-bold text-slate-900">Name:</span> PeerUp {badgeLevel} — {credits} Credits Earned</div>
+                <div><span className="font-bold text-slate-900">Org:</span> PeerUp Peer Learning Network</div>
+                <div><span className="font-bold text-slate-900">Issue:</span> August 2025 · Does Not Expire</div>
               </div>
               <a
                 href={linkedInCertUrl}
@@ -177,9 +177,9 @@ Check it out: ${profileUrl}
 
           {/* ── GitHub section ── */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2 pb-1 border-b border-[#839958]/15">
-              <Github className="w-4.5 h-4.5 text-[#0A3323]" />
-              <span className="text-sm font-black text-[#0A3323]">GitHub README Badges</span>
+            <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
+              <Github className="w-4.5 h-4.5 text-slate-900" />
+              <span className="text-sm font-extrabold text-slate-900">GitHub README Badges</span>
             </div>
 
             {/* Badge previews */}
@@ -194,26 +194,26 @@ Check it out: ${profileUrl}
             </div>
 
             {/* Markdown code */}
-            <div className="bg-[#0A3323] rounded-xl p-3 overflow-x-auto">
-              <pre className="text-[10px] text-[#839958] font-mono whitespace-pre leading-relaxed">
+            <div className="bg-slate-900 rounded-xl p-3 overflow-x-auto">
+              <pre className="text-[10px] text-emerald-400 font-mono whitespace-pre leading-relaxed">
                 {githubMarkdown}
               </pre>
             </div>
 
             <button
               onClick={() => copyText('ghBadge', githubMarkdown)}
-              className="w-full flex items-center justify-center gap-1.5 bg-[#0A3323] text-[#F7F4D5] text-xs font-bold py-2.5 rounded-xl hover:bg-[#105666] transition-colors"
+              className="w-full flex items-center justify-center gap-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-extrabold py-2.5 rounded-xl shadow-xs transition-colors"
             >
-              {copied.ghBadge ? <Check className="w-3.5 h-3.5 text-[#839958]" /> : <Copy className="w-3.5 h-3.5" />}
+              {copied.ghBadge ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-emerald-400" />}
               {copied.ghBadge ? 'Copied to clipboard!' : 'Copy Markdown for README'}
             </button>
           </div>
 
           {/* ── tip ── */}
-          <div className="bg-[#839958]/10 border border-[#839958]/20 rounded-xl px-4 py-3 flex items-start gap-2">
-            <Sparkles className="w-4 h-4 text-[#839958] mt-0.5 shrink-0" />
-            <p className="text-[11px] text-[#0A3323]/70 leading-relaxed">
-              <span className="font-bold text-[#0A3323]">Tip:</span> Teach more sessions to level up your badge and earn more credits. Higher levels unlock a verified "Senior Tutor" credential that stands out on LinkedIn.
+          <div className="bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3 flex items-start gap-2 text-slate-900">
+            <Sparkles className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
+            <p className="text-[11px] text-slate-700 leading-relaxed font-medium">
+              <span className="font-extrabold text-slate-900">Tip:</span> Teach more sessions to level up your badge and earn more credits. Higher levels unlock a verified "Senior Tutor" credential that stands out on LinkedIn.
             </p>
           </div>
 

@@ -45,32 +45,32 @@ export default function ReviewModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-lg botanical-card bg-white p-6 sm:p-8 my-8 text-[#0A3323] shadow-xl rounded-3xl space-y-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm overflow-y-auto font-sans">
+      <div className="relative w-full max-w-lg bg-white p-6 sm:p-8 my-8 text-slate-900 shadow-2xl rounded-3xl space-y-4 border border-slate-200">
         {/* Header */}
-        <div className="flex items-center justify-between pb-3 border-b border-[#839958]/20">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-100">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#0A3323] text-[#F7F4D5] flex items-center justify-center shrink-0 shadow-sm">
-              <Sparkles className="w-5 h-5 text-[#FAF8ED]" />
+            <div className="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shrink-0 shadow-sm">
+              <Sparkles className="w-5 h-5 text-emerald-400" />
             </div>
             <div>
-              <span className="badge-teal px-2.5 py-0.5 text-[10px] font-bold rounded-full uppercase tracking-wider">
+              <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 text-[10px] font-extrabold rounded-full uppercase tracking-wider">
                 Session Completed
               </span>
-              <h2 className="text-base font-bold text-[#0A3323] mt-0.5">
+              <h2 className="text-base font-extrabold text-slate-900 mt-0.5">
                 Rate Swap with {reviewSessionTarget.peerName}
               </h2>
             </div>
           </div>
 
-          <button onClick={() => setIsReviewModalOpen(false)} className="text-[#839958] hover:text-[#0A3323]">
+          <button onClick={() => setIsReviewModalOpen(false)} className="text-slate-400 hover:text-slate-700">
             <X className="w-5 h-5" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4 text-xs">
           {/* Star Rating selector */}
-          <div className="flex flex-col items-center justify-center py-4 bg-[#FAF8ED] border border-[#839958]/25 rounded-2xl">
+          <div className="flex flex-col items-center justify-center py-4 bg-slate-50 border border-slate-200 rounded-2xl">
             <div className="flex items-center gap-2 mb-1">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
@@ -84,21 +84,21 @@ export default function ReviewModal() {
                   <Star
                     className={`w-7 h-7 ${
                       (hoverRating || rating) >= star
-                        ? 'fill-[#D3968C] text-[#D3968C]'
-                        : 'text-gray-300'
+                        ? 'fill-amber-400 text-amber-400'
+                        : 'text-slate-200'
                     }`}
                   />
                 </button>
               ))}
             </div>
-            <span className="font-bold text-xs text-[#0A3323]">
+            <span className="font-extrabold text-xs text-slate-900">
               {rating === 5 ? 'Exceptional Mentor! (5.0)' : `${rating}.0 Stars`}
             </span>
           </div>
 
           {/* Endorsement Tags */}
           <div className="space-y-1.5">
-            <label className="font-bold text-[#0A3323]">
+            <label className="font-bold text-slate-900">
               Select Endorsement Badges:
             </label>
             <div className="flex flex-wrap gap-1.5">
@@ -109,13 +109,13 @@ export default function ReviewModal() {
                     key={tag}
                     type="button"
                     onClick={() => toggleTag(tag)}
-                    className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition-colors flex items-center gap-1.5 ${
+                    className={`px-3 py-1.5 text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 ${
                       isSelected
-                        ? 'bg-[#105666] text-[#F7F4D5] shadow-sm'
-                        : 'bg-[#FAF8ED] text-[#0A3323] border border-[#839958]/20 hover:bg-white'
+                        ? 'bg-slate-900 text-white shadow-sm'
+                        : 'bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100'
                     }`}
                   >
-                    {isSelected && <Check className="w-3.5 h-3.5 text-[#F7F4D5]" />}
+                    {isSelected && <Check className="w-3.5 h-3.5 text-emerald-400" />}
                     <span>{tag}</span>
                   </button>
                 );
@@ -125,7 +125,7 @@ export default function ReviewModal() {
 
           {/* Written Feedback */}
           <div className="space-y-1">
-            <label className="font-bold text-[#0A3323]">
+            <label className="font-bold text-slate-900">
               Written Review (Public Portfolio):
             </label>
             <textarea
@@ -133,18 +133,18 @@ export default function ReviewModal() {
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder="What made this peer session great? (Helps your peer build their tutoring track record)"
-              className="w-full p-3 bg-[#FAF8ED] border border-[#839958]/30 rounded-xl text-[#0A3323] text-xs focus:outline-none focus:border-[#105666] resize-none"
+              className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 text-xs focus:outline-none focus:border-slate-800 resize-none"
             />
           </div>
 
           {/* Reward Summary pill */}
-          <div className="p-3.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/25 flex items-center justify-between text-xs font-bold text-[#0A3323]">
+          <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs font-extrabold text-slate-900">
             <div className="flex items-center gap-1.5">
-              <Coins className="w-4 h-4 text-[#D3968C]" />
+              <Coins className="w-4 h-4 text-emerald-600" />
               <span>+1 Credit Released</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <Flame className="w-4 h-4 text-[#D3968C] fill-[#D3968C]" />
+              <Flame className="w-4 h-4 text-amber-500 fill-amber-500" />
               <span>+50 Karma Awarded</span>
             </div>
           </div>
@@ -152,9 +152,9 @@ export default function ReviewModal() {
           {/* Submit */}
           <button
             type="submit"
-            className="w-full btn-botanical-primary py-3 text-xs font-bold flex items-center justify-center gap-2 shadow-sm"
+            className="w-full bg-slate-900 hover:bg-slate-800 text-white py-3 text-xs font-extrabold flex items-center justify-center gap-2 rounded-xl shadow-sm transition-all"
           >
-            <Sparkles className="w-4 h-4 text-[#D3968C]" />
+            <Sparkles className="w-4 h-4 text-emerald-400" />
             <span>Submit Review & Claim Rewards</span>
           </button>
         </form>

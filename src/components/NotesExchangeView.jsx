@@ -147,22 +147,22 @@ export default function NotesExchangeView() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 text-slate-900 font-sans">
       {/* Top Banner */}
-      <div className="botanical-card-cream p-6 sm:p-8 border border-[#839958]/25 shadow-sm">
+      <div className="bg-white p-6 sm:p-8 border border-slate-200/80 rounded-3xl shadow-sm">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <div className="flex flex-wrap items-center gap-2 mb-2">
-              <span className="badge-rose px-3 py-1 text-xs font-bold rounded-full uppercase tracking-wider flex items-center gap-1.5">
-                <FileCheck2 className="w-3.5 h-3.5 text-[#0A3323]" />
+              <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 text-xs font-bold rounded-full uppercase tracking-wider flex items-center gap-1.5">
+                <FileCheck2 className="w-3.5 h-3.5" />
                 Senior Notes & PYQ Bank
               </span>
-              <span className="badge-teal px-3 py-1 text-xs font-bold rounded-full">
+              <span className="bg-slate-100 text-slate-700 border border-slate-200 px-3 py-1 text-xs font-bold rounded-full">
                 Earn Credits on Download
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#0A3323]">Previous Year Questions (PYQs) & Senior Notes</h2>
-            <p className="text-xs text-[#0A3323]/80 mt-1 max-w-xl leading-relaxed">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">Previous Year Questions (PYQs) & Senior Notes</h2>
+            <p className="text-xs text-slate-600 mt-1 max-w-xl leading-relaxed">
               Senior students share verified past exam PYQs, solved step-by-step papers, and lecture cheatsheets. Earn 1 Simple Credit & Impact Karma every time a junior unlocks your uploaded study guide!
             </p>
           </div>
@@ -170,17 +170,17 @@ export default function NotesExchangeView() {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 shrink-0">
             <button
               onClick={() => openPortfolioModal(currentUser)}
-              className="btn-botanical-outline px-3.5 py-2.5 text-xs font-bold flex items-center justify-center gap-1.5"
+              className="bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold px-3.5 py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-colors"
             >
-              <Share2 className="w-4 h-4 text-[#105666]" />
+              <Share2 className="w-4 h-4 text-emerald-600" />
               <span>Export to LinkedIn</span>
             </button>
 
             <button
               onClick={() => setIsUploadModalOpen(true)}
-              className="btn-botanical-primary px-4 py-2.5 text-xs font-bold flex items-center justify-center gap-2 shadow-sm"
+              className="bg-slate-900 hover:bg-slate-800 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-sm transition-all"
             >
-              <Plus className="w-4 h-4" />
+              <Plus className="w-4 h-4 text-emerald-400" />
               <span>Upload PYQ / Notes (+1 Credit)</span>
             </button>
           </div>
@@ -188,16 +188,16 @@ export default function NotesExchangeView() {
       </div>
 
       {/* Filter Toolbar: Material Type Tabs & Search */}
-      <div className="botanical-card p-4 border border-[#839958]/20 bg-white space-y-3">
+      <div className="bg-white p-4 border border-slate-200/80 rounded-2xl space-y-3 shadow-sm">
         <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
           {/* Material Type Tabs */}
-          <div className="flex items-center gap-1.5 bg-[#FAF8ED] p-1.5 rounded-2xl border border-[#839958]/20 overflow-x-auto">
+          <div className="flex items-center gap-1.5 bg-slate-100 p-1.5 rounded-2xl border border-slate-200 overflow-x-auto">
             <button
               onClick={() => setResourceTypeFilter('all')}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 ${
                 resourceTypeFilter === 'all'
-                  ? 'bg-[#105666] text-[#F7F4D5] shadow-sm'
-                  : 'text-[#0A3323]/80 hover:bg-white'
+                  ? 'bg-slate-900 text-white shadow-sm'
+                  : 'text-slate-600 hover:bg-white'
               }`}
             >
               All Materials
@@ -206,35 +206,35 @@ export default function NotesExchangeView() {
               onClick={() => setResourceTypeFilter('pyq')}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
                 resourceTypeFilter === 'pyq'
-                  ? 'bg-[#105666] text-[#F7F4D5] shadow-sm'
-                  : 'text-[#0A3323]/80 hover:bg-white'
+                  ? 'bg-slate-900 text-white shadow-sm'
+                  : 'text-slate-600 hover:bg-white'
               }`}
             >
-              <FileCheck2 className="w-3.5 h-3.5 text-[#D3968C]" />
+              <FileCheck2 className="w-3.5 h-3.5 text-emerald-400" />
               <span>📜 Senior PYQs & Exams</span>
             </button>
             <button
               onClick={() => setResourceTypeFilter('notes')}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 ${
                 resourceTypeFilter === 'notes'
-                  ? 'bg-[#105666] text-[#F7F4D5] shadow-sm'
-                  : 'text-[#0A3323]/80 hover:bg-white'
+                  ? 'bg-slate-900 text-white shadow-sm'
+                  : 'text-slate-600 hover:bg-white'
               }`}
             >
-              <BookOpen className="w-3.5 h-3.5 text-[#839958]" />
+              <BookOpen className="w-3.5 h-3.5 text-emerald-400" />
               <span>📚 Lecture Cheatsheets</span>
             </button>
           </div>
 
           {/* Search Box */}
           <div className="relative md:w-72">
-            <Search className="w-4 h-4 text-[#839958] absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search PYQ (CS61A 2024, MATH53)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] text-xs focus:outline-none focus:border-[#105666]"
+              className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-slate-800"
             />
           </div>
         </div>
@@ -247,8 +247,8 @@ export default function NotesExchangeView() {
               onClick={() => setSelectedCategory(cat)}
               className={`px-3 py-1 rounded-xl text-xs font-semibold shrink-0 transition-all ${
                 selectedCategory === cat
-                  ? 'bg-[#0A3323] text-[#F7F4D5]'
-                  : 'bg-[#FAF8ED] text-[#0A3323]/80 border border-[#839958]/20 hover:bg-white'
+                  ? 'bg-slate-900 text-white font-bold'
+                  : 'bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200/80'
               }`}
             >
               {cat === 'all' ? 'All Categories' : cat}
@@ -262,46 +262,46 @@ export default function NotesExchangeView() {
         {filteredNotes.map(note => (
           <div
             key={note.id}
-            className="botanical-card p-5 flex flex-col justify-between space-y-4 hover:border-[#839958]/40"
+            className="bg-white border border-slate-200/80 rounded-2xl p-5 flex flex-col justify-between space-y-4 shadow-sm hover:shadow-md transition-all text-slate-900"
           >
             <div className="space-y-3">
               <div className="flex items-start justify-between gap-2">
                 <div className="flex items-center gap-1.5">
-                  <span className="badge-moss px-2.5 py-0.5 text-[11px] font-bold rounded-lg">
+                  <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 text-[11px] font-extrabold rounded-lg">
                     {note.course}
                   </span>
                   {note.type === 'PYQ Paper' ? (
-                    <span className="badge-rose px-2.5 py-0.5 text-[10px] font-bold rounded-lg flex items-center gap-1">
-                      <FileCheck2 className="w-3 h-3 text-[#0A3323]" />
+                    <span className="bg-indigo-50 text-indigo-700 border border-indigo-200 px-2.5 py-0.5 text-[10px] font-bold rounded-lg flex items-center gap-1">
+                      <FileCheck2 className="w-3 h-3 text-indigo-600" />
                       PYQ {note.examYear || '2024'}
                     </span>
                   ) : (
-                    <span className="badge-teal px-2 py-0.5 text-[10px] font-bold rounded-lg">
+                    <span className="bg-slate-100 text-slate-700 border border-slate-200 px-2 py-0.5 text-[10px] font-bold rounded-lg">
                       Lecture Notes
                     </span>
                   )}
                 </div>
 
-                <span className="text-xs font-bold text-[#D3968C] flex items-center gap-1">
-                  <Star className="w-3.5 h-3.5 fill-[#D3968C]" />
+                <span className="text-xs font-bold text-amber-500 flex items-center gap-1">
+                  <Star className="w-3.5 h-3.5 fill-amber-500" />
                   {note.rating}
                 </span>
               </div>
 
               <div>
-                <h3 className="font-bold text-sm text-[#0A3323] leading-snug">{note.title}</h3>
-                <p className="text-xs text-[#839958] font-medium mt-0.5">
-                  Shared by <strong className="text-[#0A3323]">{note.authorName}</strong> ({note.authorSchool}) • {note.pages} pages
+                <h3 className="font-extrabold text-sm text-slate-900 leading-snug">{note.title}</h3>
+                <p className="text-xs text-slate-500 font-medium mt-0.5">
+                  Shared by <strong className="text-slate-900">{note.authorName}</strong> ({note.authorSchool}) • {note.pages} pages
                 </p>
               </div>
 
-              <p className="text-xs text-[#0A3323]/80 leading-relaxed bg-[#FAF8ED] p-3 rounded-xl border border-[#839958]/15 line-clamp-3">
+              <p className="text-xs text-slate-600 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-200/80 line-clamp-3">
                 {note.summary}
               </p>
 
-              <div className="flex items-center justify-between text-[11px] text-[#0A3323]/70 pt-1 font-medium">
+              <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1 font-medium">
                 <span className="flex items-center gap-1">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#105666]" />
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                   Verified Senior Contributor
                 </span>
                 <span>{note.downloads} downloads</span>
@@ -310,9 +310,9 @@ export default function NotesExchangeView() {
 
             <button
               onClick={() => handleUnlockNote(note)}
-              className="w-full btn-botanical-secondary py-2.5 text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm"
+              className="w-full bg-slate-900 hover:bg-slate-800 text-white py-2.5 rounded-xl text-xs font-extrabold flex items-center justify-center gap-1.5 shadow-sm transition-all"
             >
-              <Coins className="w-3.5 h-3.5 text-[#D3968C]" />
+              <Coins className="w-3.5 h-3.5 text-emerald-400" />
               <span>Unlock PDF & Solved Answers (1 Credit)</span>
             </button>
           </div>
@@ -321,39 +321,39 @@ export default function NotesExchangeView() {
 
       {/* Upload PYQ / Study Material Modal */}
       {isUploadModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm overflow-y-auto">
-          <div className="relative w-full max-w-lg botanical-card bg-white p-6 sm:p-8 text-[#0A3323] shadow-xl rounded-3xl space-y-4">
-            <div className="flex items-center justify-between border-b border-[#839958]/20 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm overflow-y-auto">
+          <div className="relative w-full max-w-lg bg-white p-6 sm:p-8 text-slate-900 shadow-2xl rounded-3xl space-y-4 border border-slate-200">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2.5">
-                <div className="w-10 h-10 rounded-xl bg-[#0A3323] text-[#F7F4D5] flex items-center justify-center shrink-0">
-                  <Plus className="w-5 h-5 text-[#FAF8ED]" />
+                <div className="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shrink-0">
+                  <Plus className="w-5 h-5 text-emerald-400" />
                 </div>
                 <div>
-                  <span className="badge-rose px-2 py-0.5 text-[9px] font-bold rounded-full uppercase">
+                  <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 text-[9px] font-extrabold rounded-full uppercase">
                     Senior Contributor Engine
                   </span>
-                  <h3 className="text-lg font-bold text-[#0A3323]">Upload PYQ / Senior Notes</h3>
+                  <h3 className="text-lg font-extrabold text-slate-900">Upload PYQ / Senior Notes</h3>
                 </div>
               </div>
 
-              <button onClick={() => setIsUploadModalOpen(false)} className="text-[#839958] hover:text-[#0A3323]">
+              <button onClick={() => setIsUploadModalOpen(false)} className="text-slate-400 hover:text-slate-700">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <form onSubmit={handleUploadSubmit} className="space-y-4 text-xs">
               {/* Type Switcher */}
-              <div className="grid grid-cols-2 gap-2 p-1.5 bg-[#FAF8ED] border border-[#839958]/25 rounded-2xl">
+              <div className="grid grid-cols-2 gap-2 p-1.5 bg-slate-100 border border-slate-200 rounded-2xl">
                 <button
                   type="button"
                   onClick={() => setNewType('PYQ Paper')}
                   className={`py-2 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-1.5 ${
                     newType === 'PYQ Paper'
-                      ? 'bg-[#105666] text-[#F7F4D5] shadow-sm'
-                      : 'text-[#0A3323]/80 hover:bg-white'
+                      ? 'bg-slate-900 text-white shadow-sm'
+                      : 'text-slate-600 hover:bg-white'
                   }`}
                 >
-                  <FileCheck2 className="w-4 h-4 text-[#D3968C]" />
+                  <FileCheck2 className="w-4 h-4 text-emerald-400" />
                   <span>PYQ Exam & Solved Paper</span>
                 </button>
 
@@ -362,46 +362,46 @@ export default function NotesExchangeView() {
                   onClick={() => setNewType('Lecture Notes')}
                   className={`py-2 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-1.5 ${
                     newType === 'Lecture Notes'
-                      ? 'bg-[#105666] text-[#F7F4D5] shadow-sm'
-                      : 'text-[#0A3323]/80 hover:bg-white'
+                      ? 'bg-slate-900 text-white shadow-sm'
+                      : 'text-slate-600 hover:bg-white'
                   }`}
                 >
-                  <BookOpen className="w-4 h-4 text-[#839958]" />
+                  <BookOpen className="w-4 h-4 text-emerald-400" />
                   <span>Lecture Cheatsheet</span>
                 </button>
               </div>
 
               <div className="space-y-1">
-                <label className="font-bold text-[#0A3323]">Material Title *</label>
+                <label className="font-bold text-slate-900">Material Title *</label>
                 <input
                   type="text"
                   required
                   placeholder={newType === 'PYQ Paper' ? "e.g. CS 61A Fall 2024 Midterm 2 PYQ + Solved Solutions" : "e.g. Organic Chem Reaction Mechanisms Mindmap"}
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] focus:outline-none focus:border-[#105666]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-slate-800"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1">
-                  <label className="font-bold text-[#0A3323]">Course Code *</label>
+                  <label className="font-bold text-slate-900">Course Code *</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. CS 61A / MATH 53"
                     value={newCourse}
                     onChange={(e) => setNewCourse(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] focus:outline-none focus:border-[#105666]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-slate-800"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="font-bold text-[#0A3323]">Subject Category</label>
+                  <label className="font-bold text-slate-900">Subject Category</label>
                   <select
                     value={newCategory}
                     onChange={(e) => setNewCategory(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] focus:outline-none focus:border-[#105666]"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-slate-800"
                   >
                     <option value="Academic & STEM">Academic & STEM</option>
                     <option value="Coding & Tech">Coding & Tech</option>
@@ -414,11 +414,11 @@ export default function NotesExchangeView() {
               {newType === 'PYQ Paper' && (
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-1">
-                    <label className="font-bold text-[#0A3323]">Exam Year</label>
+                    <label className="font-bold text-slate-900">Exam Year</label>
                     <select
                       value={newExamYear}
                       onChange={(e) => setNewExamYear(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] focus:outline-none focus:border-[#105666]"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-slate-800"
                     >
                       <option value="2025">2025 (Latest)</option>
                       <option value="2024">2024</option>
@@ -427,12 +427,12 @@ export default function NotesExchangeView() {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="font-bold text-[#0A3323]">Includes Solutions?</label>
+                    <label className="font-bold text-slate-900">Includes Solutions?</label>
                     <button
                       type="button"
                       onClick={() => setHasSolutions(!hasSolutions)}
                       className={`w-full py-2.5 px-3 rounded-xl border text-xs font-bold flex items-center justify-between ${
-                        hasSolutions ? 'bg-[#FAF8ED] border-[#105666] text-[#105666]' : 'bg-white border-[#839958]/30 text-[#0A3323]/60'
+                        hasSolutions ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-slate-50 border-slate-200 text-slate-500'
                       }`}
                     >
                       <span>{hasSolutions ? '✓ Step-by-Step Answers' : 'Question Only'}</span>
@@ -442,40 +442,40 @@ export default function NotesExchangeView() {
               )}
 
               <div className="space-y-1">
-                <label className="font-bold text-[#0A3323]">Key Topics & Summary</label>
+                <label className="font-bold text-slate-900">Key Topics & Summary</label>
                 <textarea
                   rows={3}
                   placeholder="Summarize key topics, formulas, or solved past exam questions covered in this paper..."
                   value={newSummary}
                   onChange={(e) => setNewSummary(e.target.value)}
-                  className="w-full p-3 rounded-xl bg-[#FAF8ED] border border-[#839958]/30 text-[#0A3323] focus:outline-none focus:border-[#105666] resize-none"
+                  className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-slate-800 resize-none"
                 />
               </div>
 
-              <div className="p-3.5 rounded-2xl bg-[#FAF8ED] border border-[#839958]/20 text-xs text-[#0A3323]/80 space-y-1">
-                <div className="font-bold text-[#105666] flex items-center justify-between">
+              <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-700 space-y-1">
+                <div className="font-bold text-slate-900 flex items-center justify-between">
                   <span>💰 Contributor Credit Reward Engine</span>
-                  <span className="badge-rose px-2 py-0.2 rounded font-bold">+1 Cr / Download</span>
+                  <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.2 rounded font-bold">+1 Cr / Download</span>
                 </div>
-                <p className="text-[11px] text-[#839958]">
+                <p className="text-[11px] text-slate-500">
                   Earn 1 Simple Credit & +25 Impact Karma every time a junior peer unlocks your paper! Add to your LinkedIn profile.
                 </p>
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-2 border-t border-[#839958]/15">
+              <div className="flex items-center justify-end gap-3 pt-2 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setIsUploadModalOpen(false)}
-                  className="px-4 py-2 rounded-xl text-xs font-semibold text-[#839958] hover:text-[#0A3323]"
+                  className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-500 hover:text-slate-800"
                 >
                   Cancel
                 </button>
 
                 <button
                   type="submit"
-                  className="btn-botanical-primary px-5 py-2.5 text-xs font-bold flex items-center gap-1.5 shadow-sm"
+                  className="bg-slate-900 hover:bg-slate-800 text-white font-bold px-5 py-2.5 rounded-xl text-xs flex items-center gap-1.5 shadow-sm transition-all"
                 >
-                  <Check className="w-4 h-4" />
+                  <Check className="w-4 h-4 text-emerald-400" />
                   <span>Publish & Earn Credits</span>
                 </button>
               </div>

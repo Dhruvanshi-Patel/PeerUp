@@ -107,22 +107,22 @@ export default function ExploreSkills() {
   return (
     <div className="space-y-6">
       {/* Search & Filter Toolbar */}
-      <div className="botanical-card-cream p-4 sm:p-6 border border-[#839958]/25 space-y-4 shadow-sm">
+      <div className="bg-white p-4 sm:p-6 border border-slate-200/80 rounded-2xl space-y-4 shadow-sm text-slate-900">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
           {/* Main Search Input */}
           <div className="md:col-span-6 relative">
-            <Search className="w-4 h-4 text-[#839958] absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search skill (Python, Spanish, Calculus), mentor name, or major..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-white border border-[#839958]/30 text-[#0A3323] placeholder-[#0A3323]/50 text-xs focus:outline-none focus:border-[#105666] shadow-sm transition-all"
+              className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-xs focus:outline-none focus:border-slate-800 focus:bg-white transition-all"
             />
             {searchQuery && (
               <button 
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#839958] hover:text-[#0A3323]"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -134,7 +134,7 @@ export default function ExploreSkills() {
             <select
               value={selectedCampus}
               onChange={(e) => setSelectedCampus(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#839958]/30 text-[#0A3323] text-xs focus:outline-none focus:border-[#105666] shadow-sm transition-all"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-slate-800 focus:bg-white transition-all font-medium"
             >
               {CAMPUSES.map(c => (
                 <option key={c} value={c}>{c}</option>
@@ -147,7 +147,7 @@ export default function ExploreSkills() {
             <select
               value={selectedFormat}
               onChange={(e) => setSelectedFormat(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-[#839958]/30 text-[#0A3323] text-xs focus:outline-none focus:border-[#105666] shadow-sm transition-all"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs focus:outline-none focus:border-slate-800 focus:bg-white transition-all font-medium"
             >
               <option value="all">All Formats (Virtual & On-Campus)</option>
               <option value="Virtual Call">Virtual Call Only</option>
@@ -166,8 +166,8 @@ export default function ExploreSkills() {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold shrink-0 transition-all flex items-center gap-1.5 ${
                   isActive
-                    ? 'bg-[#105666] text-[#F7F4D5] shadow-sm font-bold'
-                    : 'bg-white text-[#0A3323]/80 hover:text-[#0A3323] border border-[#839958]/25 hover:bg-[#FAF8ED]'
+                    ? 'bg-slate-900 text-white shadow-sm font-bold'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200/80 border border-slate-200'
                 }`}
               >
                 {getCategoryIcon(cat.icon)}
@@ -181,13 +181,13 @@ export default function ExploreSkills() {
       {/* Grid Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-xl font-bold text-[#0A3323] flex items-center gap-2">
+          <h2 className="text-xl font-extrabold text-slate-900 flex items-center gap-2">
             Verified Student Mentors
-            <span className="badge-moss px-2.5 py-0.5 text-xs rounded-full font-bold">
+            <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 text-xs rounded-full font-bold">
               {filteredPeers.length} Available
             </span>
           </h2>
-          <p className="text-xs text-[#839958] font-medium mt-0.5">
+          <p className="text-xs text-slate-500 font-medium mt-0.5">
             Connect 1-on-1 to trade skills using simple credits or reciprocal tutoring
           </p>
         </div>
@@ -195,7 +195,7 @@ export default function ExploreSkills() {
         {(searchQuery || selectedCategory !== 'all' || selectedCampus !== 'All Campuses' || selectedFormat !== 'all') && (
           <button 
             onClick={handleResetFilters}
-            className="text-xs text-[#105666] hover:underline font-semibold flex items-center gap-1"
+            className="text-xs text-emerald-700 hover:underline font-bold flex items-center gap-1"
           >
             <X className="w-3.5 h-3.5" /> Reset Filters
           </button>
@@ -204,15 +204,15 @@ export default function ExploreSkills() {
 
       {/* Mentors Grid */}
       {filteredPeers.length === 0 ? (
-        <div className="botanical-card-cream p-12 text-center border border-[#839958]/25 rounded-3xl space-y-3">
-          <Leaf className="w-10 h-10 text-[#839958] mx-auto opacity-70" />
-          <h3 className="text-lg font-bold text-[#0A3323]">No Student Mentors Found</h3>
-          <p className="text-xs text-[#0A3323]/70 max-w-md mx-auto">
+        <div className="bg-white p-12 text-center border border-slate-200/80 rounded-3xl space-y-3 shadow-sm">
+          <Sparkles className="w-10 h-10 text-slate-400 mx-auto opacity-70" />
+          <h3 className="text-lg font-bold text-slate-900">No Student Mentors Found</h3>
+          <p className="text-xs text-slate-500 max-w-md mx-auto">
             Try adjusting your search query "{searchQuery}" or category filter to discover more peers on campus.
           </p>
           <button 
             onClick={handleResetFilters}
-            className="btn-botanical-primary px-4 py-2 text-xs font-bold mt-2"
+            className="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 text-xs font-bold rounded-xl shadow-sm transition-all mt-2"
           >
             Clear Search & Filters
           </button>
@@ -222,7 +222,7 @@ export default function ExploreSkills() {
           {filteredPeers.map(peer => (
             <div
               key={peer.id}
-              className="botanical-card p-5 flex flex-col justify-between space-y-4 hover:border-[#839958]/40"
+              className="bg-white border border-slate-200/80 rounded-2xl p-5 flex flex-col justify-between space-y-4 shadow-sm hover:shadow-md transition-all text-slate-900"
             >
               <div className="space-y-3.5">
                 {/* Peer Header Profile */}
@@ -231,24 +231,24 @@ export default function ExploreSkills() {
                     <img
                       src={peer.avatar}
                       alt={peer.name}
-                      className="w-12 h-12 rounded-xl object-cover border border-[#839958]/30 shadow-sm"
+                      className="w-12 h-12 rounded-xl object-cover border border-slate-200 shadow-sm"
                     />
                     <div>
-                      <h3 className="font-bold text-sm text-[#0A3323] flex items-center gap-1.5">
+                      <h3 className="font-extrabold text-sm text-slate-900 flex items-center gap-1.5">
                         <span>{peer.name}</span>
-                        <ShieldCheck className="w-4 h-4 text-[#105666]" />
+                        <ShieldCheck className="w-4 h-4 text-emerald-600" />
                       </h3>
-                      <p className="text-xs text-[#839958] font-medium">{peer.major}</p>
-                      <p className="text-[11px] text-[#0A3323]/60">{peer.school}</p>
+                      <p className="text-xs text-slate-500 font-medium">{peer.major}</p>
+                      <p className="text-[11px] text-slate-400">{peer.school}</p>
                     </div>
                   </div>
 
                   <div className="flex flex-col items-end gap-1">
-                    <span className="badge-teal px-2 py-0.5 text-[10px] font-bold rounded-full">
+                    <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 text-[10px] font-extrabold rounded-full">
                       {peer.badgeLevel}
                     </span>
                     {partnerStreaks && partnerStreaks[[currentUser.id, peer.id].sort().join('_')] && (
-                      <span className="badge-rose px-2 py-0.2 text-[9px] font-bold rounded-full">
+                      <span className="bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.2 text-[9px] font-bold rounded-full">
                         🔥 {partnerStreaks[[currentUser.id, peer.id].sort().join('_')]} Wk Streak
                       </span>
                     )}
@@ -256,32 +256,32 @@ export default function ExploreSkills() {
                 </div>
 
                 {/* Rating & Tutoring Stats Strip */}
-                <div className="grid grid-cols-3 gap-2 py-2 px-3 rounded-xl bg-[#FAF8ED] border border-[#839958]/15 text-center text-xs">
+                <div className="grid grid-cols-3 gap-2 py-2 px-3 rounded-xl bg-slate-50 border border-slate-200/80 text-center text-xs">
                   <div>
-                    <div className="font-bold text-[#0A3323] flex items-center justify-center gap-1">
-                      <Star className="w-3.5 h-3.5 text-[#D3968C] fill-[#D3968C]" />
+                    <div className="font-bold text-slate-900 flex items-center justify-center gap-1">
+                      <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
                       {peer.rating}
                     </div>
-                    <div className="text-[10px] text-[#839958] font-medium">{peer.reviewCount} Reviews</div>
+                    <div className="text-[10px] text-slate-500 font-medium">{peer.reviewCount} Reviews</div>
                   </div>
                   <div>
-                    <div className="font-bold text-[#0A3323]">{peer.hoursTaught} hrs</div>
-                    <div className="text-[10px] text-[#839958] font-medium">Taught</div>
+                    <div className="font-bold text-slate-900">{peer.hoursTaught} hrs</div>
+                    <div className="text-[10px] text-slate-500 font-medium">Taught</div>
                   </div>
                   <div>
-                    <div className="font-bold text-[#105666]">{peer.karma} pts</div>
-                    <div className="text-[10px] text-[#839958] font-medium">Karma</div>
+                    <div className="font-bold text-emerald-700">{peer.karma} pts</div>
+                    <div className="text-[10px] text-slate-500 font-medium">Karma</div>
                   </div>
                 </div>
 
                 {/* Bio Quote Box */}
-                <p className="text-xs text-[#0A3323]/80 leading-relaxed italic bg-white p-3 rounded-xl border border-[#839958]/15 line-clamp-2">
+                <p className="text-xs text-slate-600 leading-relaxed italic bg-slate-50 p-3 rounded-xl border border-slate-200/60 line-clamp-2">
                   "{peer.bio}"
                 </p>
 
                 {/* Skills Offered */}
                 <div className="space-y-1">
-                  <div className="text-[10px] font-bold text-[#105666] uppercase tracking-wider">
+                  <div className="text-[10px] font-extrabold text-emerald-700 uppercase tracking-wider">
                     Skills Can Teach:
                   </div>
                   <div className="flex flex-wrap gap-1.5">
@@ -290,7 +290,7 @@ export default function ExploreSkills() {
                         key={s.id}
                         onClick={() => setSearchQuery(s.name)}
                         title="Click to search for this skill"
-                        className="badge-moss px-2.5 py-0.5 text-xs font-semibold rounded-lg flex items-center gap-1 hover:bg-[#839958]/25 transition-colors cursor-pointer"
+                        className="bg-emerald-50 text-emerald-700 border border-emerald-200/80 px-2.5 py-0.5 text-xs font-semibold rounded-lg flex items-center gap-1 hover:bg-emerald-100 transition-colors cursor-pointer"
                       >
                         <span>{s.name}</span>
                         <span className="text-[10px] opacity-75">({s.level})</span>
@@ -301,7 +301,7 @@ export default function ExploreSkills() {
 
                 {/* Skills Wanted */}
                 <div className="space-y-1">
-                  <div className="text-[10px] font-bold text-[#839958] uppercase tracking-wider">
+                  <div className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider">
                     Skills Wants to Learn:
                   </div>
                   <div className="flex flex-wrap gap-1.5">
@@ -310,7 +310,7 @@ export default function ExploreSkills() {
                         key={s.id}
                         onClick={() => setSearchQuery(s.name)}
                         title="Click to search for this skill"
-                        className="badge-rose px-2.5 py-0.5 text-xs font-semibold rounded-lg hover:bg-[#D3968C]/30 transition-colors cursor-pointer"
+                        className="bg-indigo-50 text-indigo-700 border border-indigo-200/80 px-2.5 py-0.5 text-xs font-semibold rounded-lg hover:bg-indigo-100 transition-colors cursor-pointer"
                       >
                         {s.name}
                       </button>
@@ -320,19 +320,19 @@ export default function ExploreSkills() {
               </div>
 
               {/* Action Buttons */}
-              <div className="grid grid-cols-2 gap-2 pt-2 border-t border-[#839958]/15">
+              <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
                 <button
                   onClick={() => openPortfolioModal(peer)}
-                  className="btn-botanical-outline py-2 text-xs font-semibold text-center"
+                  className="bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 py-2 rounded-xl text-xs font-semibold text-center transition-colors"
                 >
                   Portfolio
                 </button>
 
                 <button
                   onClick={() => openSwapModalForUser(peer)}
-                  className="btn-botanical-secondary py-2 text-xs font-bold text-center flex items-center justify-center gap-1"
+                  className="bg-slate-900 hover:bg-slate-800 text-white py-2 rounded-xl text-xs font-extrabold text-center flex items-center justify-center gap-1.5 transition-colors shadow-sm"
                 >
-                  <ArrowLeftRight className="w-3.5 h-3.5" />
+                  <ArrowLeftRight className="w-3.5 h-3.5 text-emerald-400" />
                   <span>Propose Swap</span>
                 </button>
               </div>

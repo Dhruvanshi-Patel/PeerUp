@@ -61,84 +61,84 @@ export default function SharePortfolioModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-2xl botanical-card bg-white p-6 sm:p-8 my-8 text-[#0A3323] shadow-xl rounded-3xl space-y-5">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm overflow-y-auto font-sans">
+      <div className="relative w-full max-w-2xl bg-white p-6 sm:p-8 my-8 text-slate-900 shadow-2xl rounded-3xl space-y-5 border border-slate-200">
         {/* Header */}
-        <div className="flex items-center justify-between pb-3 border-b border-[#839958]/20">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-100">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className="badge-moss px-2.5 py-0.5 text-[10px] font-bold rounded-full uppercase tracking-wider flex items-center gap-1">
+              <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-0.5 text-[10px] font-extrabold rounded-full uppercase tracking-wider flex items-center gap-1">
                 <Award className="w-3.5 h-3.5" />
                 Verified Campus Credential
               </span>
-              <span className="badge-teal px-2 py-0.5 text-[10px] font-bold rounded-full">
+              <span className="bg-slate-100 text-slate-700 border border-slate-200 px-2 py-0.5 text-[10px] font-bold rounded-full">
                 LinkedIn Ready
               </span>
             </div>
-            <h2 className="text-xl font-bold text-[#0A3323]">
+            <h2 className="text-xl font-extrabold text-slate-900">
               {portfolioTargetUser.name}'s Senior Tutor & PYQ Record
             </h2>
           </div>
 
-          <button onClick={() => setIsPortfolioModalOpen(false)} className="text-[#839958] hover:text-[#0A3323]">
+          <button onClick={() => setIsPortfolioModalOpen(false)} className="text-slate-400 hover:text-slate-700">
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Portfolio Card Preview */}
-        <div className="botanical-card-cream p-5 space-y-4 border border-[#839958]/25 rounded-2xl shadow-sm">
+        <div className="bg-slate-50 p-5 space-y-4 border border-slate-200 rounded-2xl shadow-xs">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-3.5">
               <img
                 src={portfolioTargetUser.avatar}
                 alt={portfolioTargetUser.name}
-                className="w-14 h-14 rounded-2xl object-cover border border-[#839958]/30 shadow-sm shrink-0"
+                className="w-14 h-14 rounded-2xl object-cover border border-slate-200 shadow-sm shrink-0"
               />
               <div>
-                <h3 className="font-bold text-base text-[#0A3323] flex items-center gap-2">
+                <h3 className="font-extrabold text-base text-slate-900 flex items-center gap-2">
                   {portfolioTargetUser.name}
-                  <ShieldCheck className="w-4 h-4 text-[#105666]" />
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" />
                 </h3>
-                <p className="text-xs text-[#839958] font-medium">{portfolioTargetUser.school} • {portfolioTargetUser.major}</p>
+                <p className="text-xs text-slate-500 font-medium">{portfolioTargetUser.school} • {portfolioTargetUser.major}</p>
               </div>
             </div>
 
-            <span className="badge-rose px-3 py-1 text-xs font-bold rounded-full shrink-0">
+            <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 text-xs font-extrabold rounded-full shrink-0">
               {portfolioTargetUser.badgeLevel}
             </span>
           </div>
 
           {/* Key Metrics Grid */}
           <div className="grid grid-cols-4 gap-2 text-center text-xs">
-            <div className="p-2.5 bg-white border border-[#839958]/20 rounded-xl">
-              <div className="font-bold text-[#0A3323]">{portfolioTargetUser.hoursTaught} hrs</div>
-              <div className="text-[10px] text-[#839958] font-medium">Tutoring Taught</div>
+            <div className="p-2.5 bg-white border border-slate-200 rounded-xl">
+              <div className="font-extrabold text-slate-900">{portfolioTargetUser.hoursTaught} hrs</div>
+              <div className="text-[10px] text-slate-500 font-medium">Tutoring Taught</div>
             </div>
-            <div className="p-2.5 bg-white border border-[#839958]/20 rounded-xl">
-              <div className="font-bold text-[#D3968C] flex items-center justify-center gap-0.5">
-                <Star className="w-3.5 h-3.5 fill-[#D3968C]" />
+            <div className="p-2.5 bg-white border border-slate-200 rounded-xl">
+              <div className="font-extrabold text-amber-500 flex items-center justify-center gap-0.5">
+                <Star className="w-3.5 h-3.5 fill-amber-500" />
                 {portfolioTargetUser.rating}
               </div>
-              <div className="text-[10px] text-[#839958] font-medium">{portfolioTargetUser.reviewCount} Reviews</div>
+              <div className="text-[10px] text-slate-500 font-medium">{portfolioTargetUser.reviewCount} Reviews</div>
             </div>
-            <div className="p-2.5 bg-white border border-[#839958]/20 rounded-xl">
-              <div className="font-bold text-[#105666]">{portfolioTargetUser.karma} pts</div>
-              <div className="text-[10px] text-[#839958] font-medium">Karma Score</div>
+            <div className="p-2.5 bg-white border border-slate-200 rounded-xl">
+              <div className="font-extrabold text-emerald-700">{portfolioTargetUser.karma} pts</div>
+              <div className="text-[10px] text-slate-500 font-medium">Karma Score</div>
             </div>
-            <div className="p-2.5 bg-white border border-[#839958]/20 rounded-xl">
-              <div className="font-bold text-[#0A3323]">8 PYQs</div>
-              <div className="text-[10px] text-[#839958] font-medium">Shared Papers</div>
+            <div className="p-2.5 bg-white border border-slate-200 rounded-xl">
+              <div className="font-extrabold text-slate-900">8 PYQs</div>
+              <div className="text-[10px] text-slate-500 font-medium">Shared Papers</div>
             </div>
           </div>
 
           {/* Endorsed Skills */}
           <div>
-            <div className="text-[10px] font-bold text-[#105666] uppercase tracking-wider mb-1.5">
+            <div className="text-[10px] font-extrabold text-emerald-700 uppercase tracking-wider mb-1.5">
               Verified Teaching & PYQ Endorsements:
             </div>
             <div className="flex flex-wrap gap-1.5 text-xs">
               {portfolioTargetUser.skillsOffered.map(s => (
-                <div key={s.id} className="badge-moss px-2.5 py-0.5 rounded-lg flex items-center gap-1.5 font-medium">
+                <div key={s.id} className="bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-0.5 rounded-lg flex items-center gap-1.5 font-bold">
                   <span>{s.name}</span>
                   <span className="text-[10px] opacity-75">({s.level} • {s.endorsementCount}★)</span>
                 </div>
@@ -148,19 +148,19 @@ export default function SharePortfolioModal() {
         </div>
 
         {/* LinkedIn Integration Actions Container */}
-        <div className="p-4 rounded-2xl bg-[#FAF8ED] border border-[#839958]/25 space-y-3">
+        <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-[#0A3323] uppercase flex items-center gap-1.5">
+            <span className="text-xs font-bold text-slate-900 uppercase flex items-center gap-1.5">
               <Linkedin className="w-4 h-4 text-[#0077B5]" />
               Add Credential to Your LinkedIn Profile
             </span>
-            <span className="badge-moss px-2 py-0.2 text-[10px] font-bold">1-Click Verification</span>
+            <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.2 text-[10px] font-extrabold rounded-full">1-Click Verification</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <button
               onClick={handleAddToLinkedIn}
-              className="w-full btn-botanical-primary py-2.5 px-4 text-xs font-bold flex items-center justify-center gap-2 shadow-sm"
+              className="w-full bg-slate-900 hover:bg-slate-800 text-white font-extrabold py-2.5 px-4 text-xs rounded-xl flex items-center justify-center gap-2 shadow-sm transition-all"
             >
               <Linkedin className="w-4 h-4 text-white" />
               <span>Add License to LinkedIn</span>
@@ -168,9 +168,9 @@ export default function SharePortfolioModal() {
 
             <button
               onClick={handleCopyCertDetails}
-              className="w-full btn-botanical-outline py-2.5 px-4 text-xs font-semibold flex items-center justify-center gap-2"
+              className="w-full bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 font-semibold py-2.5 px-4 text-xs rounded-xl flex items-center justify-center gap-2 transition-all"
             >
-              {copiedCertDetails ? <CheckCircle2 className="w-4 h-4 text-[#105666]" /> : <Copy className="w-4 h-4" />}
+              {copiedCertDetails ? <CheckCircle2 className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
               <span>{copiedCertDetails ? 'Copied License Fields' : 'Copy License Fields'}</span>
             </button>
           </div>
@@ -179,31 +179,31 @@ export default function SharePortfolioModal() {
         {/* Resume & LinkedIn Experience Snippet */}
         <div className="space-y-1.5 text-xs">
           <div className="flex items-center justify-between">
-            <label className="font-bold text-[#0A3323] uppercase text-[10px]">
+            <label className="font-extrabold text-slate-900 uppercase text-[10px]">
               LinkedIn Experience / Resume Bullet Points
             </label>
             <button
               onClick={handleCopySnippet}
-              className="font-bold text-[#105666] hover:underline flex items-center gap-1"
+              className="font-bold text-emerald-700 hover:underline flex items-center gap-1"
             >
-              {copiedCode ? <Check className="w-3.5 h-3.5 text-[#105666]" /> : <Copy className="w-3.5 h-3.5" />}
+              {copiedCode ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
               <span>{copiedCode ? 'Copied Snippet' : 'Copy Snippet'}</span>
             </button>
           </div>
 
-          <pre className="p-3.5 bg-[#FAF8ED] border border-[#839958]/30 rounded-2xl text-[#0A3323] font-mono text-[11px] leading-relaxed whitespace-pre-wrap">
+          <pre className="p-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 font-mono text-[11px] leading-relaxed whitespace-pre-wrap">
             {resumeSnippet}
           </pre>
         </div>
 
         {/* Footer Actions */}
-        <div className="flex items-center justify-between gap-3 pt-3 border-t border-[#839958]/20 text-xs">
-          <div className="text-[#839958] flex items-center gap-1.5 font-medium">
-            <ShieldCheck className="w-4 h-4 text-[#105666]" />
+        <div className="flex items-center justify-between gap-3 pt-3 border-t border-slate-100 text-xs">
+          <div className="text-slate-500 flex items-center gap-1.5 font-medium">
+            <ShieldCheck className="w-4 h-4 text-emerald-600" />
             <span>Cryptographically signed by PeerUp Protocol</span>
           </div>
 
-          <button onClick={() => setIsPortfolioModalOpen(false)} className="btn-botanical-outline px-4 py-1.5 text-xs font-semibold">
+          <button onClick={() => setIsPortfolioModalOpen(false)} className="bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-semibold px-4 py-1.5 text-xs rounded-xl transition-colors">
             Close Modal
           </button>
         </div>
