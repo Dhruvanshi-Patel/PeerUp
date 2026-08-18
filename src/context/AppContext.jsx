@@ -327,8 +327,14 @@ export function AppProvider({ children }) {
         return user;
       }
     } catch (err) {
-      // Client-side fallback if backend API fails
-      const matched = users.find(u => u.email?.toLowerCase() === email.toLowerCase());
+      // Client-side fallback: match existing by email or prefix, or auto-create account
+      const cleanEmail = email.trim().toLowerCase();
+      const prefix = cleanEmail.split('@')[0];
+      const matched = users.find(u =>
+        u.email?.toLowerCase() === cleanEmail ||
+        u.email?.toLowerCase().includes(prefix) ||
+        u.name?.toLowerCase().includes(prefix)
+      );
       if (matched) {
         setCurrentUserId(matched.id);
         setIsLoggedIn(true);
@@ -336,7 +342,33 @@ export function AppProvider({ children }) {
         addToast('Signed In! 🔑', `Authenticated as ${matched.name}`, 'success');
         return matched;
       }
-      throw err;
+
+      // Auto-create student account in local state
+      const namePart = prefix.charAt(0).toUpperCase() + prefix.slice(1);
+      const newUser = {
+        id: 'usr_' + Date.now(),
+        name: namePart,
+        email: email.trim(),
+        school: 'UC Berkeley',
+        major: 'Computer Science',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150',
+        rating: 5.0,
+        reviewCount: 0,
+        hoursTaught: 0,
+        hoursLearned: 0,
+        credits: 5,
+        karma: 150,
+        streak: 1,
+        badgeLevel: 'Verified Contributor',
+        skillsOffered: [{ id: 'sk_' + Date.now(), name: 'General Tutoring', category: 'Academic & STEM', level: 'Intermediate' }],
+        skillsWanted: []
+      };
+      setUsers(prev => [newUser, ...prev]);
+      setCurrentUserId(newUser.id);
+      setIsLoggedIn(true);
+      setActiveTab('welcome');
+      addToast('Welcome! 🔑', `Student account initialized for ${newUser.name}`, 'success');
+      return newUser;
     }
   };
 
