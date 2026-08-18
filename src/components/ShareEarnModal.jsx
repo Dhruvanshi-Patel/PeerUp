@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useApp } from '../context/AppContext';
 import { api } from '../services/api';
 import confetti from 'canvas-confetti';
@@ -23,6 +24,7 @@ import {
 export default function ShareEarnModal({ isOpen, onClose }) {
   const { currentUser, recordWebsiteShare, addToast } = useApp();
   const [copied, setCopied] = useState(false);
+  const [copiedCode, setCopiedCode] = useState(false);
   const [referralsList, setReferralsList] = useState([]);
   const [loadingReferrals, setLoadingReferrals] = useState(false);
 
@@ -89,9 +91,9 @@ export default function ShareEarnModal({ isOpen, onClose }) {
 
   const totalReferralCredits = referralsList.length * 2;
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm overflow-y-auto font-sans">
-      <div className="relative w-full max-w-lg bg-white p-6 sm:p-8 text-slate-900 shadow-2xl rounded-3xl space-y-5 border border-slate-200">
+      <div className="relative w-full max-w-lg bg-white p-6 sm:p-8 text-slate-900 shadow-2xl rounded-3xl space-y-5 border border-slate-200 my-auto">
         {/* Header */}
         <div className="flex items-center justify-between pb-3 border-b border-slate-100">
           <div className="flex items-center gap-3">
@@ -127,25 +129,49 @@ export default function ShareEarnModal({ isOpen, onClose }) {
           </p>
         </div>
 
-        {/* Share Link Box */}
-        <div className="space-y-1.5 text-xs">
-          <label className="font-extrabold text-slate-900 uppercase text-[10px] tracking-wider">
-            Your Personal Referral Link:
-          </label>
-          <div className="flex items-center gap-2 p-1.5 bg-slate-50 border border-slate-200 rounded-2xl">
-            <input
-              type="text"
-              readOnly
-              value={shareUrl}
-              className="w-full bg-transparent px-3 text-xs font-mono text-slate-900 focus:outline-none select-all font-semibold"
-            />
+        {/* Referral Code & Sharing Link Card */}
+        <div className="space-y-3 p-4 bg-emerald-50/70 border border-emerald-200/80 rounded-2xl">
+          {/* Referral Code */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pb-3 border-b border-emerald-200/60">
+            <div>
+              <label className="font-extrabold text-slate-900 uppercase text-[10px] tracking-wider block">
+                Your Unique Referral Code:
+              </label>
+              <span className="font-mono text-base font-extrabold text-slate-900 tracking-wider">
+                {currentUser.id}
+              </span>
+            </div>
             <button
-              onClick={handleCopyLink}
-              className="bg-slate-900 hover:bg-slate-800 text-white py-2 px-4 text-xs font-extrabold shrink-0 flex items-center gap-1.5 rounded-xl shadow-xs transition-all"
+              onClick={() => {
+                fallbackCopyText(currentUser.id);
+                setCopiedCode(true);
+                addToast('Referral Code Copied! 🔑', `Code '${currentUser.id}' copied to clipboard!`, 'success');
+                setTimeout(() => setCopiedCode(false), 3000);
+              }}
+              className="bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 px-3 text-xs font-extrabold rounded-xl flex items-center gap-1.5 shadow-xs transition-all"
             >
-              {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-emerald-400" />}
-              <span>{copied ? 'Copied!' : 'Copy Link'}</span>
+              {copiedCode ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+              <span>{copiedCode ? 'Code Copied!' : 'Copy Code'}</span>
             </button>
+          </div>
+
+          {/* Referral Link Box */}
+          <div className="space-y-1.5 text-xs">
+            <label className="font-extrabold text-slate-900 uppercase text-[10px] tracking-wider block">
+              Full Referral Sharing URL:
+            </label>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 p-2 bg-white border border-slate-200 rounded-xl shadow-xs">
+              <span className="w-full text-xs font-mono font-bold text-slate-800 break-all select-all px-1.5">
+                {shareUrl}
+              </span>
+              <button
+                onClick={handleCopyLink}
+                className="bg-slate-900 hover:bg-slate-800 text-white py-2 px-4 text-xs font-extrabold shrink-0 flex items-center justify-center gap-1.5 rounded-xl shadow-xs transition-all"
+              >
+                {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-emerald-400" />}
+                <span>{copied ? 'Link Copied!' : 'Copy Full Link'}</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -218,10 +244,10 @@ export default function ShareEarnModal({ isOpen, onClose }) {
               <div className="text-[10px] font-extrabold text-slate-400 uppercase">Recently Joined via Your Link:</div>
               <div className="max-h-24 overflow-y-auto space-y-1">
                 {referralsList.map(ref => (
-                  <div key={ref.id || ref.created_at} className="flex items-center justify-between p-2 bg-white rounded-lg border border-slate-100 text-xs">
-                    <div className="flex items-center gap-2">
+                  <div key={ref.id} className="flex items-center justify-between text-xs p-1.5 bg-white border border-slate-200/70 rounded-lg">
+                    <div className="flex items-center gap-1.5">
                       <UserCheck className="w-3.5 h-3.5 text-emerald-600" />
-                      <span className="font-extrabold text-slate-800">{ref.referred_user_name || 'Campus Student'}</span>
+                      <span className="font-bold text-slate-900">{ref.referred_user_name}</span>
                     </div>
                     <span className="text-[10px] font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                       +2 Cr Granted
@@ -245,7 +271,7 @@ export default function ShareEarnModal({ isOpen, onClose }) {
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
-
