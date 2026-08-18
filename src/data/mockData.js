@@ -92,6 +92,80 @@ export const CATEGORIES = [
 
 export const CAMPUSES = [
   "All Campuses",
+  
+  // 📍 Gujarat & Regional Institutes
+  "DA-IICT (Dhirubhai Ambani Institute of ICT)",
+  "Nirma University",
+  "DDU (Dharmsinh Desai University)",
+  "MSU (Maharaja Sayajirao University Baroda)",
+  "GTU (Gujarat Technological University)",
+  "IIT Gandhinagar",
+  "SVNIT Surat",
+  "IIIT Vadodara",
+  "PDEU / PDPU Gandhinagar",
+  "LDRP Institute of Technology",
+  "VGEC Ahmedabad",
+  "LD College of Engineering",
+
+  // 🇮🇳 Indian Institutes of Technology (IITs)
+  "IIT Bombay",
+  "IIT Delhi",
+  "IIT Madras",
+  "IIT Kanpur",
+  "IIT Kharagpur",
+  "IIT Roorkee",
+  "IIT Guwahati",
+  "IIT Hyderabad",
+  "IIT BHU (Varanasi)",
+  "IIT Indore",
+  "IIT Patna",
+  "IIT Ropar",
+  "IIT Bhubaneswar",
+  "IIT Jodhpur",
+  "IIT Mandi",
+  "IIT Dhanbad (ISM)",
+  "All Other IITs",
+
+  // 🇮🇳 National Institutes of Technology (NITs)
+  "NIT Trichy",
+  "NIT Surathkal (Karnataka)",
+  "NIT Warangal",
+  "NIT Calicut",
+  "VNIT Nagpur",
+  "MNIT Jaipur",
+  "MNNIT Allahabad",
+  "NIT Rourkela",
+  "NIT Kurukshetra",
+  "NIT Silchar",
+  "NIT Durgapur",
+  "NIT Jalandhar",
+  "NIT Patna",
+  "All Other NITs",
+
+  // 🇮🇳 Indian Institutes of Information Technology (IIITs)
+  "IIIT Hyderabad",
+  "IIIT Bangalore",
+  "IIIT Allahabad",
+  "IIIT Delhi",
+  "IIIT Lucknow",
+  "IIIT Gwalior",
+  "IIIT Jabalpur",
+  "IIIT Pune",
+  "IIIT Kota",
+  "All Other IIITs",
+
+  // 🇮🇳 Other Top Indian Universities
+  "BITS Pilani (Pilani / Goa / Hyderabad)",
+  "IISc Bangalore",
+  "Delhi University (DU)",
+  "Jadavpur University",
+  "Anna University",
+  "VIT Vellore / Chennai",
+  "SRM Institute of Science & Tech",
+  "Manipal Academy of Higher Education (MAHE)",
+  "Thapar Institute of Eng & Tech",
+
+  // 🌐 Top Global Universities
   "UC Berkeley",
   "Stanford University",
   "MIT",
@@ -112,8 +186,7 @@ export const CAMPUSES = [
   "Imperial College London",
   "ETH Zurich",
   "National University of Singapore (NUS)",
-  "IIT Bombay / Delhi",
-  "Oakland Tech / Dual",
+
   "Other Campus / Global"
 ];
 
