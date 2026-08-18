@@ -16,7 +16,7 @@
 ```text
 ┌──────────────────────────────────────────────────────────────────┐
 │              Frontend SPA (Vite + React 18 + Tailwind)           │
-│  Explore Mentors │ Study Notes │ 1:1 Swaps │ Wallet │ Leaderboard  │
+│  Explore Mentors │ Study Notes │ 1:1 Swaps │ Wallet │ Leaderboard│
 └────────────────────────────────┬─────────────────────────────────┘
                                  │ HTTPS REST API
 ┌────────────────────────────────▼─────────────────────────────────┐
@@ -25,15 +25,15 @@
 │  /api/users    /api/swaps    /api/sessions    /api/messages      │
 │  /api/notes    /api/misc (Health, Leaderboard, Wallet, Perks)    │
 │                                                                  │
-│  ┌─────────────────┐  ┌──────────────────┐  ┌─────────────────┐ │
-│  │ Verified .edu   │  │ 1:1 Simple Credit│  │ Karma & Badging │ │
-│  │ Domain Guard    │  │ Engine (+1 Cr)   │  │ Ranking Engine  │ │
-│  └────────┬────────┘  └────────┬─────────┘  └────────┬────────┘ │
+│  ┌─────────────────┐  ┌──────────────────┐  ┌─────────────────┐  │
+│  │ Verified .edu   │  │ 1:1 Simple Credit│  │ Karma & Badging │  │
+│  │ Domain Guard    │  │ Engine (+1 Cr)   │  │ Ranking Engine  │  │
+│  └────────┬────────┘  └────────┬─────────┘  └────────┬────────┘  │
 │           │                    │                     │           │
-│  ┌────────▼────────────────────▼─────────────────────▼────────┐ │
-│  │                 Turso Database (libSQL / SQLite)           │ │
-│  │  users │ skills │ swaps │ sessions │ reviews │ notes │ msgs │ │
-│  └────────────────────────────────────────────────────────────┘ │
+│  ┌────────▼────────────────────▼─────────────────────▼────────┐  │
+│  │                 Turso Database (libSQL / SQLite)           │  │
+│  │  users │ skills │ swaps │ sessions │ reviews │ notes │ msgs│  │
+│  └────────────────────────────────────────────────────────────┘  │
 └──────────────────────────────────────────────────────────────────┘
 ```
 
